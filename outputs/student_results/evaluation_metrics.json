@@ -1,0 +1,26 @@
+{
+    "total_fitness": 80.84,
+    "sports_score": 99.95,
+    "harmonize_score": 61.72,
+    "parity_score": 100.0,
+    "entropy_score": 23.45,
+    "team_0_count": 10,
+    "team_1_count": 10,
+    "team_0_mean_skill": 69.0,
+    "team_1_mean_skill": 69.0,
+    "team_0_sum_skill": 690.0,
+    "team_1_sum_skill": 690.0,
+    "team_0_std_skill": 11.5,
+    "team_1_std_skill": 11.57,
+    "skill_mean_diff": 0.0,
+    "skill_sum_diff": 0.0,
+    "size_difference": 0,
+    "dept_counts_team_0": {
+        "วิศวกรรมคอมพิวเตอร์และปัญญาประดิษฐ์": 0,
+        "เทคโนโลยีดิจิทัลและสารสนเทศ": 10
+    },
+    "dept_counts_team_1": {
+        "วิศวกรรมคอมพิวเตอร์และปัญญาประดิษฐ์": 1,
+        "เทคโนโลยีดิจิทัลและสารสนเทศ": 9
+    }
+}

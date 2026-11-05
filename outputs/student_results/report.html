@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายงานผลการแบ่งทีมกีฬาด้วย Genetic Algorithm (GA)</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; color: #333; margin: 0; padding: 25px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { background: linear-gradient(135deg, #1e3c72, #2a5298); color: white; padding: 25px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .header h1 { margin: 0 0 10px 0; font-size: 26px; }
+        .header p { margin: 0; opacity: 0.9; font-size: 15px; }
+        
+        .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 25px; }
+        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); text-align: center; border-top: 4px solid #2a5298; }
+        .card.sports { border-top-color: #388E3C; }
+        .card.harmonize { border-top-color: #7B1FA2; }
+        .card.fitness { border-top-color: #D32F2F; }
+        .card .title { font-size: 14px; color: #666; margin-bottom: 8px; text-transform: uppercase; font-weight: 600; }
+        .card .value { font-size: 32px; font-weight: bold; color: #111; }
+        .card .subtext { font-size: 13px; color: #777; margin-top: 5px; }
+        
+        .teams-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 25px; }
+        @media (max-width: 850px) { .teams-grid { grid-template-columns: 1fr; } }
+        
+        .team-box { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .team-box.red .team-header { background-color: #E53935; color: white; }
+        .team-box.green .team-header { background-color: #43A047; color: white; }
+        .team-header { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .team-header h2 { margin: 0; font-size: 18px; }
+        .team-header span { font-size: 14px; background: rgba(255,255,255,0.25); padding: 4px 10px; border-radius: 20px; }
+        
+        .team-body { padding: 15px; max-height: 500px; overflow-y: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background-color: #f8f9fa; color: #555; position: sticky; top: 0; }
+        .badge { display: inline-block; padding: 3px 8px; border-radius: 12px; font-size: 11px; background: #e9ecef; color: #495057; font-weight: 600; }
+        
+        .section-title { font-size: 20px; margin: 30px 0 15px 0; color: #2a5298; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; }
+        .img-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 30px; }
+        .img-card { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); text-align: center; }
+        .img-card img { max-width: 100%; height: auto; border-radius: 6px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>รายงานผลการจัดทีมกีฬา 2 สี (Genetic Algorithm)</h1>
+            <p>สมดุลความแฟนเนจทางกีฬา (Sports Engagement & Fairness) และสร้างความรู้จักข้ามแผนก (Harmonization)</p>
+        </div>
+
+        <div class="metric-grid">
+            <div class="card fitness">
+                <div class="title">Total GA Fitness</div>
+                <div class="value">80.84 <span style="font-size: 18px;">/ 100</span></div>
+                <div class="subtext">คะแนนฟิตเนสรวมของอัลกอริทึม</div>
+            </div>
+            <div class="card sports">
+                <div class="title">Sports Fairness Score</div>
+                <div class="value">99.95 <span style="font-size: 18px;">/ 100</span></div>
+                <div class="subtext">ผลต่างค่าเฉลี่ยสกิล: 0.0 แต้ม</div>
+            </div>
+            <div class="card harmonize">
+                <div class="title">Harmonize Score</div>
+                <div class="value">61.72 <span style="font-size: 18px;">/ 100</span></div>
+                <div class="subtext">ความกระจายแผนก (Entropy: 23.45%)</div>
+            </div>
+            <div class="card">
+                <div class="title">Team Size Balance</div>
+                <div class="value">10 : 10</div>
+                <div class="subtext">ความต่างจำนวนคน: 0 คน</div>
+            </div>
+        </div>
+
+        <div class="teams-grid">
+            <div class="team-box red">
+                <div class="team-header">
+                    <h2>สีแดง (Red)</h2>
+                    <span>สมาชิก: 10 คน | ค่าเฉลี่ยสกิล: 69.0</span>
+                </div>
+                <div class="team-body">
+                    <table>
+                        <thead>
+                            <tr><th>รหัส</th><th>ชื่อ-นามสกุล</th><th>แผนก</th><th>สกิลกีฬา</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>6752100276</td><td>นางสาวธมลพร อินทร์ลอย</td><td><span class='badge'>เทคโนโลยีดิจิทัลและสารสนเทศ</span></td><td><b>74</b></td></tr><tr><td>6752100080</td><td>นางสาวลัดดาวัลย์ อ่อนบัวขาว</td><td><span class='badge'>เทคโนโลยีดิจิทัลและสารสนเทศ</span></td><td><b>66</b></td></tr><tr><td>6652101203</td><td>นางสาววิภาวี โกกอุ่น</td><td><span class='badge'>เทคโนโลยีดิจิทัลและสารสนเทศ</span></td><td><b>60</b></td></tr><tr><td>6652100673</td><td>นางสาวอังนภา รุ่งโรจน์สมบูรณ์</td><td><span class='badge'>เทคโนโลยีดิจิทัลและสารสนเทศ</span></td><td><b>54</b></td></tr><tr><td>6752100063</td><td>นายชิษณุพงศ์ มหาสุวรรณ</td><td><span class='badge'>เทคโนโลยีดิจิทัลและสารสนเทศ</span></td><td><b>64</b></td></tr><tr><td>6752100136</td><td>นายปภังกร คะเชนทร์</td><td><span class='badge'>เทคโนโลยีดิจิทัลและสารสนเทศ</span></td><td><b>70</b></td></tr><tr><td>6752100306</td><td>นายพันธกานต์ แก้วพินิจ</td><td><span class='badge'>เทคโนโลยีดิจิทัลและสารสนเทศ</span></td><td><b>78</b></td></tr><tr><td>6752100489</td><td>นายพีรวิชญ์ แย้มสกุล</td><td><span class='badge'>เทคโนโลยีดิจิทัลและสารสนเทศ</span></td><td><b>88</b></td></tr><tr><td>6752100438</td><td>นายฤทธิรงค์ ชายสา</td><td><span class='badge'>เทคโนโลยีดิจิทัลและสารสนเทศ</span></td><td><b>84</b></td></tr><tr><td>6552100256</td><td>นายเอกภาพ สุริยประภา</td><td><span class='badge'>เทคโนโลยีดิจิทัลและสารสนเทศ</span></td><td><b>52</b></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="team-box green">
+                <div class="team-header">
+                    <h2>สีเขียว (Green)</h2>
+                    <span>สมาชิก: 10 คน | ค่าเฉลี่ยสกิล: 69.0</span>
+                </div>
+                <div class="team-body">
+                    <table>
+                        <thead>
+                            <tr><th>รหัส</th><th>ชื่อ-นามสกุล</th><th>แผนก</th><th>สกิลกีฬา</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>6652300681</td><td>นายรพีภัทร คณะพล</td><td><span class='badge'>วิศวกรรมคอมพิวเตอร์และปัญญาประดิษฐ์</span></td><td><b>62</b></td></tr><tr><td>6752100322</td><td>นางสาวนิรมล วงษายา</td><td><span class='badge'>เทคโนโลยีดิจิทัลและสารสนเทศ</span></td><td><b>80</b></td></tr><tr><td>6752100471</td><td>นางสาววาสิตา ใจแก้ว</td><td><span class='badge'>เทคโนโลยีดิจิทัลและสารสนเทศ</span></td><td><b>86</b></td></tr><tr><td>6752100292</td><td>นายนรากร โชติธนศักดิ์</td><td><span class='badge'>เทคโนโลยีดิจิทัลและสารสนเทศ</span></td><td><b>76</b></td></tr><tr><td>6752100110</td><td>นายภูเบศ อุเทนสุ</td><td><span class='badge'>เทคโนโลยีดิจิทัลและสารสนเทศ</span></td><td><b>68</b></td></tr><tr><td>6552100221</td><td>นายรพีพงศ์ ศศิธรวัณณ์</td><td><span class='badge'>เทคโนโลยีดิจิทัลและสารสนเทศ</span></td><td><b>50</b></td></tr><tr><td>6652101017</td><td>นายวศิน รัสสัยการ</td><td><span class='badge'>เทคโนโลยีดิจิทัลและสารสนเทศ</span></td><td><b>56</b></td></tr><tr><td>6652101190</td><td>นายสันติสุข แดงวงษ์</td><td><span class='badge'>เทคโนโลยีดิจิทัลและสารสนเทศ</span></td><td><b>58</b></td></tr><tr><td>6752100161</td><td>นายสิริกร เนียมชมภู</td><td><span class='badge'>เทคโนโลยีดิจิทัลและสารสนเทศ</span></td><td><b>72</b></td></tr><tr><td>6752100381</td><td>นายไชยวุฒิ ซุ่นสั้น</td><td><span class='badge'>เทคโนโลยีดิจิทัลและสารสนเทศ</span></td><td><b>82</b></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">การแสดงผลเชิงภาพ (Visualizations)</h2>
+        <div class="img-grid">
+            <div class="img-card">
+                <h3>1. กราฟการลู่เข้าของค่าฟิตเนส (Fitness Convergence)</h3>
+                <img src="fitness_evolution.png" alt="Fitness Evolution">
+            </div>
+            <div class="img-card">
+                <h3>2. การกระจายตัวของสมาชิกแต่ละแผนกใน 2 สี (Harmonization)</h3>
+                <img src="department_distribution.png" alt="Department Distribution">
+            </div>
+            <div class="img-card">
+                <h3>3. เปรียบเทียบสมรรถภาพและการกระจายตัวของทักษะกีฬา (Sports Fairness)</h3>
+                <img src="sports_balance.png" alt="Sports Skill Balance">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

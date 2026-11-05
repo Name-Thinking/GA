@@ -1,0 +1,41 @@
+﻿id,name,department,sports_skill
+EMP001,Somchai Prasert,Engineering,73
+EMP002,Apinya Sukjai,Engineering,62
+EMP003,Kittisak Wongsuwan,Engineering,76
+EMP004,Nattaporn Chaiyarat,Engineering,92
+EMP005,Thanakorn Boonmee,Engineering,60
+EMP006,Sasitorn Rattanaporn,Engineering,60
+EMP007,Warunee Saelim,Engineering,93
+EMP008,Chatchai Phromsiri,Engineering,78
+EMP009,Pattarapon Klinhom,Engineering,56
+EMP010,Oranuch Thongdee,Engineering,74
+EMP011,Anan Kaewkla,Marketing,56
+EMP012,Siriporn Petchdee,Marketing,56
+EMP013,Teerawat Charoensuk,Marketing,69
+EMP014,Wichai Srisuk,Marketing,30
+EMP015,Supaporn Somboon,Marketing,33
+EMP016,Kritsada Nuankham,Marketing,54
+EMP017,Jiraporn Maneerat,Marketing,46
+EMP018,Pornchai Saetang,Marketing,70
+EMP019,Benjamaporn Duangdee,Human Resources,48
+EMP020,Danai Limsiri,Human Resources,39
+EMP021,Kasem Suksom,Human Resources,91
+EMP022,Duangduan Chaiprasert,Human Resources,60
+EMP023,Mongkol Thongkham,Human Resources,66
+EMP024,Narumol Rungreang,Sales,39
+EMP025,Pairat Wanchai,Sales,55
+EMP026,Kanya Phothong,Sales,66
+EMP027,Sompong Panyasiri,Sales,44
+EMP028,Uraiwan Sae-lee,Sales,71
+EMP029,Wanchai Bunyarat,Sales,54
+EMP030,Suda Khemthong,Sales,59
+EMP031,Phanuwat Ruangrit,Sales,54
+EMP032,Mayura Sae-ung,Finance,98
+EMP033,Sakda Promchan,Finance,64
+EMP034,Tassanee Meesuk,Finance,45
+EMP035,Arthit Suriyawong,Finance,79
+EMP036,Bussaba Chantra,Finance,43
+EMP037,Preecha Kittikul,Design,68
+EMP038,Kamonwan Siripanya,Design,29
+EMP039,Viroj Thepsiri,Design,41
+EMP040,Chonlada Wongkham,Design,68
