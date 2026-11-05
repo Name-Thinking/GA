@@ -29,3 +29,4 @@ class GAConfig:
 
     # Team Names
     team_names: tuple = ("สีแดง (Red)", "สีเขียว (Green)")
+

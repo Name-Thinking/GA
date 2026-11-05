@@ -85,3 +85,4 @@ def test_ga_execution(sample_df):
     assert best_details['team_0_count'] == 5
     assert best_details['team_1_count'] == 5
     assert best_details['total_fitness'] > 70.0
+

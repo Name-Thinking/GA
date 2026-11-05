@@ -171,3 +171,4 @@ python -m pytest tests/test_ga.py -v
 โปรดดูรายละเอียดขั้นตอนทั้งหมดใน [GITHUB_WORKFLOW.md](file:///d:/กีฬา/GITHUB_WORKFLOW.md)
 * มีโครงสร้าง Issue Template และ PR Template พร้อมใช้งาน
 * มีขั้นตอนการ Fork, Branching (`feature/ga-team-division`), Commit, Pull Request, และ Push
+

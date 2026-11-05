@@ -113,3 +113,4 @@ git push -u origin feature/ga-team-division
 - [x] มี Commit History ที่สื่อความหมายชัดเจน
 - [x] มีการเปิด Pull Request (PR) และลิงก์ไปยัง Issue ด้วย `Closes #1`
 - [x] มีการ Merge PR เข้าสู่ branch `main` เรียบร้อย
+

@@ -160,3 +160,4 @@ class GeneticAlgorithm:
             self.population = new_population
             
         return best_overall_chrom, best_overall_details
+
