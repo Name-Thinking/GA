@@ -1,6 +1,11 @@
 # 🏆 ระบบจัดแบ่งทีมกีฬา 2 สีด้วย Genetic Algorithm (GA)
 ### Balanced Sports Engagement & Cross-Department Harmonization
 
+![Python Version](https://img.shields.io/badge/Python-3.14%2B-blue.svg)
+![Algorithm](https://img.shields.io/badge/Algorithm-Genetic--Algorithm-brightgreen.svg)
+![Tests](https://img.shields.io/badge/Unit--Tests-6%2F6%20Passed-success.svg)
+![License](https://img.shields.io/badge/License-MIT-orange.svg)
+
 โปรเจกต์นี้พัฒนาขึ้นเพื่อแก้ปัญหาการจัดกลุ่มคนออกเป็น **2 สี (สีแดง / สีเขียว)** สำหรับกิจกรรมกีฬาสานสัมพันธ์ โดยใช้ **Genetic Algorithm (GA)** บริสุทธิ์ (ไม่พึ่งพา Neural Network หรือ Regression) เพื่อให้บรรลุเป้าหมายสำคัญ 2 ประการ:
 1. **ความแฟนเนจทางด้านการเล่นกีฬา (Sports Engagement & Fairness)**: สมรรถภาพและทักษะรวมทางกีฬาของทั้ง 2 ทีมสูสีใกล้เคียงกันที่สุด เพื่อให้การแข่งขันมีความสนุก ตื่นเต้น แฟร์ และทุกคนมีส่วนร่วมได้อย่างแท้จริง
 2. **การสร้างความรู้จักข้ามแผนก (Cross-Department Harmonization)**: กระจายสมาชิกจากทุกแผนกลงในทั้ง 2 สีอย่างทั่วถึง ไม่เกิดการกระจุกตัวของแผนกเดิม และส่งเสริมการมีปฏิสัมพันธ์กับเพื่อนร่วมงานต่างแผนก
