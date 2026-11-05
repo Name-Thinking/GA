@@ -133,3 +133,4 @@ class FitnessEvaluator:
         }
         
         return total_fitness, details
+
