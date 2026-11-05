@@ -21,3 +21,4 @@ All notable changes to the Genetic Algorithm sports division system.
   - Self-contained interactive HTML dashboard (`outputs/report.html`).
 - **Comprehensive Unit Tests (`tests/test_ga.py`)**:
   - 6/6 test cases covering data loading, chromosome balance, repair, mutation, and convergence.
+
