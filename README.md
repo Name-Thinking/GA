@@ -172,6 +172,19 @@ python -m pytest tests/test_ga.py -v
 
 ---
 
+## 📈 การแสดงผลเชิงภาพ (Visualizations)
+
+### 1. กราฟการลู่เข้าของค่าฟิตเนส (Fitness Convergence)
+![Fitness Evolution](outputs/fitness_evolution.png)
+
+### 2. การกระจายตัวของสมาชิกแต่ละแผนกใน 2 สี (Harmonization)
+![Department Distribution](outputs/department_distribution.png)
+
+### 3. เปรียบเทียบสมรรถภาพและการกระจายตัวของทักษะกีฬา (Sports Fairness)
+![Sports Balance](outputs/sports_balance.png)
+
+---
+
 ## 🤝 การส่งงานผ่าน GitHub (Collaboration)
 โปรดดูรายละเอียดขั้นตอนทั้งหมดใน [GITHUB_WORKFLOW.md](file:///d:/กีฬา/GITHUB_WORKFLOW.md)
 * มีโครงสร้าง Issue Template และ PR Template พร้อมใช้งาน
