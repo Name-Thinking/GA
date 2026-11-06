@@ -151,7 +151,7 @@ for gen in range(GENS):
     pop = new_pop
 
 # -------------------------------------------------------------
-# 4. แสดงผลการประเมินใน Terminal
+# 4. การคำนวณระดับความแม่นยำ (Accuracy / Balance Rate %)
 # -------------------------------------------------------------
 r_skills = [skills[i] for i in range(N) if best_chrom[i] == 0]
 g_skills = [skills[i] for i in range(N) if best_chrom[i] == 1]
@@ -160,21 +160,57 @@ g_skill_std = float(np.std(g_skills))
 r_female = best_stats['r_count'] - best_stats['r_male']
 g_female = best_stats['g_count'] - best_stats['g_male']
 
+# สูตรคำนวณเปอร์เซ็นต์ความแม่นยำของแต่ละด้าน:
+# Accuracy (%) = 100 - (ผลต่าง / ค่ารวมหรือค่าสูงสุด) * 100
+acc_size = max(0.0, 100.0 - (best_stats['size_diff'] / N * 100.0))
+
+total_male = best_stats['r_male'] + best_stats['g_male']
+total_female = r_female + g_female
+acc_male = max(0.0, 100.0 - (best_stats['diff_male'] / total_male * 100.0)) if total_male > 0 else 100.0
+acc_female = max(0.0, 100.0 - (abs(r_female - g_female) / total_female * 100.0)) if total_female > 0 else 100.0
+
+max_skill = max(best_stats['r_skill'], best_stats['g_skill'])
+acc_skill = max(0.0, 100.0 - (best_stats['diff_skill'] / max_skill * 100.0)) if max_skill > 0 else 100.0
+
+max_bmi = max(best_stats['r_bmi'], best_stats['g_bmi'])
+acc_bmi = max(0.0, 100.0 - (best_stats['diff_bmi'] / max_bmi * 100.0)) if max_bmi > 0 else 100.0
+
+max_age = max(best_stats['r_age'], best_stats['g_age'])
+acc_age = max(0.0, 100.0 - (best_stats['diff_age'] / max_age * 100.0)) if max_age > 0 else 100.0
+
+max_w = max(best_stats['r_w'], best_stats['g_w'])
+acc_weight = max(0.0, 100.0 - (best_stats['diff_w'] / max_w * 100.0)) if max_w > 0 else 100.0
+
+max_h = max(best_stats['r_h'], best_stats['g_h'])
+acc_height = max(0.0, 100.0 - (best_stats['diff_h'] / max_h * 100.0)) if max_h > 0 else 100.0
+
+# ความแม่นยำเฉลี่ยรวม (Overall Balance Accuracy)
+overall_acc = (acc_size + acc_male + acc_female + acc_skill + acc_bmi + acc_age + acc_weight + acc_height) / 8.0
+
 print("=" * 68)
 print(f" ผลลัพธ์การจัดทีม (Genetic Algorithm - Best Fitness: {best_score:.2f} / 100)")
+print(f" ดัชนีความแม่นยำเฉลี่ยรวม (Overall Accuracy): {overall_acc:.2f}%")
 print("=" * 68)
-print(" 1. ความสมดุลขนาดทีม (Team Balance):")
-print(f"    - ทีมสีแดง: {best_stats['r_count']} คน | ทีมสีเขียว: {best_stats['g_count']} คน (ผลต่าง: {best_stats['size_diff']} คน)")
+print(" 1. ความแม่นยำรายด้าน (Balance & Fairness Accuracy Rate):")
+print(f"    - ความแม่นยำขนาดทีม (Size Balance)    : {acc_size:.2f}% (ต่าง {best_stats['size_diff']} คน)")
+print(f"    - ความแม่นยำสัดส่วนเพศชาย (Male)       : {acc_male:.2f}% (ต่าง {best_stats['diff_male']} คน)")
+print(f"    - ความแม่นยำสัดส่วนเพศหญิง (Female)    : {acc_female:.2f}% (ต่าง {abs(r_female - g_female)} คน)")
+print(f"    - ความแม่นยำทักษะกีฬา (Sports Skill)   : {acc_skill:.2f}% (ต่าง {best_stats['diff_skill']:.2f})")
+print(f"    - ความแม่นยำดัชนี BMI                  : {acc_bmi:.2f}% (ต่าง {best_stats['diff_bmi']:.2f})")
+print(f"    - ความแม่นยำอายุเฉลี่ย (Age)            : {acc_age:.2f}% (ต่าง {best_stats['diff_age']:.2f} ปี)")
+print(f"    - ความแม่นยำน้ำหนักเฉลี่ย (Weight)      : {acc_weight:.2f}% (ต่าง {best_stats['diff_w']:.2f} kg)")
+print(f"    - ความแม่นยำส่วนสูงเฉลี่ย (Height)      : {acc_height:.2f}% (ต่าง {best_stats['diff_h']:.2f} cm)")
 print("-" * 68)
 print(" 2. ความแฟนเนจด้านกีฬา (Sports Fairness Comparison):")
-print(f"    - ทักษะกีฬาเฉลี่ย (Skill): สีแดง {best_stats['r_skill']:.2f} | สีเขียว {best_stats['g_skill']:.2f} (ต่าง {best_stats['diff_skill']:.2f})")
+print(f"    - ทีมสีแดง: {best_stats['r_count']} คน | ทีมสีเขียว: {best_stats['g_count']} คน")
+print(f"    - ทักษะกีฬาเฉลี่ย (Skill): สีแดง {best_stats['r_skill']:.2f} | สีเขียว {best_stats['g_skill']:.2f}")
 print(f"    - ส่วนเบี่ยงเบนมาตรฐาน  : สีแดง {r_skill_std:.2f} | สีเขียว {g_skill_std:.2f}")
-print(f"    - ผู้ชาย (Male)        : สีแดง {best_stats['r_male']} คน | สีเขียว {best_stats['g_male']} คน (ต่าง {best_stats['diff_male']} คน)")
-print(f"    - ผู้หญิง (Female)      : สีแดง {r_female} คน | สีเขียว {g_female} คน (ต่าง {abs(r_female - g_female)} คน)")
-print(f"    - น้ำหนักเฉลี่ย (Weight) : สีแดง {best_stats['r_w']:.2f} kg | สีเขียว {best_stats['g_w']:.2f} kg (ต่าง {best_stats['diff_w']:.2f} kg)")
-print(f"    - ส่วนสูงเฉลี่ย (Height) : สีแดง {best_stats['r_h']:.2f} cm | สีเขียว {best_stats['g_h']:.2f} cm (ต่าง {best_stats['diff_h']:.2f} cm)")
-print(f"    - อายุเฉลี่ย (Age)      : สีแดง {best_stats['r_age']:.2f} ปี | สีเขียว {best_stats['g_age']:.2f} ปี (ต่าง {best_stats['diff_age']:.2f} ปี)")
-print(f"    - BMI เฉลี่ย            : สีแดง {best_stats['r_bmi']:.2f} | สีเขียว {best_stats['g_bmi']:.2f} (ต่าง {best_stats['diff_bmi']:.2f})")
+print(f"    - ผู้ชาย (Male)        : สีแดง {best_stats['r_male']} คน | สีเขียว {best_stats['g_male']} คน")
+print(f"    - ผู้หญิง (Female)      : สีแดง {r_female} คน | สีเขียว {g_female} คน")
+print(f"    - น้ำหนักเฉลี่ย (Weight) : สีแดง {best_stats['r_w']:.2f} kg | สีเขียว {best_stats['g_w']:.2f} kg")
+print(f"    - ส่วนสูงเฉลี่ย (Height) : สีแดง {best_stats['r_h']:.2f} cm | สีเขียว {best_stats['g_h']:.2f} cm")
+print(f"    - อายุเฉลี่ย (Age)      : สีแดง {best_stats['r_age']:.2f} ปี | สีเขียว {best_stats['g_age']:.2f} ปี")
+print(f"    - BMI เฉลี่ย            : สีแดง {best_stats['r_bmi']:.2f} | สีเขียว {best_stats['g_bmi']:.2f}")
 print("-" * 68)
 print(" 3. การกระจายตัวข้ามแผนก (Harmonization across 19 Departments):")
 for d in unique_depts:
@@ -199,8 +235,19 @@ output_lines = [
     f"ชุดข้อมูล : data/HR(in).csv (จำนวนสมาชิกทั้งหมด {N} คน, 19 แผนก)",
     f"ผลลัพธ์   : สีแดง {best_stats['r_count']} คน | สีเขียว {best_stats['g_count']} คน (ผลต่าง {best_stats['size_diff']} คน)",
     f"คะแนนความเหมาะสมสูงสุด (Best Fitness): {best_score:.2f} / 100",
+    f"ดัชนีความแม่นยำเฉลี่ยรวม (Overall Accuracy): {overall_acc:.2f}%",
     "-" * 75,
-    "1. ความแฟนเนจด้านกีฬา (Sports Fairness Comparison):",
+    "1. ระดับความแม่นยำรายด้าน (Balance & Fairness Accuracy Rate):",
+    f"   - ความแม่นยำขนาดทีม (Size Balance)    : {acc_size:.2f}% (ต่าง {best_stats['size_diff']} คน)",
+    f"   - ความแม่นยำสัดส่วนเพศชาย (Male)       : {acc_male:.2f}% (ต่าง {best_stats['diff_male']} คน)",
+    f"   - ความแม่นยำสัดส่วนเพศหญิง (Female)    : {acc_female:.2f}% (ต่าง {abs(r_female - g_female)} คน)",
+    f"   - ความแม่นยำทักษะกีฬา (Sports Skill)   : {acc_skill:.2f}% (ต่าง {best_stats['diff_skill']:.2f})",
+    f"   - ความแม่นยำดัชนี BMI                  : {acc_bmi:.2f}% (ต่าง {best_stats['diff_bmi']:.2f})",
+    f"   - ความแม่นยำอายุเฉลี่ย (Age)            : {acc_age:.2f}% (ต่าง {best_stats['diff_age']:.2f} ปี)",
+    f"   - ความแม่นยำน้ำหนักเฉลี่ย (Weight)      : {acc_weight:.2f}% (ต่าง {best_stats['diff_w']:.2f} kg)",
+    f"   - ความแม่นยำส่วนสูงเฉลี่ย (Height)      : {acc_height:.2f}% (ต่าง {best_stats['diff_h']:.2f} cm)",
+    "-" * 75,
+    "2. ความแฟนเนจด้านกีฬา (Sports Fairness Comparison):",
     f"   - ทักษะกีฬาเฉลี่ย (Sports Skill) : สีแดง {best_stats['r_skill']:.2f} | สีเขียว {best_stats['g_skill']:.2f} (ต่าง {best_stats['diff_skill']:.2f})",
     f"   - ค่าเบี่ยงเบนมาตรฐาน (Std Dev)  : สีแดง {r_skill_std:.2f} | สีเขียว {g_skill_std:.2f}",
     f"   - สัดส่วนผู้ชาย (Male)           : สีแดง {best_stats['r_male']} คน | สีเขียว {best_stats['g_male']} คน (ต่าง {best_stats['diff_male']} คน)",
@@ -210,7 +257,7 @@ output_lines = [
     f"   - อายุเฉลี่ย (Age)              : สีแดง {best_stats['r_age']:.2f} ปี | สีเขียว {best_stats['g_age']:.2f} ปี (ต่าง {best_stats['diff_age']:.2f} ปี)",
     f"   - ดัชนีมวลกายเฉลี่ย (BMI)         : สีแดง {best_stats['r_bmi']:.2f} | สีเขียว {best_stats['g_bmi']:.2f} (ต่าง {best_stats['diff_bmi']:.2f})",
     "-" * 75,
-    "2. การกระจายตัวข้ามแผนก (Harmonization Comparison - ครบทั้ง 19 แผนก):",
+    "3. การกระจายตัวข้ามแผนก (Harmonization Comparison - ครบทั้ง 19 แผนก):",
 ]
 
 for d in unique_depts:
