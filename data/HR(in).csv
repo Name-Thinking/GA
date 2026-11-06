@@ -1,359 +1,1001 @@
-gender,department,weight,height,age
-Male, R,89,172,32
-Male, R,89,180,52
-Male, R,52,158,27
-Male, R,50,157,39
-Male, R,68,174,25
-Male, R,62,164,29
-Male, R,74,168,53
-Male, R,64,164,47
-Male, R,58,166,60
-Female, R,81,178,36
-Female, R,91,184,34
-Female, R,67,164,31
-Female, R,91,178,58
-Female, R,84,183,44
-Female, R,64,165,32
-Female, R,69,160,34
-Female, R,89,178,57
-Female, R,58,155,44
-Male, R,59,158,28
-Female, R,88,173,55
-Female, R,106,195,52
-Female, R,61,163,39
-Female, R,61,157,34
-Female, I,58,156,30
-Female, I,81,176,25
-Male, I,75,172,38
-Female, I,69,157,38
-Female, I,90,178,42
-Female, I,100,185,53
-Male, I,67,170,58
-Male, L,84,168,43
-Male, L,73,171,24
-Female, L,65,166,35
-Female, L,82,171,41
-Female, L,57,160,43
-Female, L,74,165,33
-Male, L,48,150,57
-Female, L,73,169,54
-Female, L,94,178,47
-Female, L,79,171,35
-Male, K,66,166,43
-Female, K,69,169,31
-Female, K,69,167,57
-Male, K,87,172,36
-Male, K,84,182,24
-Male, K,64,161,36
-Female, K,46,148,56
-Male, K,53,154,28
-Female, K,64,165,58
-Female, K,54,158,42
-Male, K,81,171,52
-Female, K,59,162,58
-Female, K,56,160,55
-Female, K,88,176,35
-Male, K,58,163,40
-Female, K,78,174,31
-Female, K,64,166,47
-Male, K,92,183,51
-Female, K,62,164,54
-Male, S,85,175,28
-Female, S,69,171,59
-Male, S,69,161,39
-Female, S,96,178,60
-Female, S,46,152,47
-Female, S,58,162,34
-Male, S,102,185,37
-Male, S,87,175,48
-Male, S,64,167,28
-Male, S,67,169,51
-Male, S,59,158,44
-Male, S,57,162,53
-Female, O,69,170,31
-Female, O,78,168,25
-Male, O,93,177,22
-Male, O,53,156,38
-Male, O,71,168,33
-Male, O,54,154,44
-Male, O,78,169,56
-Male, O,73,161,33
-Female, O,51,150,54
-Female, O,75,168,41
-Male, O,75,176,53
-Male, O,70,165,28
-Male, O,71,165,40
-Male, O,64,160,45
-Female, O,67,163,44
-Male, O,93,183,34
-Male, O,79,166,28
-Female, O,86,182,51
-Female, O,99,187,26
-Female, O,86,174,57
-Female, O,63,166,47
-Male, O,60,160,25
-Female, O,70,160,32
-Female, O,60,164,52
-Female, O,65,173,32
-Female, O,51,157,29
-Female, O,63,162,47
-Male, O,104,189,22
-Female, O,74,177,51
-Female, O,60,158,39
-Female, O,92,177,33
-Male, O,84,172,56
-Female, H,66,166,41
-Female, H,73,173,60
-Female, H,81,167,50
-Female, H,84,176,44
-Male, H,63,155,26
-Male, H,77,176,56
-Male, H,83,177,22
-Female, H,50,161,53
-Female, H,65,162,34
-Female, H,80,175,55
-Female, Q,66,158,38
-Female, Q,74,174,54
-Male, Q,63,159,30
-Male, Q,61,162,40
-Female, Q,74,167,40
-Male, M,92,183,58
-Female, M,92,180,26
-Female, M,65,166,51
-Female, M,83,173,33
-Female, M,79,172,45
-Female, M,97,181,40
-Female, M,95,186,38
-Female, M,66,166,27
-Female, M,84,178,23
-Female, M,67,163,35
-Female, M,46,149,49
-Female, M,56,157,25
-Female, M,87,174,22
-Female, M,51,151,27
-Female, B,87,180,38
-Female, A,55,162,50
-Female, A,70,168,31
-Female, A,86,176,30
-Female, A,83,171,56
-Female, A,65,166,39
-Female, A,90,184,28
-Male, D,61,163,44
-Female, D,65,164,52
-Female, D,97,183,42
-Male, D,57,157,44
-Female, D,76,169,40
-Female, D,92,180,41
-Male, D,48,149,56
-Female, D,85,174,59
-Female, D,61,164,55
-Female, D,89,180,55
-Female, D,84,175,51
-Female, D,98,192,50
-Female, D,92,182,42
-Female, D,53,162,47
-Female, D,80,171,38
-Female, D,49,142,38
-Male, D,69,166,52
-Female, D,45,146,24
-Female, D,64,163,48
-Male, D,54,160,46
-Female, D,58,157,42
-Female, D,60,159,44
-Female, D,86,173,43
-Female, D,71,161,28
-Male, D,52,163,22
-Male, D,54,166,39
-Female, D,53,160,54
-Female, D,83,174,25
-Male, D,89,175,29
-Male, D,53,155,51
-Male, D,66,159,50
-Female, D,75,172,48
-Female, D,56,160,56
-Female, D,68,167,43
-Female, D,67,166,51
-Female, D,72,171,35
-Female, D,76,176,37
-Female, D,91,177,38
-Female, D,85,173,41
-Male, D,84,174,27
-Female, D,80,175,42
-Male, D,77,173,27
-Female, D,79,163,51
-Female, D,98,183,32
-Female, D,99,188,46
-Female, D,84,179,58
-Female, D,61,162,59
-Female, D,79,173,28
-Male, D,66,170,38
-Female, D,95,176,31
-Male, D,69,165,35
-Female, D,67,166,58
-Female, D,83,175,38
-Female, D,90,183,29
-Female, D,82,175,58
-Female, D,39,152,36
-Male, D,47,157,51
-Female, D,93,174,33
-Female, D,67,165,34
-Male, D,76,168,24
-Female, D,70,160,46
-Female, D,56,158,46
-Female, D,68,172,46
-Male, D,55,154,25
-Male, D,49,159,36
-Female, D,79,177,31
-Male, D,89,177,46
-Female, D,75,168,47
-Male, D,76,167,51
-Female, D,56,161,53
-Male, D,90,171,56
-Female, D,84,174,28
-Male, F,57,152,58
-Male, F,52,154,51
-Female, F,87,179,52
-Male, F,62,169,33
-Male, F,53,163,53
-Male, F,78,170,52
-Male, F,61,166,40
-Female, F,61,161,46
-Male, F,56,159,59
-Female, F,105,192,35
-Male, F,67,159,31
-Male, F,86,184,56
-Female, F,56,161,59
-Female, F,38,144,41
-Male, F,69,167,31
-Male, F,38,144,56
-Male, F,51,148,49
-Male, F,60,159,40
-Male, F,85,175,56
-Male, F,55,158,39
-Female, F,54,160,50
-Male, F,89,176,53
-Male, F,61,163,37
-Male, F,88,176,39
-Male, F,87,175,58
-Male, F,79,171,49
-Female, F,53,159,48
-Female, F,59,161,50
-Female, G,67,163,27
-Female, G,90,179,58
-Female, G,57,156,40
-Male, G,67,160,50
-Female, G,96,183,37
-Female, G,97,185,43
-Female, G,70,168,49
-Female, G,66,164,46
-Female, G,66,160,28
-Female, G,99,188,32
-Female, G,65,158,55
-Female, G,80,170,38
-Female, G,78,173,58
-Female, G,76,177,35
-Female, G,58,158,52
-Male, G,68,162,25
-Female, G,65,169,23
-Female, G,81,176,40
-Male, G,86,175,27
-Female, G,70,160,43
-Female, G,56,157,36
-Female, G,83,172,52
-Male, G,64,168,27
-Male, G,89,176,58
-Female, G,88,175,47
-Male, G,60,158,60
-Female, G,79,167,32
-Female, G,71,168,43
-Female, G,72,176,39
-Male, G,65,165,42
-Female, G,78,172,58
-Female, G,72,169,32
-Female, G,65,161,37
-Male, G,57,160,59
-Male, G,64,162,39
-Female, G,52,157,35
-Female, G,73,168,56
-Male, G,82,175,37
-Female, G,76,168,28
-Male, G,92,182,51
-Female, C,83,177,33
-Female, C,60,164,22
-Female, C,55,156,36
-Female, C,75,170,46
-Male, C,93,184,41
-Male, C,45,154,33
-Female, E,49,153,57
-Female, E,80,168,42
-Female, E,84,168,47
-Female, E,73,164,45
-Male, E,62,164,52
-Male, E,51,155,41
-Male, E,62,159,30
-Male, E,60,160,42
-Male, E,63,168,50
-Female, E,60,161,27
-Female, E,65,159,46
-Female, E,87,178,24
-Female, E,58,161,54
-Male, E,57,160,54
-Female, P,97,184,41
-Female, P,83,168,34
-Female, P,66,166,23
-Female, P,96,181,39
-Female, P,65,163,57
-Female, P,87,177,27
-Female, P,90,178,26
-Female, P,83,173,41
-Female, P,79,171,29
-Female, P,78,176,57
-Female, P,52,151,28
-Female, P,78,171,52
-Female, P,60,157,38
-Male, P,85,177,50
-Male, P,52,149,48
-Male, P,65,168,60
-Male, P,78,169,26
-Female, P,82,179,40
-Female, P,56,160,38
-Female, P,63,165,36
-Male, P,75,165,25
-Male, P,64,159,26
-Female, N,91,180,43
-Female, N,78,161,26
-Female, N,56,162,25
-Female, N,75,165,25
-Female, N,55,154,26
-Female, N,80,175,49
-Female, N,92,186,30
-Male, N,82,174,37
-Female, J,50,153,50
-Female, J,56,159,58
-Male, J,92,168,35
-Female, J,80,167,55
-Female, J,94,186,27
-Male, J,60,157,33
-Female, J,68,163,49
-Female, J,65,169,40
-Female, J,90,177,30
-Female, J,98,187,47
-Female, J,60,166,44
-Female, J,82,177,23
-Female, J,63,165,28
-Female, J,77,174,27
-Male, J,93,179,57
-Female, J,65,157,23
-Female, J,84,177,32
-Female, J,64,161,28
-Female, J,75,164,25
-Female, J,54,159,41
-Female, J,100,182,29
-Female, J,86,175,57
-Female, J,85,179,22
-Female, J,63,167,48
-Female, J,73,168,38
-Female, J,68,169,59
-Female, J,49,155,33
-Female, J,101,187,60
-Female, J,88,172,38
+emp_id,gender,department,weight,height,age,bmi,sports_skill
+EMP0001,Female,Finance,52,158,22,20.83,85.9
+EMP0002,Male,Sales,87,182,43,26.26,46.2
+EMP0003,Female,IT & Data,71,175,35,23.18,42.9
+EMP0004,Male,Engineering,72,171,27,24.62,51.4
+EMP0005,Male,Sales,59,175,29,19.27,61.8
+EMP0006,Female,Engineering,75,168,22,26.57,56.2
+EMP0007,Male,Sales,57,169,37,19.96,26.0
+EMP0008,Female,Quality Assurance,46,162,23,17.53,59.8
+EMP0009,Male,Customer Support,77,171,39,26.33,93.6
+EMP0010,Female,Customer Support,68,163,37,25.59,38.5
+EMP0011,Female,IT & Data,67,162,25,25.53,51.9
+EMP0012,Female,IT & Data,61,165,25,22.41,72.8
+EMP0013,Female,Quality Assurance,49,159,30,19.38,58.0
+EMP0014,Male,Sales,60,169,39,21.01,57.2
+EMP0015,Male,Quality Assurance,77,174,44,25.43,78.1
+EMP0016,Female,Marketing,48,153,26,20.5,75.4
+EMP0017,Male,Human Resources,64,160,35,25.0,48.5
+EMP0018,Female,Operations,58,162,30,22.1,69.4
+EMP0019,Female,Sales,72,175,42,23.51,62.1
+EMP0020,Male,Sales,70,170,35,24.22,53.5
+EMP0021,Female,Product & Design,52,158,31,20.83,39.1
+EMP0022,Female,Sales,58,167,25,20.8,65.2
+EMP0023,Male,Engineering,57,167,38,20.44,64.9
+EMP0024,Male,Customer Support,80,175,32,26.12,56.1
+EMP0025,Male,Marketing,66,174,34,21.8,54.6
+EMP0026,Female,Engineering,51,157,22,20.69,80.3
+EMP0027,Male,Operations,75,178,44,23.67,45.1
+EMP0028,Male,Marketing,64,160,32,25.0,38.1
+EMP0029,Female,Engineering,65,174,34,21.47,64.4
+EMP0030,Female,Engineering,52,162,26,19.81,37.1
+EMP0031,Female,Human Resources,51,162,32,19.43,41.2
+EMP0032,Male,Finance,68,166,41,24.68,51.3
+EMP0033,Male,Sales,66,166,30,23.95,31.2
+EMP0034,Female,Human Resources,57,157,37,23.12,44.3
+EMP0035,Male,Customer Support,60,180,39,18.52,59.7
+EMP0036,Female,Engineering,54,150,51,24.0,26.4
+EMP0037,Male,Sales,82,175,22,26.78,40.1
+EMP0038,Male,Engineering,67,169,22,23.46,64.5
+EMP0039,Female,Operations,61,152,35,26.4,85.6
+EMP0040,Female,Sales,72,175,35,23.51,30.1
+EMP0041,Female,Customer Support,49,151,33,21.49,87.3
+EMP0042,Female,Quality Assurance,47,152,44,20.34,60.2
+EMP0043,Male,Product & Design,65,173,37,21.72,56.0
+EMP0044,Female,Product & Design,70,160,33,27.34,32.8
+EMP0045,Female,Sales,55,160,40,21.48,98.0
+EMP0046,Male,Engineering,65,170,23,22.49,51.2
+EMP0047,Female,IT & Data,46,157,40,18.66,37.1
+EMP0048,Male,Engineering,81,171,32,27.7,68.2
+EMP0049,Male,Operations,91,181,30,27.78,47.6
+EMP0050,Male,Finance,61,171,34,20.86,60.1
+EMP0051,Female,Quality Assurance,50,149,34,22.52,97.1
+EMP0052,Female,Customer Support,57,161,37,21.99,48.1
+EMP0053,Male,Operations,98,181,30,29.91,47.9
+EMP0054,Male,Operations,76,183,31,22.69,36.6
+EMP0055,Male,IT & Data,78,170,28,26.99,85.6
+EMP0056,Female,Engineering,54,154,35,22.77,66.3
+EMP0057,Female,Customer Support,60,166,32,21.77,85.4
+EMP0058,Male,Sales,71,171,40,24.28,61.9
+EMP0059,Male,Product & Design,77,177,32,24.58,46.9
+EMP0060,Female,Engineering,51,165,35,18.73,34.3
+EMP0061,Male,Customer Support,72,164,39,26.77,58.5
+EMP0062,Female,Human Resources,43,156,28,17.67,65.2
+EMP0063,Female,Marketing,62,165,30,22.77,64.9
+EMP0064,Male,Marketing,79,176,41,25.5,63.4
+EMP0065,Male,Operations,67,169,29,23.46,52.3
+EMP0066,Male,IT & Data,69,179,37,21.53,72.6
+EMP0067,Male,Engineering,71,173,27,23.72,42.8
+EMP0068,Female,Engineering,41,153,46,17.51,50.0
+EMP0069,Female,Marketing,56,165,22,20.57,61.2
+EMP0070,Male,Engineering,64,162,36,24.39,51.5
+EMP0071,Male,Customer Support,97,183,29,28.96,42.6
+EMP0072,Male,Sales,70,172,32,23.66,57.6
+EMP0073,Female,Operations,55,159,32,21.76,59.9
+EMP0074,Female,Human Resources,48,153,32,20.5,67.2
+EMP0075,Male,Marketing,71,170,38,24.57,56.4
+EMP0076,Female,Engineering,57,158,39,22.83,58.7
+EMP0077,Male,Sales,78,181,32,23.81,54.3
+EMP0078,Female,Operations,56,154,42,23.61,68.1
+EMP0079,Male,Quality Assurance,71,170,39,24.57,65.7
+EMP0080,Male,Sales,68,177,38,21.71,26.0
+EMP0081,Female,Quality Assurance,70,156,38,28.76,56.7
+EMP0082,Female,Finance,51,157,27,20.69,43.6
+EMP0083,Male,Finance,71,163,32,26.72,69.5
+EMP0084,Female,Finance,57,165,22,20.94,44.4
+EMP0085,Female,Sales,62,173,41,20.72,33.6
+EMP0086,Female,Sales,58,165,28,21.3,82.0
+EMP0087,Female,Product & Design,58,171,38,19.84,50.0
+EMP0088,Female,Marketing,53,157,28,21.5,53.8
+EMP0089,Female,Engineering,55,157,36,22.31,57.1
+EMP0090,Male,Sales,61,172,43,20.62,47.1
+EMP0091,Female,Customer Support,48,156,34,19.72,66.2
+EMP0092,Male,Engineering,65,174,22,21.47,77.7
+EMP0093,Female,Quality Assurance,45,160,26,17.58,60.9
+EMP0094,Male,IT & Data,81,174,29,26.75,49.6
+EMP0095,Female,Product & Design,55,157,35,22.31,86.3
+EMP0096,Female,IT & Data,48,152,32,20.78,54.7
+EMP0097,Female,Marketing,53,152,22,22.94,72.7
+EMP0098,Female,Quality Assurance,55,158,23,22.03,65.8
+EMP0099,Male,Sales,70,176,40,22.6,52.3
+EMP0100,Male,Finance,56,160,22,21.87,71.7
+EMP0101,Male,Engineering,53,162,41,20.2,26.0
+EMP0102,Female,Human Resources,43,152,23,18.61,62.8
+EMP0103,Male,Product & Design,60,171,39,20.52,77.0
+EMP0104,Female,IT & Data,67,168,40,23.74,38.4
+EMP0105,Female,Customer Support,58,166,38,21.05,47.5
+EMP0106,Male,Product & Design,65,162,46,24.77,61.7
+EMP0107,Male,Product & Design,80,179,42,24.97,61.1
+EMP0108,Male,Operations,73,158,41,29.24,48.4
+EMP0109,Male,Engineering,61,171,26,20.86,38.8
+EMP0110,Female,Engineering,60,162,37,22.86,64.9
+EMP0111,Female,Product & Design,52,149,34,23.42,43.4
+EMP0112,Male,Operations,72,173,32,24.06,26.0
+EMP0113,Male,Marketing,75,179,27,23.41,61.9
+EMP0114,Male,Engineering,48,161,35,18.52,46.6
+EMP0115,Male,Operations,56,170,31,19.38,45.4
+EMP0116,Male,IT & Data,66,171,45,22.57,51.7
+EMP0117,Female,Quality Assurance,65,162,29,24.77,56.2
+EMP0118,Female,Product & Design,43,157,33,17.44,89.3
+EMP0119,Female,Sales,65,159,31,25.71,67.3
+EMP0120,Male,Marketing,50,167,49,17.93,45.6
+EMP0121,Male,Customer Support,62,167,34,22.23,71.6
+EMP0122,Male,Finance,79,177,28,25.22,90.2
+EMP0123,Female,Human Resources,66,164,33,24.54,57.7
+EMP0124,Female,Human Resources,68,165,46,24.98,46.0
+EMP0125,Female,IT & Data,48,158,35,19.23,26.0
+EMP0126,Female,Finance,59,158,41,23.63,53.8
+EMP0127,Female,Engineering,56,159,44,22.15,33.2
+EMP0128,Male,Engineering,68,170,22,23.53,91.3
+EMP0129,Female,IT & Data,50,151,33,21.93,46.6
+EMP0130,Male,Marketing,83,182,32,25.06,53.6
+EMP0131,Male,Human Resources,81,180,35,25.0,50.7
+EMP0132,Female,Product & Design,51,155,49,21.23,60.8
+EMP0133,Male,Operations,76,165,29,27.92,73.0
+EMP0134,Female,Product & Design,46,148,31,21.0,58.9
+EMP0135,Male,Engineering,88,175,28,28.73,78.0
+EMP0136,Male,Engineering,65,171,28,22.23,38.3
+EMP0137,Female,Sales,56,158,34,22.43,69.5
+EMP0138,Male,Quality Assurance,77,177,32,24.58,63.4
+EMP0139,Male,Sales,65,167,38,23.31,58.2
+EMP0140,Male,Marketing,77,184,36,22.74,53.9
+EMP0141,Female,IT & Data,48,158,48,19.23,76.6
+EMP0142,Female,Operations,44,154,31,18.55,76.5
+EMP0143,Female,Engineering,68,162,32,25.91,49.0
+EMP0144,Female,Engineering,53,157,36,21.5,50.7
+EMP0145,Male,Engineering,83,181,22,25.34,60.8
+EMP0146,Female,Customer Support,75,178,48,23.67,51.4
+EMP0147,Male,Human Resources,78,171,33,26.67,59.4
+EMP0148,Male,Marketing,70,163,43,26.35,71.8
+EMP0149,Female,Marketing,54,160,29,21.09,49.4
+EMP0150,Female,Sales,61,164,33,22.68,83.3
+EMP0151,Male,IT & Data,62,167,38,22.23,54.0
+EMP0152,Female,Engineering,50,163,47,18.82,62.8
+EMP0153,Female,Operations,53,160,45,20.7,85.8
+EMP0154,Female,Operations,66,166,38,23.95,31.7
+EMP0155,Female,Marketing,68,156,32,27.94,52.4
+EMP0156,Male,Marketing,68,184,42,20.09,63.3
+EMP0157,Male,Sales,53,172,43,17.92,42.4
+EMP0158,Female,Operations,56,158,41,22.43,50.4
+EMP0159,Female,Marketing,54,162,41,20.58,62.0
+EMP0160,Male,IT & Data,62,165,28,22.77,57.3
+EMP0161,Female,Operations,57,159,30,22.55,54.0
+EMP0162,Female,Finance,55,163,29,20.7,48.9
+EMP0163,Male,IT & Data,98,182,48,29.59,45.3
+EMP0164,Female,Human Resources,52,163,43,19.57,49.1
+EMP0165,Male,Operations,69,162,37,26.29,63.2
+EMP0166,Female,IT & Data,77,167,36,27.61,71.2
+EMP0167,Female,Human Resources,47,162,41,17.91,49.9
+EMP0168,Male,Finance,67,170,42,23.18,78.9
+EMP0169,Female,Operations,61,163,35,22.96,98.0
+EMP0170,Female,Sales,53,159,29,20.96,63.5
+EMP0171,Female,Product & Design,60,171,28,20.52,63.5
+EMP0172,Male,IT & Data,69,172,30,23.32,53.6
+EMP0173,Male,Engineering,80,173,45,26.73,53.2
+EMP0174,Male,IT & Data,69,178,38,21.78,60.4
+EMP0175,Female,Marketing,57,170,25,19.72,71.2
+EMP0176,Male,Marketing,74,170,35,25.61,40.8
+EMP0177,Female,Operations,48,157,32,19.47,53.3
+EMP0178,Female,Customer Support,63,164,39,23.42,58.2
+EMP0179,Female,Customer Support,63,163,22,23.71,62.4
+EMP0180,Male,Sales,71,181,32,21.67,47.2
+EMP0181,Male,Sales,68,179,22,21.22,50.0
+EMP0182,Female,Engineering,52,163,26,19.57,85.8
+EMP0183,Male,Finance,74,168,32,26.22,84.5
+EMP0184,Male,Engineering,95,174,38,31.38,67.9
+EMP0185,Male,Engineering,89,174,40,29.4,37.6
+EMP0186,Male,Operations,77,169,41,26.96,56.5
+EMP0187,Female,Engineering,44,158,43,17.63,35.5
+EMP0188,Male,IT & Data,74,178,31,23.36,37.5
+EMP0189,Female,Sales,67,163,26,25.22,72.3
+EMP0190,Male,Engineering,63,170,29,21.8,47.3
+EMP0191,Female,Engineering,60,160,28,23.44,76.0
+EMP0192,Female,Operations,65,163,39,24.46,67.2
+EMP0193,Female,Customer Support,54,153,28,23.07,74.0
+EMP0194,Female,Sales,51,149,25,22.97,98.0
+EMP0195,Male,Customer Support,78,177,34,24.9,37.5
+EMP0196,Male,Customer Support,65,173,37,21.72,66.7
+EMP0197,Female,Sales,69,168,35,24.45,32.2
+EMP0198,Male,Sales,57,174,29,18.83,65.6
+EMP0199,Female,IT & Data,48,151,38,21.05,62.6
+EMP0200,Male,Human Resources,80,184,28,23.63,74.1
+EMP0201,Male,Operations,66,168,26,23.38,66.3
+EMP0202,Male,Sales,89,175,26,29.06,38.6
+EMP0203,Male,Customer Support,59,172,23,19.94,67.6
+EMP0204,Male,Marketing,82,176,37,26.47,98.0
+EMP0205,Female,Product & Design,55,155,36,22.89,42.5
+EMP0206,Female,Engineering,60,162,42,22.86,50.6
+EMP0207,Female,Operations,63,171,29,21.55,64.9
+EMP0208,Female,Operations,62,158,46,24.84,53.2
+EMP0209,Male,IT & Data,63,163,36,23.71,54.2
+EMP0210,Male,Engineering,69,172,40,23.32,41.1
+EMP0211,Male,Marketing,71,174,22,23.45,50.3
+EMP0212,Male,Quality Assurance,79,186,58,22.84,50.1
+EMP0213,Female,Operations,58,154,36,24.46,54.7
+EMP0214,Male,Sales,73,169,22,25.56,40.7
+EMP0215,Male,Customer Support,90,176,34,29.05,27.6
+EMP0216,Female,Marketing,62,161,33,23.92,63.2
+EMP0217,Female,Customer Support,48,155,45,19.98,33.2
+EMP0218,Male,Customer Support,50,167,32,17.93,53.1
+EMP0219,Female,Engineering,52,161,48,20.06,56.5
+EMP0220,Female,Finance,55,153,38,23.5,32.6
+EMP0221,Male,Finance,75,169,22,26.26,69.2
+EMP0222,Male,Product & Design,60,163,27,22.58,59.4
+EMP0223,Female,Finance,56,149,39,25.22,50.3
+EMP0224,Male,Human Resources,79,171,46,27.02,28.2
+EMP0225,Female,Product & Design,45,161,27,17.36,71.9
+EMP0226,Female,Finance,48,158,22,19.23,34.3
+EMP0227,Female,Sales,52,163,33,19.57,50.5
+EMP0228,Male,Operations,58,167,45,20.8,26.0
+EMP0229,Female,Engineering,53,159,28,20.96,62.4
+EMP0230,Male,Product & Design,85,176,45,27.44,29.2
+EMP0231,Male,Marketing,65,162,29,24.77,82.5
+EMP0232,Male,Engineering,76,165,32,27.92,31.7
+EMP0233,Male,IT & Data,91,172,31,30.76,34.2
+EMP0234,Male,Customer Support,66,169,22,23.11,40.2
+EMP0235,Female,Engineering,62,155,39,25.81,32.1
+EMP0236,Female,Engineering,62,159,36,24.52,26.0
+EMP0237,Female,Product & Design,60,160,29,23.44,68.2
+EMP0238,Female,Marketing,58,155,28,24.14,57.7
+EMP0239,Female,Customer Support,71,160,30,27.73,52.2
+EMP0240,Female,Engineering,56,156,34,23.01,59.2
+EMP0241,Male,Engineering,59,163,27,22.21,76.9
+EMP0242,Female,Customer Support,51,164,34,18.96,75.1
+EMP0243,Male,Finance,70,174,32,23.12,80.7
+EMP0244,Male,Operations,69,166,42,25.04,37.6
+EMP0245,Male,Sales,65,163,35,24.46,71.8
+EMP0246,Female,Marketing,60,159,37,23.73,89.5
+EMP0247,Female,Marketing,59,154,38,24.88,55.3
+EMP0248,Male,Finance,81,173,24,27.06,64.3
+EMP0249,Male,Quality Assurance,76,170,43,26.3,63.2
+EMP0250,Male,Customer Support,71,179,22,22.16,50.2
+EMP0251,Female,Engineering,56,154,40,23.61,81.1
+EMP0252,Female,Engineering,50,168,35,17.72,58.0
+EMP0253,Male,Customer Support,59,172,31,19.94,68.8
+EMP0254,Male,Quality Assurance,68,181,41,20.76,42.4
+EMP0255,Female,Quality Assurance,58,157,22,23.53,53.2
+EMP0256,Female,Product & Design,63,167,50,22.59,71.8
+EMP0257,Female,Marketing,69,161,25,26.62,96.0
+EMP0258,Male,Operations,64,174,37,21.14,69.6
+EMP0259,Female,Marketing,56,161,33,21.6,49.2
+EMP0260,Female,Customer Support,61,162,38,23.24,36.5
+EMP0261,Female,Quality Assurance,63,164,29,23.42,79.0
+EMP0262,Male,IT & Data,89,168,25,31.53,74.4
+EMP0263,Female,IT & Data,46,157,42,18.66,50.2
+EMP0264,Male,Operations,56,164,29,20.82,38.2
+EMP0265,Female,Marketing,75,160,30,29.3,29.7
+EMP0266,Female,Sales,69,162,34,26.29,64.8
+EMP0267,Female,Engineering,57,157,43,23.12,69.5
+EMP0268,Female,Engineering,57,157,36,23.12,84.6
+EMP0269,Male,Operations,80,173,32,26.73,43.2
+EMP0270,Female,Quality Assurance,57,154,42,24.03,65.9
+EMP0271,Female,Quality Assurance,51,158,43,20.43,26.0
+EMP0272,Male,Engineering,73,165,26,26.81,71.7
+EMP0273,Female,IT & Data,62,163,40,23.34,67.6
+EMP0274,Female,Operations,56,157,37,22.72,46.8
+EMP0275,Male,Operations,57,171,30,19.49,43.5
+EMP0276,Male,Customer Support,70,166,34,25.4,48.9
+EMP0277,Male,Finance,67,165,31,24.61,63.5
+EMP0278,Female,Customer Support,54,169,34,18.91,32.4
+EMP0279,Female,Operations,68,167,38,24.38,65.5
+EMP0280,Male,Marketing,68,176,31,21.95,58.4
+EMP0281,Male,Sales,80,185,38,23.37,46.2
+EMP0282,Female,Operations,50,161,32,19.29,34.0
+EMP0283,Male,IT & Data,65,167,30,23.31,47.1
+EMP0284,Female,Operations,63,172,38,21.3,61.5
+EMP0285,Male,Engineering,73,174,27,24.11,52.9
+EMP0286,Male,Operations,66,168,23,23.38,93.1
+EMP0287,Male,Operations,77,182,35,23.25,64.0
+EMP0288,Male,IT & Data,63,178,41,19.88,56.2
+EMP0289,Female,IT & Data,56,159,40,22.15,34.2
+EMP0290,Female,Operations,71,167,22,25.46,27.3
+EMP0291,Female,Sales,55,161,49,21.22,57.0
+EMP0292,Female,IT & Data,72,177,35,22.98,54.5
+EMP0293,Female,Operations,58,160,34,22.66,58.0
+EMP0294,Male,Quality Assurance,65,159,25,25.71,46.6
+EMP0295,Male,Sales,73,163,23,27.48,55.5
+EMP0296,Male,IT & Data,63,168,25,22.32,40.4
+EMP0297,Female,Product & Design,63,158,37,25.24,42.1
+EMP0298,Female,Marketing,51,163,35,19.2,79.9
+EMP0299,Male,Human Resources,68,165,31,24.98,45.2
+EMP0300,Female,Marketing,70,165,31,25.71,81.1
+EMP0301,Male,Engineering,71,168,22,25.16,58.5
+EMP0302,Female,Operations,55,148,39,25.11,27.3
+EMP0303,Female,Quality Assurance,47,153,34,20.08,42.8
+EMP0304,Male,Sales,64,174,28,21.14,96.6
+EMP0305,Female,Operations,53,158,29,21.23,68.0
+EMP0306,Female,Finance,61,171,40,20.86,68.4
+EMP0307,Male,Sales,85,180,49,26.23,61.0
+EMP0308,Female,Marketing,46,160,23,17.97,72.0
+EMP0309,Male,Finance,89,178,28,28.09,74.2
+EMP0310,Female,Operations,61,165,36,22.41,77.4
+EMP0311,Female,Quality Assurance,61,163,28,22.96,65.0
+EMP0312,Male,Quality Assurance,72,178,35,22.72,81.7
+EMP0313,Female,Finance,54,163,37,20.32,45.4
+EMP0314,Female,Human Resources,50,153,43,21.36,43.4
+EMP0315,Male,Marketing,60,165,29,22.04,59.4
+EMP0316,Male,Sales,66,171,36,22.57,34.0
+EMP0317,Male,Sales,72,179,38,22.47,45.3
+EMP0318,Male,Marketing,74,171,37,25.31,66.6
+EMP0319,Male,Product & Design,74,185,32,21.62,53.7
+EMP0320,Male,Quality Assurance,93,180,49,28.7,28.4
+EMP0321,Female,IT & Data,63,166,44,22.86,85.7
+EMP0322,Female,Operations,53,153,33,22.64,49.6
+EMP0323,Male,Sales,63,173,32,21.05,70.4
+EMP0324,Male,Operations,80,174,44,26.42,28.3
+EMP0325,Female,IT & Data,51,159,30,20.17,38.1
+EMP0326,Male,Marketing,63,170,28,21.8,64.4
+EMP0327,Female,Finance,72,171,23,24.62,63.9
+EMP0328,Female,Product & Design,69,169,46,24.16,84.0
+EMP0329,Male,Customer Support,74,180,25,22.84,54.3
+EMP0330,Female,Sales,70,158,39,28.04,42.8
+EMP0331,Male,Customer Support,73,177,52,23.3,49.1
+EMP0332,Female,Engineering,59,155,39,24.56,79.0
+EMP0333,Female,IT & Data,65,160,27,25.39,52.3
+EMP0334,Male,Human Resources,74,175,29,24.16,29.3
+EMP0335,Female,IT & Data,54,159,30,21.36,48.4
+EMP0336,Male,Finance,82,178,27,25.88,83.6
+EMP0337,Female,Finance,53,161,38,20.45,60.6
+EMP0338,Female,Marketing,48,158,25,19.23,56.6
+EMP0339,Female,Operations,52,163,39,19.57,54.8
+EMP0340,Male,Operations,69,174,33,22.79,66.4
+EMP0341,Male,Engineering,71,171,33,24.28,45.3
+EMP0342,Male,Product & Design,64,166,39,23.23,44.8
+EMP0343,Female,Operations,64,164,25,23.8,57.2
+EMP0344,Male,Finance,72,177,28,22.98,61.1
+EMP0345,Female,Sales,58,164,43,21.56,40.6
+EMP0346,Female,Product & Design,49,162,40,18.67,45.5
+EMP0347,Male,Product & Design,65,172,39,21.97,52.6
+EMP0348,Female,Operations,49,154,39,20.66,64.9
+EMP0349,Male,Sales,66,167,38,23.67,35.9
+EMP0350,Female,Finance,44,157,51,17.85,26.0
+EMP0351,Female,Sales,41,153,28,17.51,65.6
+EMP0352,Female,Customer Support,61,159,47,24.13,32.9
+EMP0353,Female,Sales,52,164,45,19.33,83.9
+EMP0354,Male,Customer Support,75,170,22,25.95,70.5
+EMP0355,Male,Customer Support,88,174,22,29.07,57.7
+EMP0356,Female,Operations,55,156,29,22.6,46.1
+EMP0357,Female,Sales,56,159,39,22.15,67.0
+EMP0358,Female,Quality Assurance,66,154,33,27.83,81.4
+EMP0359,Female,Marketing,53,162,29,20.2,38.0
+EMP0360,Female,IT & Data,58,163,36,21.83,79.4
+EMP0361,Female,Sales,60,166,28,21.77,49.4
+EMP0362,Male,Engineering,73,176,30,23.57,76.8
+EMP0363,Male,Sales,73,171,36,24.96,49.4
+EMP0364,Female,Operations,60,164,33,22.31,61.2
+EMP0365,Male,Engineering,70,174,39,23.12,53.2
+EMP0366,Female,Marketing,47,163,33,17.69,37.1
+EMP0367,Male,Sales,63,175,29,20.57,65.2
+EMP0368,Female,Operations,52,152,24,22.51,81.4
+EMP0369,Male,Finance,62,167,22,22.23,95.6
+EMP0370,Male,Operations,80,170,22,27.68,73.1
+EMP0371,Male,Engineering,75,171,28,25.65,38.9
+EMP0372,Female,Customer Support,62,162,25,23.62,81.3
+EMP0373,Female,Operations,58,153,34,24.78,49.9
+EMP0374,Male,IT & Data,83,171,36,28.38,79.4
+EMP0375,Female,Customer Support,50,161,28,19.29,41.3
+EMP0376,Female,Sales,60,164,33,22.31,44.7
+EMP0377,Male,Customer Support,59,176,30,19.05,65.8
+EMP0378,Male,Operations,89,180,29,27.47,47.5
+EMP0379,Male,Marketing,64,167,33,22.95,48.2
+EMP0380,Male,Sales,75,180,39,23.15,54.8
+EMP0381,Female,Operations,42,151,36,18.42,67.7
+EMP0382,Female,Sales,54,163,46,20.32,53.1
+EMP0383,Female,Engineering,61,160,37,23.83,83.2
+EMP0384,Female,Customer Support,53,153,49,22.64,44.3
+EMP0385,Male,Quality Assurance,62,165,29,22.77,96.2
+EMP0386,Female,IT & Data,46,156,35,18.9,66.6
+EMP0387,Male,Human Resources,73,173,36,24.39,61.0
+EMP0388,Female,Engineering,64,156,34,26.3,65.3
+EMP0389,Male,Product & Design,60,164,35,22.31,62.2
+EMP0390,Male,Operations,66,174,37,21.8,47.7
+EMP0391,Female,Customer Support,61,159,31,24.13,65.5
+EMP0392,Male,Engineering,71,166,33,25.77,37.2
+EMP0393,Male,Operations,67,161,34,25.85,62.6
+EMP0394,Male,Sales,76,174,25,25.1,67.7
+EMP0395,Female,Operations,54,157,37,21.91,94.2
+EMP0396,Female,Product & Design,61,164,37,22.68,57.7
+EMP0397,Female,Engineering,45,158,34,18.03,56.8
+EMP0398,Male,Operations,75,177,26,23.94,52.5
+EMP0399,Male,Sales,78,171,25,26.67,61.5
+EMP0400,Female,Sales,59,163,42,22.21,71.0
+EMP0401,Female,Quality Assurance,59,152,51,25.54,70.2
+EMP0402,Male,Quality Assurance,60,169,27,21.01,43.8
+EMP0403,Female,Engineering,58,162,36,22.1,55.6
+EMP0404,Female,Quality Assurance,63,166,26,22.86,59.3
+EMP0405,Female,Customer Support,42,153,26,17.94,76.7
+EMP0406,Female,Engineering,48,153,28,20.5,42.7
+EMP0407,Female,Engineering,54,156,40,22.19,50.3
+EMP0408,Female,Sales,50,161,27,19.29,26.0
+EMP0409,Female,IT & Data,49,154,35,20.66,44.4
+EMP0410,Female,IT & Data,44,158,41,17.63,37.5
+EMP0411,Male,Marketing,68,173,38,22.72,56.5
+EMP0412,Male,Sales,64,165,29,23.51,48.5
+EMP0413,Female,Product & Design,49,162,43,18.67,35.5
+EMP0414,Female,Operations,66,167,42,23.67,37.7
+EMP0415,Female,Engineering,66,161,33,25.46,47.9
+EMP0416,Male,Finance,74,175,35,24.16,79.5
+EMP0417,Male,Engineering,49,162,28,18.67,59.3
+EMP0418,Male,Engineering,51,161,35,19.68,60.4
+EMP0419,Female,Customer Support,58,165,39,21.3,56.3
+EMP0420,Female,Human Resources,53,165,38,19.47,62.8
+EMP0421,Male,IT & Data,62,171,37,21.2,43.5
+EMP0422,Male,Finance,60,168,26,21.26,75.7
+EMP0423,Male,Marketing,86,174,22,28.41,78.7
+EMP0424,Male,Sales,63,169,36,22.06,69.1
+EMP0425,Female,Sales,52,156,27,21.37,67.9
+EMP0426,Female,Finance,55,159,36,21.76,50.4
+EMP0427,Female,Customer Support,52,156,34,21.37,44.1
+EMP0428,Female,Sales,62,150,26,27.56,39.6
+EMP0429,Female,IT & Data,48,158,27,19.23,70.2
+EMP0430,Female,Finance,57,162,34,21.72,63.3
+EMP0431,Female,Finance,61,164,39,22.68,54.6
+EMP0432,Male,IT & Data,72,175,37,23.51,67.6
+EMP0433,Female,Marketing,51,160,28,19.92,54.8
+EMP0434,Female,Engineering,64,162,40,24.39,66.8
+EMP0435,Male,Human Resources,68,174,47,22.46,29.4
+EMP0436,Female,Operations,58,164,24,21.56,56.9
+EMP0437,Female,IT & Data,61,162,36,23.24,33.7
+EMP0438,Female,Sales,51,154,32,21.5,46.2
+EMP0439,Female,Product & Design,44,156,35,18.08,59.6
+EMP0440,Female,Finance,58,159,43,22.94,47.6
+EMP0441,Female,Operations,69,154,31,29.09,55.4
+EMP0442,Female,Engineering,58,159,27,22.94,78.7
+EMP0443,Female,Engineering,50,155,33,20.81,39.3
+EMP0444,Female,Marketing,46,163,38,17.31,44.5
+EMP0445,Male,Engineering,79,175,41,25.8,85.8
+EMP0446,Male,Operations,65,163,33,24.46,62.2
+EMP0447,Female,Engineering,43,155,33,17.9,59.2
+EMP0448,Male,Operations,66,168,42,23.38,86.1
+EMP0449,Male,Marketing,80,179,32,24.97,26.0
+EMP0450,Male,IT & Data,65,185,41,18.99,26.0
+EMP0451,Male,Engineering,53,172,35,17.92,54.8
+EMP0452,Male,Human Resources,66,176,23,21.31,59.9
+EMP0453,Male,Engineering,81,176,28,26.15,74.1
+EMP0454,Male,Quality Assurance,63,183,41,18.81,26.0
+EMP0455,Female,Product & Design,56,149,41,25.22,78.0
+EMP0456,Female,Finance,52,158,43,20.83,74.7
+EMP0457,Female,Marketing,51,157,27,20.69,83.7
+EMP0458,Female,Finance,62,170,22,21.45,68.4
+EMP0459,Male,IT & Data,62,175,30,20.24,70.8
+EMP0460,Female,Operations,72,167,42,25.82,64.9
+EMP0461,Female,Human Resources,51,166,35,18.51,58.5
+EMP0462,Female,Customer Support,48,157,28,19.47,45.6
+EMP0463,Female,IT & Data,52,163,48,19.57,61.3
+EMP0464,Male,Marketing,83,178,25,26.2,48.6
+EMP0465,Male,Operations,66,166,42,23.95,44.7
+EMP0466,Male,Engineering,71,170,30,24.57,52.8
+EMP0467,Female,Marketing,79,178,22,24.93,65.8
+EMP0468,Female,Product & Design,55,157,42,22.31,58.4
+EMP0469,Male,Customer Support,58,179,40,18.1,38.3
+EMP0470,Female,Finance,49,162,29,18.67,51.6
+EMP0471,Male,Human Resources,60,171,32,20.52,39.8
+EMP0472,Male,Marketing,69,171,33,23.6,78.9
+EMP0473,Female,Operations,66,167,33,23.67,53.5
+EMP0474,Female,Customer Support,52,169,22,18.21,55.7
+EMP0475,Male,Sales,83,175,39,27.1,64.9
+EMP0476,Female,Product & Design,64,166,38,23.23,60.8
+EMP0477,Female,Human Resources,59,163,27,22.21,30.3
+EMP0478,Male,Operations,91,173,29,30.41,52.1
+EMP0479,Female,IT & Data,58,156,25,23.83,46.6
+EMP0480,Male,Operations,76,166,33,27.58,69.8
+EMP0481,Female,Sales,60,164,44,22.31,35.2
+EMP0482,Male,Human Resources,69,168,31,24.45,86.8
+EMP0483,Female,Human Resources,65,165,35,23.88,68.3
+EMP0484,Female,IT & Data,53,165,34,19.47,82.3
+EMP0485,Female,Human Resources,46,152,25,19.91,80.6
+EMP0486,Female,Sales,58,157,46,23.53,82.1
+EMP0487,Female,Human Resources,67,168,37,23.74,40.9
+EMP0488,Female,Engineering,64,163,34,24.09,40.3
+EMP0489,Male,Customer Support,78,175,30,25.47,54.6
+EMP0490,Male,Quality Assurance,64,188,36,18.11,54.5
+EMP0491,Female,Operations,55,163,27,20.7,71.5
+EMP0492,Female,Operations,54,159,31,21.36,94.7
+EMP0493,Male,Operations,62,166,38,22.5,31.7
+EMP0494,Female,Operations,54,153,35,23.07,69.7
+EMP0495,Female,Sales,48,165,37,17.63,37.5
+EMP0496,Female,Customer Support,51,165,22,18.73,72.7
+EMP0497,Female,Customer Support,52,168,46,18.42,65.6
+EMP0498,Female,Operations,43,155,47,17.9,39.6
+EMP0499,Female,IT & Data,64,159,28,25.32,62.8
+EMP0500,Female,Operations,66,165,38,24.24,61.9
+EMP0501,Female,Marketing,67,163,35,25.22,58.9
+EMP0502,Female,Finance,53,154,36,22.35,26.0
+EMP0503,Male,Operations,66,179,26,20.6,98.0
+EMP0504,Female,Engineering,62,168,22,21.97,84.6
+EMP0505,Female,Quality Assurance,61,157,38,24.75,48.5
+EMP0506,Male,Customer Support,69,177,33,22.02,33.9
+EMP0507,Male,Operations,78,180,38,24.07,69.2
+EMP0508,Female,Customer Support,59,157,31,23.94,57.1
+EMP0509,Female,Finance,50,164,35,18.59,84.0
+EMP0510,Male,Marketing,67,178,42,21.15,63.0
+EMP0511,Male,Quality Assurance,78,171,26,26.67,73.6
+EMP0512,Male,Operations,47,158,30,18.83,70.5
+EMP0513,Female,Operations,63,163,36,23.71,66.0
+EMP0514,Male,IT & Data,67,165,23,24.61,71.2
+EMP0515,Female,Operations,78,174,41,25.76,63.9
+EMP0516,Female,Human Resources,61,157,29,24.75,37.2
+EMP0517,Female,Quality Assurance,54,160,30,21.09,38.2
+EMP0518,Female,Sales,69,162,29,26.29,91.3
+EMP0519,Female,Product & Design,58,161,42,22.38,66.8
+EMP0520,Female,Quality Assurance,58,163,31,21.83,68.5
+EMP0521,Male,Customer Support,77,177,37,24.58,84.9
+EMP0522,Male,Operations,87,183,25,25.98,80.9
+EMP0523,Female,Finance,45,161,43,17.36,33.4
+EMP0524,Male,Operations,68,173,28,22.72,87.3
+EMP0525,Female,Engineering,49,167,34,17.57,80.4
+EMP0526,Female,Customer Support,69,163,26,25.97,65.5
+EMP0527,Male,Quality Assurance,83,185,34,24.25,58.3
+EMP0528,Male,Sales,70,179,28,21.85,92.1
+EMP0529,Male,Customer Support,70,171,33,23.94,53.3
+EMP0530,Male,Quality Assurance,77,173,22,25.73,59.2
+EMP0531,Female,Engineering,65,168,22,23.03,51.9
+EMP0532,Female,Sales,54,170,23,18.69,48.8
+EMP0533,Male,IT & Data,70,180,38,21.6,65.8
+EMP0534,Female,Product & Design,50,158,22,20.03,74.0
+EMP0535,Female,IT & Data,74,170,33,25.61,56.5
+EMP0536,Female,Human Resources,57,163,42,21.45,47.9
+EMP0537,Female,Operations,67,166,38,24.31,64.8
+EMP0538,Female,Finance,45,159,29,17.8,50.7
+EMP0539,Female,Finance,46,148,22,21.0,72.3
+EMP0540,Male,Operations,71,174,30,23.45,80.6
+EMP0541,Female,Finance,43,150,37,19.11,51.1
+EMP0542,Female,Finance,58,164,41,21.56,66.7
+EMP0543,Female,Sales,50,166,35,18.14,26.4
+EMP0544,Female,Engineering,50,169,33,17.51,69.0
+EMP0545,Male,IT & Data,66,176,38,21.31,67.5
+EMP0546,Female,Marketing,49,164,34,18.22,26.0
+EMP0547,Male,Product & Design,62,173,32,20.72,78.7
+EMP0548,Female,Product & Design,60,160,23,23.44,93.1
+EMP0549,Female,Product & Design,66,171,46,22.57,73.2
+EMP0550,Male,Engineering,67,176,22,21.63,73.3
+EMP0551,Male,Human Resources,56,164,41,20.82,49.7
+EMP0552,Male,Finance,54,173,30,18.04,46.2
+EMP0553,Male,Customer Support,89,180,29,27.47,47.0
+EMP0554,Female,Customer Support,55,155,26,22.89,62.2
+EMP0555,Female,IT & Data,61,161,30,23.53,51.7
+EMP0556,Male,Sales,66,167,30,23.67,87.5
+EMP0557,Female,Product & Design,55,160,40,21.48,51.5
+EMP0558,Female,Finance,47,150,39,20.89,64.3
+EMP0559,Male,Engineering,60,177,35,19.15,75.4
+EMP0560,Male,Finance,78,171,40,26.67,35.7
+EMP0561,Male,IT & Data,74,172,32,25.01,69.6
+EMP0562,Female,Engineering,68,154,36,28.67,55.2
+EMP0563,Male,Operations,68,176,36,21.95,85.3
+EMP0564,Female,Finance,62,162,39,23.62,98.0
+EMP0565,Male,Sales,66,179,35,20.6,59.2
+EMP0566,Female,Engineering,60,161,28,23.15,92.9
+EMP0567,Female,Product & Design,66,159,29,26.11,26.0
+EMP0568,Female,Quality Assurance,53,156,39,21.78,55.4
+EMP0569,Male,Sales,64,167,30,22.95,89.7
+EMP0570,Female,Finance,67,167,35,24.02,63.3
+EMP0571,Female,Sales,67,162,39,25.53,81.3
+EMP0572,Female,Sales,64,155,31,26.64,51.8
+EMP0573,Male,Sales,75,177,37,23.94,51.9
+EMP0574,Male,Operations,90,186,28,26.01,53.5
+EMP0575,Female,Product & Design,60,155,33,24.97,96.5
+EMP0576,Female,Sales,57,167,22,20.44,98.0
+EMP0577,Male,Operations,90,177,32,28.73,73.0
+EMP0578,Female,Customer Support,58,161,35,22.38,64.1
+EMP0579,Male,IT & Data,65,178,35,20.52,64.6
+EMP0580,Female,Marketing,61,156,31,25.07,59.2
+EMP0581,Female,Marketing,61,164,32,22.68,48.7
+EMP0582,Male,Operations,80,168,49,28.34,52.2
+EMP0583,Female,Engineering,69,165,26,25.34,46.7
+EMP0584,Male,Operations,61,176,22,19.69,90.7
+EMP0585,Male,Marketing,51,169,35,17.86,52.9
+EMP0586,Female,Finance,52,155,22,21.64,65.4
+EMP0587,Female,Sales,44,156,41,18.08,78.1
+EMP0588,Female,IT & Data,51,161,26,19.68,64.5
+EMP0589,Male,Marketing,74,166,35,26.85,41.2
+EMP0590,Female,Engineering,50,166,49,18.14,42.6
+EMP0591,Female,Finance,55,158,34,22.03,59.5
+EMP0592,Male,Marketing,57,171,29,19.49,45.5
+EMP0593,Female,Quality Assurance,56,158,25,22.43,84.0
+EMP0594,Female,Quality Assurance,48,155,48,19.98,65.5
+EMP0595,Male,Operations,85,183,29,25.38,49.9
+EMP0596,Male,Customer Support,76,175,39,24.82,47.6
+EMP0597,Male,Marketing,57,161,33,21.99,61.9
+EMP0598,Male,Engineering,59,168,32,20.9,46.1
+EMP0599,Male,Human Resources,66,168,30,23.38,57.5
+EMP0600,Male,Customer Support,61,165,31,22.41,65.8
+EMP0601,Male,Marketing,68,172,30,22.99,55.4
+EMP0602,Female,Sales,55,153,36,23.5,58.2
+EMP0603,Female,IT & Data,51,158,29,20.43,73.8
+EMP0604,Female,Engineering,54,156,34,22.19,68.5
+EMP0605,Male,IT & Data,63,171,29,21.55,26.0
+EMP0606,Male,Operations,63,172,34,21.3,54.6
+EMP0607,Male,Sales,66,181,34,20.15,54.8
+EMP0608,Male,Engineering,84,169,34,29.41,63.5
+EMP0609,Female,Engineering,60,162,28,22.86,50.5
+EMP0610,Female,Product & Design,63,166,22,22.86,87.2
+EMP0611,Male,Marketing,74,172,30,25.01,59.3
+EMP0612,Male,IT & Data,76,167,37,27.25,65.8
+EMP0613,Female,Quality Assurance,56,161,38,21.6,36.8
+EMP0614,Female,Product & Design,48,155,36,19.98,77.7
+EMP0615,Female,Product & Design,54,154,41,22.77,73.3
+EMP0616,Female,Engineering,54,164,28,20.08,63.6
+EMP0617,Female,Customer Support,60,167,41,21.51,56.3
+EMP0618,Male,Quality Assurance,76,166,22,27.58,89.9
+EMP0619,Female,Sales,52,159,31,20.57,42.8
+EMP0620,Female,Finance,67,166,45,24.31,47.2
+EMP0621,Male,Marketing,64,177,22,20.43,66.5
+EMP0622,Male,Engineering,67,169,35,23.46,52.8
+EMP0623,Female,Marketing,52,160,48,20.31,28.3
+EMP0624,Male,Engineering,78,177,34,24.9,61.7
+EMP0625,Female,Sales,61,165,33,22.41,59.2
+EMP0626,Female,Sales,58,163,34,21.83,67.9
+EMP0627,Male,Human Resources,55,174,36,18.17,40.4
+EMP0628,Female,Quality Assurance,65,160,34,25.39,56.0
+EMP0629,Female,Customer Support,67,163,35,25.22,81.2
+EMP0630,Female,Customer Support,58,165,38,21.3,87.5
+EMP0631,Female,Marketing,64,159,39,25.32,61.8
+EMP0632,Female,Marketing,68,162,34,25.91,35.3
+EMP0633,Female,Operations,56,159,35,22.15,65.6
+EMP0634,Male,Engineering,67,171,38,22.91,76.9
+EMP0635,Male,Product & Design,48,162,25,18.29,36.8
+EMP0636,Female,Customer Support,55,165,40,20.2,56.6
+EMP0637,Male,Operations,80,183,22,23.89,61.7
+EMP0638,Female,Operations,53,156,43,21.78,49.4
+EMP0639,Male,Operations,71,181,45,21.67,62.4
+EMP0640,Male,Engineering,62,167,31,22.23,67.6
+EMP0641,Female,Engineering,62,170,49,21.45,70.2
+EMP0642,Female,Operations,57,168,33,20.2,88.1
+EMP0643,Female,Quality Assurance,69,168,36,24.45,40.0
+EMP0644,Male,Finance,55,173,22,18.38,72.8
+EMP0645,Male,Sales,71,171,32,24.28,72.8
+EMP0646,Female,Operations,45,153,36,19.22,73.7
+EMP0647,Male,IT & Data,67,176,22,21.63,44.2
+EMP0648,Male,Quality Assurance,66,174,32,21.8,82.8
+EMP0649,Male,Finance,71,180,30,21.91,67.3
+EMP0650,Male,Product & Design,72,175,42,23.51,47.0
+EMP0651,Female,Marketing,65,168,30,23.03,66.4
+EMP0652,Male,Engineering,85,177,40,27.13,53.8
+EMP0653,Male,Operations,69,175,39,22.53,77.9
+EMP0654,Male,Human Resources,77,177,44,24.58,61.1
+EMP0655,Female,Quality Assurance,54,154,27,22.77,66.3
+EMP0656,Female,Finance,53,163,33,19.95,79.3
+EMP0657,Female,Sales,70,167,28,25.1,69.9
+EMP0658,Male,Sales,70,164,34,26.03,45.7
+EMP0659,Female,Engineering,53,164,34,19.71,92.1
+EMP0660,Male,Customer Support,62,181,32,18.92,43.7
+EMP0661,Male,Finance,86,174,22,28.41,58.6
+EMP0662,Female,Customer Support,60,155,25,24.97,65.5
+EMP0663,Male,Product & Design,74,182,22,22.34,61.1
+EMP0664,Female,Human Resources,47,150,28,20.89,77.5
+EMP0665,Male,Engineering,86,177,31,27.45,57.4
+EMP0666,Female,Marketing,49,168,36,17.36,56.1
+EMP0667,Male,Engineering,77,182,37,23.25,65.4
+EMP0668,Female,Quality Assurance,65,162,32,24.77,73.2
+EMP0669,Female,Marketing,52,162,33,19.81,65.0
+EMP0670,Male,Finance,55,174,22,18.17,58.9
+EMP0671,Male,Operations,69,179,30,21.53,37.7
+EMP0672,Male,Finance,66,165,35,24.24,55.8
+EMP0673,Female,Human Resources,44,156,38,18.08,57.9
+EMP0674,Male,Human Resources,77,174,25,25.43,85.7
+EMP0675,Female,Quality Assurance,60,165,25,22.04,64.4
+EMP0676,Male,IT & Data,75,175,37,24.49,26.0
+EMP0677,Male,Marketing,74,167,33,26.53,54.5
+EMP0678,Male,IT & Data,74,177,39,23.62,80.9
+EMP0679,Male,Sales,67,180,35,20.68,77.1
+EMP0680,Female,Finance,53,165,24,19.47,48.4
+EMP0681,Female,Finance,48,151,25,21.05,64.8
+EMP0682,Male,Customer Support,55,173,31,18.38,63.9
+EMP0683,Female,Product & Design,56,155,31,23.31,48.7
+EMP0684,Male,Engineering,71,171,39,24.28,54.7
+EMP0685,Male,Marketing,66,182,41,19.93,45.5
+EMP0686,Male,Engineering,69,171,34,23.6,26.6
+EMP0687,Female,Marketing,49,152,34,21.21,46.8
+EMP0688,Male,Engineering,74,175,33,24.16,72.8
+EMP0689,Male,Sales,71,179,48,22.16,76.5
+EMP0690,Male,Engineering,77,178,29,24.3,48.9
+EMP0691,Female,Product & Design,53,164,40,19.71,77.8
+EMP0692,Male,IT & Data,85,175,31,27.76,70.0
+EMP0693,Female,Customer Support,76,168,29,26.93,73.6
+EMP0694,Female,Marketing,63,161,31,24.3,45.4
+EMP0695,Male,Operations,80,178,24,25.25,59.4
+EMP0696,Female,Customer Support,55,159,32,21.76,83.1
+EMP0697,Female,Sales,64,156,40,26.3,49.8
+EMP0698,Female,Engineering,58,156,35,23.83,31.4
+EMP0699,Male,Operations,67,173,34,22.39,59.5
+EMP0700,Female,Finance,51,158,33,20.43,64.1
+EMP0701,Male,Marketing,67,169,36,23.46,29.7
+EMP0702,Female,Finance,51,163,41,19.2,49.1
+EMP0703,Female,Engineering,60,165,46,22.04,80.3
+EMP0704,Female,Sales,60,161,35,23.15,79.2
+EMP0705,Male,Sales,65,178,26,20.52,57.5
+EMP0706,Female,Product & Design,57,161,37,21.99,39.3
+EMP0707,Male,Engineering,88,185,36,25.71,51.0
+EMP0708,Female,Operations,57,158,29,22.83,67.5
+EMP0709,Female,Quality Assurance,64,163,32,24.09,71.7
+EMP0710,Female,Operations,59,155,45,24.56,51.0
+EMP0711,Male,Engineering,63,171,29,21.55,91.9
+EMP0712,Male,Engineering,76,179,30,23.72,42.9
+EMP0713,Male,Customer Support,71,168,33,25.16,82.6
+EMP0714,Female,Sales,51,156,36,20.96,77.2
+EMP0715,Female,Operations,55,158,36,22.03,80.5
+EMP0716,Male,Engineering,77,177,32,24.58,57.8
+EMP0717,Female,Sales,61,161,38,23.53,42.9
+EMP0718,Male,IT & Data,81,167,38,29.04,43.2
+EMP0719,Male,Customer Support,79,171,31,27.02,65.9
+EMP0720,Male,Marketing,76,177,42,24.26,73.5
+EMP0721,Male,Quality Assurance,69,168,31,24.45,64.7
+EMP0722,Female,Finance,60,163,31,22.58,26.4
+EMP0723,Female,IT & Data,55,159,32,21.76,68.4
+EMP0724,Male,Operations,67,186,22,19.37,34.2
+EMP0725,Male,Engineering,68,176,26,21.95,49.7
+EMP0726,Male,Product & Design,79,179,37,24.66,79.4
+EMP0727,Male,Sales,74,185,37,21.62,73.9
+EMP0728,Male,Human Resources,104,182,44,31.4,28.8
+EMP0729,Female,Marketing,43,155,39,17.9,67.3
+EMP0730,Male,Human Resources,66,172,31,22.31,41.9
+EMP0731,Female,Finance,49,162,28,18.67,67.9
+EMP0732,Female,Marketing,58,157,26,23.53,65.2
+EMP0733,Male,Marketing,70,178,22,22.09,66.8
+EMP0734,Male,Customer Support,71,178,29,22.41,61.5
+EMP0735,Male,Marketing,79,175,29,25.8,71.2
+EMP0736,Female,Marketing,59,155,26,24.56,89.4
+EMP0737,Female,IT & Data,57,169,31,19.96,84.1
+EMP0738,Male,Marketing,72,178,46,22.72,41.5
+EMP0739,Male,Operations,73,175,40,23.84,63.0
+EMP0740,Female,Engineering,61,157,34,24.75,55.7
+EMP0741,Female,IT & Data,60,156,38,24.65,46.4
+EMP0742,Male,Engineering,82,176,36,26.47,72.9
+EMP0743,Male,IT & Data,68,166,49,24.68,37.7
+EMP0744,Female,Finance,48,153,24,20.5,79.0
+EMP0745,Male,Engineering,59,173,40,19.71,34.1
+EMP0746,Female,Quality Assurance,55,149,36,24.77,54.8
+EMP0747,Female,Engineering,48,162,30,18.29,34.1
+EMP0748,Female,Human Resources,48,161,27,18.52,29.1
+EMP0749,Female,Customer Support,52,164,33,19.33,51.1
+EMP0750,Male,Product & Design,65,164,30,24.17,59.2
+EMP0751,Female,Product & Design,62,157,27,25.15,83.8
+EMP0752,Male,Product & Design,68,190,34,18.84,74.0
+EMP0753,Male,Sales,60,161,28,23.15,60.0
+EMP0754,Female,Operations,44,159,32,17.4,54.8
+EMP0755,Male,Sales,75,167,23,26.89,48.8
+EMP0756,Male,Product & Design,63,158,37,25.24,58.6
+EMP0757,Female,Marketing,63,162,36,24.01,51.1
+EMP0758,Male,Sales,94,183,33,28.07,47.3
+EMP0759,Male,Product & Design,88,172,37,29.75,66.2
+EMP0760,Male,Product & Design,71,169,37,24.86,88.9
+EMP0761,Female,Product & Design,61,169,26,21.36,88.4
+EMP0762,Female,Quality Assurance,68,157,27,27.59,57.5
+EMP0763,Male,Quality Assurance,52,158,37,20.83,84.6
+EMP0764,Male,Finance,66,167,37,23.67,65.6
+EMP0765,Male,Engineering,73,170,36,25.26,94.3
+EMP0766,Female,Engineering,49,150,49,21.78,64.3
+EMP0767,Female,Sales,62,168,34,21.97,67.5
+EMP0768,Female,Finance,48,165,32,17.63,77.7
+EMP0769,Female,Customer Support,51,157,40,20.69,38.4
+EMP0770,Female,Engineering,55,162,35,20.96,44.5
+EMP0771,Male,Operations,59,165,22,21.67,64.3
+EMP0772,Female,Engineering,49,161,29,18.9,64.6
+EMP0773,Male,Sales,82,182,32,24.76,70.9
+EMP0774,Female,Product & Design,50,156,48,20.55,51.1
+EMP0775,Male,Sales,62,164,35,23.05,44.7
+EMP0776,Male,Finance,68,168,26,24.09,58.6
+EMP0777,Female,Operations,58,160,52,22.66,71.5
+EMP0778,Male,Operations,89,178,35,28.09,70.8
+EMP0779,Female,Engineering,60,154,33,25.3,70.3
+EMP0780,Female,Operations,62,161,39,23.92,56.0
+EMP0781,Female,IT & Data,60,152,36,25.97,36.8
+EMP0782,Male,IT & Data,72,172,33,24.34,82.5
+EMP0783,Male,Customer Support,65,181,30,19.84,72.5
+EMP0784,Female,Quality Assurance,51,160,36,19.92,70.6
+EMP0785,Female,Customer Support,62,157,22,25.15,45.7
+EMP0786,Male,Quality Assurance,60,168,39,21.26,75.3
+EMP0787,Male,IT & Data,73,177,35,23.3,66.9
+EMP0788,Female,IT & Data,55,159,38,21.76,63.8
+EMP0789,Male,IT & Data,60,175,52,19.59,41.8
+EMP0790,Female,Finance,48,149,40,21.62,47.6
+EMP0791,Male,Customer Support,83,181,37,25.34,31.6
+EMP0792,Female,Marketing,73,166,32,26.49,78.6
+EMP0793,Male,Operations,58,163,42,21.83,63.3
+EMP0794,Female,Customer Support,62,158,39,24.84,66.5
+EMP0795,Female,Operations,61,168,31,21.61,62.7
+EMP0796,Female,Finance,58,157,30,23.53,55.0
+EMP0797,Male,Product & Design,68,170,42,23.53,37.3
+EMP0798,Male,Human Resources,53,168,48,18.78,43.8
+EMP0799,Female,Product & Design,48,160,47,18.75,59.3
+EMP0800,Male,Sales,65,169,40,22.76,62.9
+EMP0801,Female,Quality Assurance,49,162,36,18.67,60.4
+EMP0802,Female,Operations,55,162,38,20.96,60.7
+EMP0803,Male,Marketing,71,174,38,23.45,51.7
+EMP0804,Female,IT & Data,52,164,39,19.33,51.3
+EMP0805,Male,Engineering,59,170,32,20.42,31.7
+EMP0806,Female,Human Resources,62,159,32,24.52,66.7
+EMP0807,Female,Marketing,61,167,38,21.87,51.1
+EMP0808,Male,Customer Support,73,182,29,22.04,33.7
+EMP0809,Male,Engineering,68,181,38,20.76,68.6
+EMP0810,Female,Sales,63,167,38,22.59,37.7
+EMP0811,Female,Sales,60,163,51,22.58,49.5
+EMP0812,Female,Customer Support,62,162,29,23.62,68.9
+EMP0813,Female,Operations,50,160,22,19.53,43.3
+EMP0814,Male,Engineering,90,190,37,24.93,75.6
+EMP0815,Female,Product & Design,44,153,38,18.8,60.0
+EMP0816,Female,Marketing,61,159,33,24.13,32.5
+EMP0817,Male,Finance,71,182,35,21.43,89.1
+EMP0818,Female,Human Resources,57,167,36,20.44,26.0
+EMP0819,Female,Sales,59,161,43,22.76,85.3
+EMP0820,Male,Sales,62,172,37,20.96,63.2
+EMP0821,Female,Human Resources,55,164,50,20.45,42.7
+EMP0822,Female,IT & Data,58,159,22,22.94,45.3
+EMP0823,Female,Sales,48,159,23,18.99,30.9
+EMP0824,Female,Product & Design,46,155,46,19.15,71.5
+EMP0825,Female,Customer Support,51,155,41,21.23,60.9
+EMP0826,Female,Human Resources,50,154,43,21.08,53.4
+EMP0827,Female,Engineering,53,159,24,20.96,51.6
+EMP0828,Female,Customer Support,57,154,39,24.03,64.8
+EMP0829,Female,Human Resources,56,159,35,22.15,54.5
+EMP0830,Male,Sales,92,179,31,28.71,80.3
+EMP0831,Female,Finance,56,158,22,22.43,72.1
+EMP0832,Female,Finance,51,167,37,18.29,43.2
+EMP0833,Female,Engineering,74,171,24,25.31,53.3
+EMP0834,Female,Marketing,60,164,34,22.31,88.4
+EMP0835,Male,Engineering,51,169,27,17.86,49.3
+EMP0836,Female,Engineering,58,159,28,22.94,86.6
+EMP0837,Male,Human Resources,74,177,40,23.62,63.7
+EMP0838,Male,Engineering,62,173,42,20.72,63.5
+EMP0839,Female,Marketing,57,158,36,22.83,53.9
+EMP0840,Male,IT & Data,83,171,47,28.38,63.0
+EMP0841,Male,Engineering,59,169,45,20.66,52.7
+EMP0842,Male,Sales,65,172,36,21.97,33.0
+EMP0843,Female,Operations,65,165,32,23.88,33.8
+EMP0844,Male,IT & Data,79,173,48,26.4,73.5
+EMP0845,Male,Product & Design,60,169,42,21.01,57.5
+EMP0846,Female,Marketing,48,166,35,17.42,65.8
+EMP0847,Female,Sales,61,160,35,23.83,74.6
+EMP0848,Female,Engineering,48,157,41,19.47,62.9
+EMP0849,Female,Finance,79,174,25,26.09,69.7
+EMP0850,Male,Marketing,77,175,36,25.14,75.3
+EMP0851,Female,Sales,58,166,29,21.05,54.1
+EMP0852,Female,Product & Design,65,158,26,26.04,70.5
+EMP0853,Male,Product & Design,57,173,40,19.05,41.5
+EMP0854,Male,Sales,70,168,34,24.8,46.9
+EMP0855,Female,Marketing,53,153,40,22.64,90.3
+EMP0856,Female,Operations,51,148,23,23.28,55.3
+EMP0857,Female,Quality Assurance,55,156,37,22.6,65.4
+EMP0858,Female,Human Resources,65,166,30,23.59,67.9
+EMP0859,Female,Operations,52,158,52,20.83,69.7
+EMP0860,Male,Finance,69,182,37,20.83,86.5
+EMP0861,Female,Customer Support,44,158,40,17.63,56.4
+EMP0862,Male,Finance,72,167,33,25.82,51.2
+EMP0863,Female,IT & Data,57,153,37,24.35,37.2
+EMP0864,Male,IT & Data,66,171,39,22.57,70.8
+EMP0865,Female,Engineering,53,157,30,21.5,26.0
+EMP0866,Male,Finance,67,169,22,23.46,48.7
+EMP0867,Male,Product & Design,65,161,35,25.08,62.3
+EMP0868,Female,Human Resources,67,159,22,26.5,66.4
+EMP0869,Female,Marketing,61,165,46,22.41,29.9
+EMP0870,Male,Customer Support,64,181,32,19.54,69.5
+EMP0871,Male,Marketing,83,178,44,26.2,73.4
+EMP0872,Female,Marketing,58,159,44,22.94,60.9
+EMP0873,Female,Sales,52,161,34,20.06,47.0
+EMP0874,Male,Customer Support,63,173,31,21.05,94.5
+EMP0875,Male,Human Resources,54,167,41,19.36,53.2
+EMP0876,Female,Sales,43,156,33,17.67,70.2
+EMP0877,Female,Sales,71,164,24,26.4,79.9
+EMP0878,Male,Quality Assurance,72,173,41,24.06,74.2
+EMP0879,Male,Customer Support,63,173,46,21.05,32.9
+EMP0880,Female,Customer Support,54,155,27,22.48,64.2
+EMP0881,Male,IT & Data,77,173,33,25.73,26.0
+EMP0882,Male,IT & Data,73,173,22,24.39,78.0
+EMP0883,Male,Operations,67,166,46,24.31,42.0
+EMP0884,Female,Quality Assurance,47,161,37,18.13,33.0
+EMP0885,Male,Engineering,82,173,30,27.4,32.9
+EMP0886,Male,Human Resources,65,180,28,20.06,68.1
+EMP0887,Male,Customer Support,61,161,34,23.53,48.1
+EMP0888,Female,Sales,52,159,26,20.57,58.2
+EMP0889,Female,Engineering,59,164,38,21.94,43.8
+EMP0890,Male,Engineering,73,169,27,25.56,69.8
+EMP0891,Male,Marketing,64,168,22,22.68,48.3
+EMP0892,Female,Finance,60,164,32,22.31,82.5
+EMP0893,Male,Marketing,60,178,38,18.94,42.7
+EMP0894,Female,Engineering,45,160,36,17.58,53.0
+EMP0895,Female,Human Resources,48,165,22,17.63,59.9
+EMP0896,Male,Marketing,79,174,27,26.09,67.4
+EMP0897,Female,Sales,57,163,26,21.45,78.5
+EMP0898,Male,Product & Design,68,171,30,23.26,59.8
+EMP0899,Male,Marketing,75,174,33,24.77,69.1
+EMP0900,Female,Human Resources,59,168,49,20.9,35.4
+EMP0901,Female,Engineering,58,173,38,19.38,46.4
+EMP0902,Male,IT & Data,85,174,35,28.08,71.8
+EMP0903,Male,Marketing,55,171,29,18.81,45.0
+EMP0904,Female,Sales,61,175,33,19.92,85.2
+EMP0905,Male,Customer Support,69,176,39,22.28,49.1
+EMP0906,Female,IT & Data,56,153,42,23.92,78.2
+EMP0907,Female,Quality Assurance,50,161,35,19.29,78.2
+EMP0908,Female,Finance,67,163,40,25.22,36.1
+EMP0909,Male,Finance,70,167,43,25.1,57.9
+EMP0910,Male,Engineering,74,181,34,22.59,98.0
+EMP0911,Female,IT & Data,47,148,34,21.46,45.4
+EMP0912,Female,Operations,48,161,35,18.52,68.2
+EMP0913,Female,Marketing,59,160,40,23.05,56.2
+EMP0914,Male,Marketing,66,175,41,21.55,86.4
+EMP0915,Male,Engineering,77,177,24,24.58,46.3
+EMP0916,Female,Customer Support,60,159,42,23.73,39.6
+EMP0917,Female,Marketing,48,156,36,19.72,75.4
+EMP0918,Female,Sales,67,158,39,26.84,47.5
+EMP0919,Male,Finance,65,180,28,20.06,74.8
+EMP0920,Male,Marketing,70,173,25,23.39,59.3
+EMP0921,Female,Marketing,45,160,42,17.58,73.2
+EMP0922,Female,Engineering,45,160,27,17.58,40.7
+EMP0923,Male,Finance,80,168,31,28.34,41.1
+EMP0924,Male,Engineering,73,171,33,24.96,70.7
+EMP0925,Female,Customer Support,49,162,34,18.67,46.2
+EMP0926,Male,Marketing,70,179,26,21.85,76.0
+EMP0927,Male,Finance,63,174,31,20.81,56.4
+EMP0928,Female,Engineering,54,155,37,22.48,71.9
+EMP0929,Female,Engineering,57,164,41,21.19,69.2
+EMP0930,Male,Operations,80,175,36,26.12,59.9
+EMP0931,Male,Human Resources,49,165,22,18.0,58.4
+EMP0932,Male,Engineering,76,181,40,23.2,74.3
+EMP0933,Male,Sales,54,161,34,20.83,56.4
+EMP0934,Female,Customer Support,58,154,40,24.46,81.7
+EMP0935,Female,Operations,52,157,40,21.1,26.0
+EMP0936,Female,Human Resources,58,162,31,22.1,64.2
+EMP0937,Female,Product & Design,55,171,25,18.81,62.8
+EMP0938,Male,Sales,87,176,29,28.09,62.7
+EMP0939,Female,Engineering,48,159,30,18.99,38.4
+EMP0940,Male,Engineering,76,170,27,26.3,49.4
+EMP0941,Male,Engineering,88,175,32,28.73,57.3
+EMP0942,Male,Quality Assurance,65,172,25,21.97,37.3
+EMP0943,Female,IT & Data,62,166,35,22.5,60.6
+EMP0944,Female,Engineering,53,155,30,22.06,77.3
+EMP0945,Male,Operations,71,175,29,23.18,79.8
+EMP0946,Male,Product & Design,71,176,35,22.92,45.4
+EMP0947,Male,Operations,72,175,46,23.51,57.3
+EMP0948,Female,Customer Support,52,158,40,20.83,61.0
+EMP0949,Female,Engineering,48,154,33,20.24,59.2
+EMP0950,Male,Engineering,81,175,37,26.45,46.8
+EMP0951,Male,Quality Assurance,83,175,28,27.1,26.0
+EMP0952,Male,Operations,70,175,46,22.86,71.9
+EMP0953,Male,Engineering,68,176,30,21.95,53.7
+EMP0954,Female,Customer Support,53,168,47,18.78,63.3
+EMP0955,Female,Quality Assurance,60,160,43,23.44,70.3
+EMP0956,Male,Product & Design,66,172,39,22.31,26.0
+EMP0957,Female,Engineering,59,171,37,20.18,36.5
+EMP0958,Female,Finance,49,158,33,19.63,67.8
+EMP0959,Male,Sales,48,164,41,17.85,68.5
+EMP0960,Female,Operations,62,168,24,21.97,82.0
+EMP0961,Female,Quality Assurance,43,156,35,17.67,74.6
+EMP0962,Female,Product & Design,67,165,25,24.61,35.9
+EMP0963,Female,Operations,69,171,39,23.6,51.7
+EMP0964,Male,Customer Support,66,174,28,21.8,57.4
+EMP0965,Male,Operations,62,169,29,21.71,52.3
+EMP0966,Female,Customer Support,59,160,30,23.05,53.4
+EMP0967,Female,Finance,63,169,22,22.06,71.6
+EMP0968,Female,Product & Design,81,169,37,28.36,46.4
+EMP0969,Male,Engineering,86,176,34,27.76,34.4
+EMP0970,Male,Operations,63,177,33,20.11,64.6
+EMP0971,Male,Customer Support,77,175,35,25.14,64.3
+EMP0972,Male,Human Resources,83,172,29,28.06,40.7
+EMP0973,Female,Engineering,50,156,32,20.55,71.6
+EMP0974,Male,Operations,68,176,47,21.95,64.9
+EMP0975,Male,Sales,69,172,42,23.32,41.5
+EMP0976,Male,Product & Design,85,177,26,27.13,69.8
+EMP0977,Male,Engineering,69,167,23,24.74,70.5
+EMP0978,Female,Engineering,61,158,27,24.44,66.3
+EMP0979,Male,Customer Support,73,174,30,24.11,56.4
+EMP0980,Female,IT & Data,60,161,28,23.15,86.0
+EMP0981,Female,IT & Data,57,158,30,22.83,69.3
+EMP0982,Female,Operations,64,172,38,21.63,45.1
+EMP0983,Male,IT & Data,66,164,37,24.54,26.0
+EMP0984,Male,Engineering,93,178,44,29.35,36.9
+EMP0985,Male,Marketing,80,177,32,25.54,29.1
+EMP0986,Female,Product & Design,51,170,44,17.65,34.9
+EMP0987,Male,Product & Design,59,166,34,21.41,38.2
+EMP0988,Male,Human Resources,56,176,33,18.08,53.4
+EMP0989,Male,Engineering,66,184,40,19.49,64.5
+EMP0990,Male,Operations,68,171,28,23.26,72.1
+EMP0991,Female,Operations,60,162,33,22.86,67.5
+EMP0992,Female,Sales,64,165,34,23.51,45.5
+EMP0993,Female,Engineering,50,163,47,18.82,67.1
+EMP0994,Female,Sales,67,163,25,25.22,50.7
+EMP0995,Female,IT & Data,50,159,47,19.78,42.3
+EMP0996,Female,Quality Assurance,67,166,43,24.31,50.3
+EMP0997,Female,Customer Support,56,166,22,20.32,75.4
+EMP0998,Female,Sales,60,158,32,24.03,75.4
+EMP0999,Female,IT & Data,54,157,40,21.91,47.4
+EMP1000,Female,Engineering,52,164,30,19.33,56.2
