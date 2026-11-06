@@ -1,161 +1,91 @@
-"""
-=============================================================
- ระบบแบ่งทีมกีฬา 2 สี (สีแดง / สีเขียว) ด้วย Genetic Algorithm (GA)
-=============================================================
- เป้าหมายหลักของโจทย์:
-   1. กีฬาสูสี (Sports Fairness): ค่าเฉลี่ยสกิลกีฬาของ 2 สีต้องใกล้เคียงกันที่สุด
-   2. รู้จักข้ามแผนก (Harmonize) : แต่ละแผนกต้องแบ่งลง 2 สีเท่าๆ กัน
-=============================================================
-"""
-
 import random
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# -----------------------------------------------------------
-# 1. โหลดข้อมูลสมาชิก
-# -----------------------------------------------------------
+# 1. โหลดข้อมูลสมาชิก (40 คน)
 df = pd.read_csv("data/company_members.csv")
-
-# แปลงเป็น List ธรรมดาเพื่อให้วนลูปและเข้าใจง่าย
 skills = df['sports_skill'].tolist()
-departments = df['department'].tolist()
-unique_depts = list(dict.fromkeys(departments)) # รายชื่อแผนกทั้งหมด
+depts = df['department'].tolist()
+N, half = len(df), len(df) // 2  # N = 40, half = 20
 
-num_people = len(df)
-half_team = num_people // 2  # โควตาสีละ 20 คน
-
-# -----------------------------------------------------------
-# 2. ฟังก์ชัน Fitness (ความเหมาะสม ยิ่งเข้าใกล้ 100 ยิ่งดี)
-# -----------------------------------------------------------
-def calculate_fitness(chromosome):
-    """
-    chromosome คือ list เช่น [0, 1, 0, 1, ...]
-    0 = ทีมสีแดง, 1 = ทีมสีเขียว
-    """
-    # 1. คำนวณความแฟนเนจด้านกีฬา (Sports Fairness)
-    red_skills = [skills[i] for i in range(num_people) if chromosome[i] == 0]
-    green_skills = [skills[i] for i in range(num_people) if chromosome[i] == 1]
+# 2. ฟังก์ชัน Fitness (ประเมินความเหมาะสม)
+def fitness(chrom):
+    # 1) ด้านกีฬา: ผลต่างค่าเฉลี่ยสกิล (ยิ่งน้อยยิ่งสูสี)
+    red_s = [skills[i] for i in range(N) if chrom[i] == 0]
+    grn_s = [skills[i] for i in range(N) if chrom[i] == 1]
+    diff_sport = abs(sum(red_s)/half - sum(grn_s)/half)
     
-    avg_red = sum(red_skills) / len(red_skills)
-    avg_green = sum(green_skills) / len(green_skills)
-    sports_diff = abs(avg_red - avg_green)  # ผลต่างคะแนนเฉลี่ยกีฬา
+    # 2) ด้านแผนก: ผลต่างการแบ่งคนแต่ละแผนก (ยิ่งน้อยยิ่งกระจายดี)
+    diff_dept = sum(abs(sum(1 for i in range(N) if chrom[i] == 0 and depts[i] == d) -
+                        sum(1 for i in range(N) if chrom[i] == 1 and depts[i] == d))
+                    for d in set(depts))
     
-    # 2. คำนวณการกระจายข้ามแผนก (Harmonization)
-    dept_diff = 0
-    for dept in unique_depts:
-        count_red = sum(1 for i in range(num_people) if chromosome[i] == 0 and departments[i] == dept)
-        count_green = sum(1 for i in range(num_people) if chromosome[i] == 1 and departments[i] == dept)
-        dept_diff += abs(count_red - count_green)  # ผลต่างการแบ่งคนในแผนก
-        
-    # คิดคะแนนความเหมาะสมเต็ม 100 (หักลบผลต่างออกไป ยิ่งผลต่างน้อย คะแนนยิ่งสูง)
-    fitness = 100 - (sports_diff * 3) - (dept_diff * 2)
-    return fitness, avg_red, avg_green, sports_diff, dept_diff
+    score = 100 - (diff_sport * 3) - (diff_dept * 2)
+    return score, diff_sport, diff_dept
 
-# -----------------------------------------------------------
-# 3. การทำงานของ Genetic Algorithm (GA)
-# -----------------------------------------------------------
-POP_SIZE = 60        # จำนวนโครโมโซมในแต่ละรุ่น
-GENERATIONS = 100    # จำนวนรุ่นที่ให้วิวัฒนาการ
-MUTATION_RATE = 0.20 # โอกาสเกิดการสลับตัวผู้เล่น (20%)
+# 3. Genetic Algorithm (GA)
+POP_SIZE, GENS = 50, 80
+pop = [[0] * half + [1] * half for _ in range(POP_SIZE)]
+for c in pop: random.shuffle(c)
 
-# สุ่มประชากรรุ่นแรก โดยให้มีสีแดง 20 คน และสีเขียว 20 คนเท่ากันพอดี
-population = []
-for _ in range(POP_SIZE):
-    chrom = [0] * half_team + [1] * half_team
-    random.shuffle(chrom)
-    population.append(chrom)
+best_chrom, best_score, history = None, -999, []
 
-best_fitness_history = []
-best_chromosome = None
-best_score = -999
-best_info = None
-
-print("กำลังค้นหาการจัดทีมที่ดีที่สุดด้วย Genetic Algorithm...")
-
-for gen in range(1, GENERATIONS + 1):
-    # ประเมินคะแนน Fitness ของทุกคนในรุ่น
-    eval_results = [calculate_fitness(chrom) for chrom in population]
-    fitness_list = [res[0] for res in eval_results]
+for _ in range(GENS):
+    scores = [fitness(c) for c in pop]
+    fits = [s[0] for s in scores]
     
-    # บันทึกโครโมโซมที่ทำคะแนนได้ดีที่สุด
-    max_idx = fitness_list.index(max(fitness_list))
-    if fitness_list[max_idx] > best_score:
-        best_score = fitness_list[max_idx]
-        best_chromosome = population[max_idx].copy()
-        best_info = eval_results[max_idx]
-        
-    best_fitness_history.append(best_score)
-    
-    # Elitism: นำ 2 ตัวที่ดีที่สุดไปไว้ในรุ่นถัดไปทันที
-    sorted_indices = sorted(range(POP_SIZE), key=lambda k: fitness_list[k], reverse=True)
-    new_population = [population[sorted_indices[0]].copy(), population[sorted_indices[1]].copy()]
-    
-    while len(new_population) < POP_SIZE:
-        # Selection: สุ่มแข่งแบบ Tournament 2 ตัว ตัวไหนคะแนนดีกว่าชนะ
-        i1, i2 = random.sample(range(POP_SIZE), 2)
-        parent1 = population[i1] if fitness_list[i1] > fitness_list[i2] else population[i2]
-        
-        i3, i4 = random.sample(range(POP_SIZE), 2)
-        parent2 = population[i3] if fitness_list[i3] > fitness_list[i4] else population[i4]
-        
-        # Crossover: สลับท่อนยีนระหว่างพ่อกับแม่
-        cut = random.randint(1, num_people - 1)
-        child = parent1[:cut] + parent2[cut:]
-        
-        # ซ่อมแซมให้ลูกมีจำนวนคนสีละ 20 คนเท่าเดิม
-        ones_count = child.count(1)
-        if ones_count > half_team:
-            ones_pos = [i for i in range(num_people) if child[i] == 1]
-            for pos in random.sample(ones_pos, ones_count - half_team):
-                child[pos] = 0
-        elif ones_count < half_team:
-            zeros_pos = [i for i in range(num_people) if child[i] == 0]
-            for pos in random.sample(zeros_pos, half_team - ones_count):
-                child[pos] = 1
-                
-        # Mutation: สุ่มสลับตัวผู้เล่นสีแดงกับสีเขียว 1 คู่
-        if random.random() < MUTATION_RATE:
-            pos_red = random.choice([i for i in range(num_people) if child[i] == 0])
-            pos_green = random.choice([i for i in range(num_people) if child[i] == 1])
-            child[pos_red], child[pos_green] = 1, 0
-            
-        new_population.append(child)
-        
-    population = new_population
+    if max(fits) > best_score:
+        best_score = max(fits)
+        best_chrom = pop[fits.index(best_score)].copy()
+    history.append(best_score)
 
-# -----------------------------------------------------------
+    # Elitism: เก็บตัวที่ดีที่สุดไว้ 1 ตัว
+    new_pop = [best_chrom.copy()]
+    
+    while len(new_pop) < POP_SIZE:
+        # Selection: Tournament สุ่ม 2 ตัวแล้วเลือกตัวที่ดีกว่า
+        p1 = pop[max(random.sample(range(POP_SIZE), 2), key=lambda x: fits[x])]
+        p2 = pop[max(random.sample(range(POP_SIZE), 2), key=lambda x: fits[x])]
+
+        # Crossover: สลับท่อนยีน
+        cut = random.randint(1, N - 1)
+        child = p1[:cut] + p2[cut:]
+
+        # Repair: ปรับให้มีสีละ 20 คนเท่าเดิม
+        while child.count(1) > half: child[random.choice([i for i, v in enumerate(child) if v == 1])] = 0
+        while child.count(1) < half: child[random.choice([i for i, v in enumerate(child) if v == 0])] = 1
+
+        # Mutation: สุ่มสลับตำแหน่งคนสีแดงกับสีเขียว (Swap)
+        if random.random() < 0.2:
+            i0 = random.choice([i for i, v in enumerate(child) if v == 0])
+            i1 = random.choice([i for i, v in enumerate(child) if v == 1])
+            child[i0], child[i1] = 1, 0
+
+        new_pop.append(child)
+    pop = new_pop
+
 # 4. สรุปผลลัพธ์
-# -----------------------------------------------------------
-fitness, avg_red, avg_green, sports_diff, dept_diff = best_info
+score, diff_s, diff_d = fitness(best_chrom)
+print("=" * 55)
+print(f"ผลลัพธ์ที่ดีที่สุด (Fitness: {score:.2f} / 100)")
+print(f"- ผลต่างคะแนนเฉลี่ยกีฬา : {diff_s:.2f} แต้ม (สูสีมาก)")
+print(f"- ผลต่างการกระจายแผนก  : {diff_d} คน")
+print("-" * 55)
+for d in sorted(set(depts)):
+    r = sum(1 for i in range(N) if best_chrom[i] == 0 and depts[i] == d)
+    g = sum(1 for i in range(N) if best_chrom[i] == 1 and depts[i] == d)
+    print(f"แผนก {d:<16}: สีแดง {r} คน | สีเขียว {g} คน")
+print("=" * 55)
 
-print("=" * 60)
-print(f" ผลลัพธ์ที่ดีที่สุด (Best Fitness: {fitness:.2f} / 100)")
-print("=" * 60)
-print(" 1. ความแฟนเนจด้านกีฬา (Sports Fairness):")
-print(f"    - ค่าเฉลี่ยสกิล ทีมสีแดง  : {avg_red:.2f}")
-print(f"    - ค่าเฉลี่ยสกิล ทีมสีเขียว: {avg_green:.2f}")
-print(f"    - ผลต่างคะแนนเฉลี่ย      : {sports_diff:.2f} แต้ม (สูสีมาก!)")
-print("-" * 60)
-print(" 2. การกระจายตัวข้ามแผนก (Harmonization):")
-for dept in unique_depts:
-    c_red = sum(1 for i in range(num_people) if best_chromosome[i] == 0 and departments[i] == dept)
-    c_green = sum(1 for i in range(num_people) if best_chromosome[i] == 1 and departments[i] == dept)
-    print(f"    - แผนก {dept:<16}: สีแดง {c_red} คน | สีเขียว {c_green} คน")
-print("=" * 60)
-
-# บันทึกรายชื่อสมาชิกลงไฟล์ CSV
-df['Team'] = ['สีแดง (Red)' if g == 0 else 'สีเขียว (Green)' for g in best_chromosome]
+# 5. บันทึกผลลง CSV และสร้างกราฟ
+df['Team'] = ['สีแดง (Red)' if v == 0 else 'สีเขียว (Green)' for v in best_chrom]
 df.to_csv("outputs/team_assignment.csv", index=False, encoding="utf-8-sig")
-print(">> บันทึกรายชื่อสมาชิกลงไฟล์: outputs/team_assignment.csv")
 
-# วาดกราฟความฟิตเนสอย่างง่าย
-plt.figure(figsize=(7, 4))
-plt.plot(range(1, GENERATIONS + 1), best_fitness_history, color='blue', linewidth=2)
-plt.title("Genetic Algorithm: Fitness Score over Generations")
+plt.figure(figsize=(6, 3.5))
+plt.plot(history, color='blue', linewidth=2)
+plt.title("Fitness Evolution")
 plt.xlabel("Generation")
-plt.ylabel("Fitness Score (0 - 100)")
-plt.grid(True)
+plt.ylabel("Fitness")
 plt.tight_layout()
-plt.savefig("outputs/fitness_evolution.png", dpi=150)
-print(">> บันทึกกราฟลงไฟล์: outputs/fitness_evolution.png")
+plt.savefig("outputs/fitness_evolution.png", dpi=120)
+plt.close()
