@@ -193,7 +193,6 @@ for b in bd1 + bd2:
 plt.tight_layout()
 plot_path = os.path.abspath("outputs/summary_plots.png")
 plt.savefig(plot_path, dpi=150)
-plt.savefig("outputs/fitness_evolution.png", dpi=150)
 print(f">> บันทึกกราฟสำเร็จ: {plot_path}")
 
 # เปิดแสดงรูปกราฟขึ้นมาบนหน้าจออัตโนมัติ

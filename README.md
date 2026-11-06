@@ -51,11 +51,6 @@ flowchart TD
 python main.py
 ```
 
-รันการทดสอบ Unit Tests:
-```powershell
-python -m pytest tests/test_ga.py -v
-```
-
 ---
 
 ## 📊 ผลลัพธ์ที่ได้จากการรันจริง (Dataset: HR(in).csv)
@@ -82,13 +77,11 @@ python -m pytest tests/test_ga.py -v
 ```
 d:\กีฬา\
 ├── data/
-│   └── HR(in).csv            # ชุดข้อมูลพนักงาน 358 คน
+│   └── HR(in).csv            # ชุดข้อมูลพนักงาน 358 คน (19 แผนก)
 ├── outputs/
 │   ├── team_assignment.csv   # รายชื่อผลลัพธ์ว่าใครอยู่สีไหน (358 คน)
-│   └── fitness_evolution.png # กราฟแสดงการลู่เข้าของค่าฟิตเนส
-├── tests/
-│   └── test_ga.py            # Unit tests ตรวจสอบความถูกต้อง
-├── main.py                   # โค้ด GA ทั้งหมด (สั้น กระชับ ~90 บรรทัด)
-├── requirements.txt          # ไลบรารีที่จำเป็น (pandas, matplotlib, pytest)
+│   └── summary_plots.png     # กราฟรวมผลการประเมินทั้ง 3 ด้านในไฟล์เดียว
+├── main.py                   # โค้ด Genetic Algorithm ทั้งหมดในไฟล์เดียว
+├── requirements.txt          # ไลบรารีที่จำเป็น (pandas, matplotlib)
 └── README.md                 # เอกสารอธิบายโครงงาน
 ```
