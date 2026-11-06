@@ -1,1042 +1,1051 @@
-================================================================================
+======================================================================================
  รายงานผลการจัดแบ่งทีมกีฬาองค์กร 2 สีด้วย Genetic Algorithm (Enterprise HR Edition)
-================================================================================
-ชุดข้อมูลต้นฉบับ : data/HR(in).csv (จำนวนพนักงานทั้งหมด 1,000 คน, 10 แผนกสายงาน)
+======================================================================================
+ชุดข้อมูลต้นฉบับ : data/HR(in).csv (จำนวนพนักงานทั้งหมด 1,000 คน, 19 แผนกสายงาน)
 ผลการแบ่งทีม    : ทีมสีแดง 500 คน | ทีมสีเขียว 500 คน (ผลต่างขนาดทีม 0 คน)
-คะแนนความเหมาะสมและความแม่นยำรวม (Best Fitness Score): 92.42 / 100 (92.42%)
---------------------------------------------------------------------------------
+คะแนนความเหมาะสมและความแม่นยำรวม (Best Fitness Score): 95.70 / 100 (95.70%)
+--------------------------------------------------------------------------------------
 1. ดัชนีวัดผลความสมดุลและความแม่นยำ (Performance & Evaluation Metrics):
-   - คะแนนความเหมาะสมรวม (Overall Fitness Score)   : 92.42% (ประเมินจากผลต่างจริงทุกมิติ)
-   - ความสมดุลด้านสมรรถภาพกีฬา (Sports Fairness)  : 93.05%
-   - ความสมดุลด้านการกระจายแผนก (Harmonization)   : 92.80%
-   - แผนกจำนวนคนคู่ที่แบ่งครึ่ง 50:50 ลงตัวสมบูรณ์    : 6 / 6 แผนก
---------------------------------------------------------------------------------
+   - คะแนนความเหมาะสมรวม (Overall Fitness Score)   : 95.70% (ประเมินจากผลต่างจริงทุกมิติ)
+   - ความสมดุลด้านสมรรถภาพกีฬา (Sports Fairness)  : 97.76%
+   - ความสมดุลด้านการกระจายแผนก (Harmonization)   : 94.60%
+   - แผนกจำนวนคนคู่ที่แบ่งครึ่ง 50:50 ลงตัวสมบูรณ์    : 15 / 15 แผนก (แม่นยำ 100%)
+--------------------------------------------------------------------------------------
 2. เปรียบเทียบความแฟนเนจด้านกีฬาและสรีระ (Sports Fairness Comparison):
-   - ทักษะกีฬาเฉลี่ย (Sports Skill) : สีแดง 58.74 | สีเขียว 58.74 (ต่าง 0.00)
-   - ส่วนเบี่ยงเบนมาตรฐาน (Std Dev) : สีแดง 16.46 | สีเขียว 16.38 (ต่าง 0.09)
-   - สัดส่วนพนักงานชาย (Male)       : สีแดง 231 คน | สีเขียว 230 คน (ต่าง 1 คน)
-   - สัดส่วนพนักงานหญิง (Female)     : สีแดง 269 คน | สีเขียว 270 คน (ต่าง 1 คน)
-   - น้ำหนักเฉลี่ย (Weight)         : สีแดง 63.10 kg | สีเขียว 63.02 kg (ต่าง 0.07 kg)
-   - ส่วนสูงเฉลี่ย (Height)         : สีแดง 165.92 cm | สีเขียว 166.45 cm (ต่าง 0.53 cm)
-   - อายุเฉลี่ย (Age)              : สีแดง 34.21 ปี | สีเขียว 33.61 ปี (ต่าง 0.59 ปี)
-   - ดัชนีมวลกายเฉลี่ย (BMI)        : สีแดง 22.78 | สีเขียว 22.66 (ต่าง 0.12)
---------------------------------------------------------------------------------
-3. การกระจายตัวข้ามสายงาน (Cross-Department Harmonization - ครบทั้ง 10 แผนก):
-   - Customer Support   (รวม 98  คน): สีแดง 49  คน | สีเขียว 49  คน [สมดุล 50:50]
-   - Engineering        (รวม 160 คน): สีแดง 80  คน | สีเขียว 80  คน [สมดุล 50:50]
-   - Finance            (รวม 85  คน): สีแดง 42  คน | สีเขียว 43  คน [ต่าง 1 คน (เลขคี่)]
-   - Human Resources    (รวม 57  คน): สีแดง 28  คน | สีเขียว 29  คน [ต่าง 1 คน (เลขคี่)]
-   - IT & Data          (รวม 92  คน): สีแดง 46  คน | สีเขียว 46  คน [สมดุล 50:50]
-   - Marketing          (รวม 105 คน): สีแดง 53  คน | สีเขียว 52  คน [ต่าง 1 คน (เลขคี่)]
-   - Operations         (รวม 135 คน): สีแดง 68  คน | สีเขียว 67  คน [ต่าง 1 คน (เลขคี่)]
-   - Product & Design   (รวม 76  คน): สีแดง 38  คน | สีเขียว 38  คน [สมดุล 50:50]
-   - Quality Assurance  (รวม 64  คน): สีแดง 32  คน | สีเขียว 32  คน [สมดุล 50:50]
-   - Sales              (รวม 128 คน): สีแดง 64  คน | สีเขียว 64  คน [สมดุล 50:50]
-================================================================================
+   - ทักษะกีฬาเฉลี่ย (Sports Skill) : สีแดง 60.22 | สีเขียว 60.26 (ต่าง 0.04)
+   - ส่วนเบี่ยงเบนมาตรฐาน (Std Dev) : สีแดง 15.93 | สีเขียว 15.93 (ต่าง 0.00)
+   - สัดส่วนพนักงานชาย (Male)       : สีแดง 240 คน | สีเขียว 240 คน (ต่าง 0 คน)
+   - สัดส่วนพนักงานหญิง (Female)     : สีแดง 260 คน | สีเขียว 260 คน (ต่าง 0 คน)
+   - น้ำหนักเฉลี่ย (Weight)         : สีแดง 63.08 kg | สีเขียว 63.51 kg (ต่าง 0.43 kg)
+   - ส่วนสูงเฉลี่ย (Height)         : สีแดง 166.68 cm | สีเขียว 166.63 cm (ต่าง 0.06 cm)
+   - อายุเฉลี่ย (Age)              : สีแดง 34.38 ปี | สีเขียว 34.33 ปี (ต่าง 0.04 ปี)
+   - ดัชนีมวลกายเฉลี่ย (BMI)        : สีแดง 22.61 | สีเขียว 22.78 (ต่าง 0.16)
+--------------------------------------------------------------------------------------
+3. การกระจายตัวข้ามสายงานอย่างละเอียด (Cross-Department Harmonization - ครบทั้ง 19 แผนก):
+   - A: Accounting         (รวม 48 คน): สีแดง 24 คน | สีเขียว 24 คน [สมดุล 50.0% : 50.0% (Δ=0)]
+   - B: BI & Analytics     (รวม 42 คน): สีแดง 21 คน | สีเขียว 21 คน [สมดุล 50.0% : 50.0% (Δ=0)]
+   - C: Customer Support   (รวม 64 คน): สีแดง 32 คน | สีเขียว 32 คน [สมดุล 50.0% : 50.0% (Δ=0)]
+   - D: Data Science       (รวม 50 คน): สีแดง 25 คน | สีเขียว 25 คน [สมดุล 50.0% : 50.0% (Δ=0)]
+   - E: Engineering        (รวม 86 คน): สีแดง 43 คน | สีเขียว 43 คน [สมดุล 50.0% : 50.0% (Δ=0)]
+   - F: Finance            (รวม 55 คน): สีแดง 28 คน | สีเขียว 27 คน [สัดส่วน 50.9% : 49.1% (Δ=1 เลขคี่)]
+   - G: General Admin      (รวม 38 คน): สีแดง 19 คน | สีเขียว 19 คน [สมดุล 50.0% : 50.0% (Δ=0)]
+   - H: Human Resources    (รวม 44 คน): สีแดง 22 คน | สีเขียว 22 คน [สมดุล 50.0% : 50.0% (Δ=0)]
+   - I: IT Infrastructure  (รวม 58 คน): สีแดง 29 คน | สีเขียว 29 คน [สมดุล 50.0% : 50.0% (Δ=0)]
+   - J: Legal Affairs      (รวม 32 คน): สีแดง 16 คน | สีเขียว 16 คน [สมดุล 50.0% : 50.0% (Δ=0)]
+   - K: Key Accounts       (รวม 46 คน): สีแดง 23 คน | สีเขียว 23 คน [สมดุล 50.0% : 50.0% (Δ=0)]
+   - L: Logistics          (รวม 53 คน): สีแดง 26 คน | สีเขียว 27 คน [สัดส่วน 49.1% : 50.9% (Δ=1 เลขคี่)]
+   - M: Marketing          (รวม 62 คน): สีแดง 31 คน | สีเขียว 31 คน [สมดุล 50.0% : 50.0% (Δ=0)]
+   - N: Network & Sec      (รวม 40 คน): สีแดง 20 คน | สีเขียว 20 คน [สมดุล 50.0% : 50.0% (Δ=0)]
+   - O: Operations         (รวม 75 คน): สีแดง 38 คน | สีเขียว 37 คน [สัดส่วน 50.7% : 49.3% (Δ=1 เลขคี่)]
+   - P: Product & Design   (รวม 52 คน): สีแดง 26 คน | สีเขียว 26 คน [สมดุล 50.0% : 50.0% (Δ=0)]
+   - Q: Quality Assurance  (รวม 44 คน): สีแดง 22 คน | สีเขียว 22 คน [สมดุล 50.0% : 50.0% (Δ=0)]
+   - R: R&D Innovation     (รวม 47 คน): สีแดง 23 คน | สีเขียว 24 คน [สัดส่วน 48.9% : 51.1% (Δ=1 เลขคี่)]
+   - S: Sales              (รวม 64 คน): สีแดง 32 คน | สีเขียว 32 คน [สมดุล 50.0% : 50.0% (Δ=0)]
+======================================================================================
  รายชื่อสมาชิกทีมสีแดง (Team Red: 500 คน)
-================================================================================
-No.    EmpID     Gender   Department           Weight   Height   Age    BMI     Skill 
-1      EMP0001   Female   Finance              52       158      22     20.83   85.9  
-2      EMP0002   Male     Sales                87       182      43     26.26   46.2  
-3      EMP0005   Male     Sales                59       175      29     19.27   61.8  
-4      EMP0009   Male     Customer Support     77       171      39     26.33   93.6  
-5      EMP0010   Female   Customer Support     68       163      37     25.59   38.5  
-6      EMP0011   Female   IT & Data            67       162      25     25.53   51.9  
-7      EMP0012   Female   IT & Data            61       165      25     22.41   72.8  
-8      EMP0015   Male     Quality Assurance    77       174      44     25.43   78.1  
-9      EMP0016   Female   Marketing            48       153      26     20.50   75.4  
-10     EMP0017   Male     Human Resources      64       160      35     25.00   48.5  
-11     EMP0018   Female   Operations           58       162      30     22.10   69.4  
-12     EMP0020   Male     Sales                70       170      35     24.22   53.5  
-13     EMP0024   Male     Customer Support     80       175      32     26.12   56.1  
-14     EMP0027   Male     Operations           75       178      44     23.67   45.1  
-15     EMP0028   Male     Marketing            64       160      32     25.00   38.1  
-16     EMP0030   Female   Engineering          52       162      26     19.81   37.1  
-17     EMP0031   Female   Human Resources      51       162      32     19.43   41.2  
-18     EMP0032   Male     Finance              68       166      41     24.68   51.3  
-19     EMP0033   Male     Sales                66       166      30     23.95   31.2  
-20     EMP0034   Female   Human Resources      57       157      37     23.12   44.3  
-21     EMP0036   Female   Engineering          54       150      51     24.00   26.4  
-22     EMP0039   Female   Operations           61       152      35     26.40   85.6  
-23     EMP0041   Female   Customer Support     49       151      33     21.49   87.3  
-24     EMP0042   Female   Quality Assurance    47       152      44     20.34   60.2  
-25     EMP0043   Male     Product & Design     65       173      37     21.72   56.0  
-26     EMP0045   Female   Sales                55       160      40     21.48   98.0  
-27     EMP0046   Male     Engineering          65       170      23     22.49   51.2  
-28     EMP0047   Female   IT & Data            46       157      40     18.66   37.1  
-29     EMP0050   Male     Finance              61       171      34     20.86   60.1  
-30     EMP0053   Male     Operations           98       181      30     29.91   47.9  
-31     EMP0054   Male     Operations           76       183      31     22.69   36.6  
-32     EMP0055   Male     IT & Data            78       170      28     26.99   85.6  
-33     EMP0059   Male     Product & Design     77       177      32     24.58   46.9  
-34     EMP0061   Male     Customer Support     72       164      39     26.77   58.5  
-35     EMP0062   Female   Human Resources      43       156      28     17.67   65.2  
-36     EMP0063   Female   Marketing            62       165      30     22.77   64.9  
-37     EMP0064   Male     Marketing            79       176      41     25.50   63.4  
-38     EMP0065   Male     Operations           67       169      29     23.46   52.3  
-39     EMP0066   Male     IT & Data            69       179      37     21.53   72.6  
-40     EMP0071   Male     Customer Support     97       183      29     28.96   42.6  
-41     EMP0074   Female   Human Resources      48       153      32     20.50   67.2  
-42     EMP0075   Male     Marketing            71       170      38     24.57   56.4  
-43     EMP0076   Female   Engineering          57       158      39     22.83   58.7  
-44     EMP0077   Male     Sales                78       181      32     23.81   54.3  
-45     EMP0079   Male     Quality Assurance    71       170      39     24.57   65.7  
-46     EMP0083   Male     Finance              71       163      32     26.72   69.5  
-47     EMP0084   Female   Finance              57       165      22     20.94   44.4  
-48     EMP0085   Female   Sales                62       173      41     20.72   33.6  
-49     EMP0086   Female   Sales                58       165      28     21.30   82.0  
-50     EMP0089   Female   Engineering          55       157      36     22.31   57.1  
-51     EMP0090   Male     Sales                61       172      43     20.62   47.1  
-52     EMP0091   Female   Customer Support     48       156      34     19.72   66.2  
-53     EMP0092   Male     Engineering          65       174      22     21.47   77.7  
-54     EMP0093   Female   Quality Assurance    45       160      26     17.58   60.9  
-55     EMP0094   Male     IT & Data            81       174      29     26.75   49.6  
-56     EMP0095   Female   Product & Design     55       157      35     22.31   86.3  
-57     EMP0100   Male     Finance              56       160      22     21.87   71.7  
-58     EMP0101   Male     Engineering          53       162      41     20.20   26.0  
-59     EMP0102   Female   Human Resources      43       152      23     18.61   62.8  
-60     EMP0103   Male     Product & Design     60       171      39     20.52   77.0  
-61     EMP0104   Female   IT & Data            67       168      40     23.74   38.4  
-62     EMP0106   Male     Product & Design     65       162      46     24.77   61.7  
-63     EMP0108   Male     Operations           73       158      41     29.24   48.4  
-64     EMP0112   Male     Operations           72       173      32     24.06   26.0  
-65     EMP0114   Male     Engineering          48       161      35     18.52   46.6  
-66     EMP0116   Male     IT & Data            66       171      45     22.57   51.7  
-67     EMP0117   Female   Quality Assurance    65       162      29     24.77   56.2  
-68     EMP0118   Female   Product & Design     43       157      33     17.44   89.3  
-69     EMP0119   Female   Sales                65       159      31     25.71   67.3  
-70     EMP0120   Male     Marketing            50       167      49     17.93   45.6  
-71     EMP0121   Male     Customer Support     62       167      34     22.23   71.6  
-72     EMP0122   Male     Finance              79       177      28     25.22   90.2  
-73     EMP0123   Female   Human Resources      66       164      33     24.54   57.7  
-74     EMP0124   Female   Human Resources      68       165      46     24.98   46.0  
-75     EMP0125   Female   IT & Data            48       158      35     19.23   26.0  
-76     EMP0126   Female   Finance              59       158      41     23.63   53.8  
-77     EMP0127   Female   Engineering          56       159      44     22.15   33.2  
-78     EMP0130   Male     Marketing            83       182      32     25.06   53.6  
-79     EMP0132   Female   Product & Design     51       155      49     21.23   60.8  
-80     EMP0134   Female   Product & Design     46       148      31     21.00   58.9  
-81     EMP0136   Male     Engineering          65       171      28     22.23   38.3  
-82     EMP0138   Male     Quality Assurance    77       177      32     24.58   63.4  
-83     EMP0142   Female   Operations           44       154      31     18.55   76.5  
-84     EMP0145   Male     Engineering          83       181      22     25.34   60.8  
-85     EMP0147   Male     Human Resources      78       171      33     26.67   59.4  
-86     EMP0149   Female   Marketing            54       160      29     21.09   49.4  
-87     EMP0154   Female   Operations           66       166      38     23.95   31.7  
-88     EMP0156   Male     Marketing            68       184      42     20.09   63.3  
-89     EMP0157   Male     Sales                53       172      43     17.92   42.4  
-90     EMP0159   Female   Marketing            54       162      41     20.58   62.0  
-91     EMP0163   Male     IT & Data            98       182      48     29.59   45.3  
-92     EMP0165   Male     Operations           69       162      37     26.29   63.2  
-93     EMP0168   Male     Finance              67       170      42     23.18   78.9  
-94     EMP0171   Female   Product & Design     60       171      28     20.52   63.5  
-95     EMP0172   Male     IT & Data            69       172      30     23.32   53.6  
-96     EMP0175   Female   Marketing            57       170      25     19.72   71.2  
-97     EMP0178   Female   Customer Support     63       164      39     23.42   58.2  
-98     EMP0179   Female   Customer Support     63       163      22     23.71   62.4  
-99     EMP0181   Male     Sales                68       179      22     21.22   50.0  
-100    EMP0182   Female   Engineering          52       163      26     19.57   85.8  
-101    EMP0183   Male     Finance              74       168      32     26.22   84.5  
-102    EMP0187   Female   Engineering          44       158      43     17.63   35.5  
-103    EMP0192   Female   Operations           65       163      39     24.46   67.2  
-104    EMP0193   Female   Customer Support     54       153      28     23.07   74.0  
-105    EMP0196   Male     Customer Support     65       173      37     21.72   66.7  
-106    EMP0199   Female   IT & Data            48       151      38     21.05   62.6  
-107    EMP0200   Male     Human Resources      80       184      28     23.63   74.1  
-108    EMP0204   Male     Marketing            82       176      37     26.47   98.0  
-109    EMP0206   Female   Engineering          60       162      42     22.86   50.6  
-110    EMP0209   Male     IT & Data            63       163      36     23.71   54.2  
-111    EMP0210   Male     Engineering          69       172      40     23.32   41.1  
-112    EMP0212   Male     Quality Assurance    79       186      58     22.84   50.1  
-113    EMP0214   Male     Sales                73       169      22     25.56   40.7  
-114    EMP0215   Male     Customer Support     90       176      34     29.05   27.6  
-115    EMP0217   Female   Customer Support     48       155      45     19.98   33.2  
-116    EMP0219   Female   Engineering          52       161      48     20.06   56.5  
-117    EMP0220   Female   Finance              55       153      38     23.50   32.6  
-118    EMP0223   Female   Finance              56       149      39     25.22   50.3  
-119    EMP0228   Male     Operations           58       167      45     20.80   26.0  
-120    EMP0230   Male     Product & Design     85       176      45     27.44   29.2  
-121    EMP0235   Female   Engineering          62       155      39     25.81   32.1  
-122    EMP0238   Female   Marketing            58       155      28     24.14   57.7  
-123    EMP0243   Male     Finance              70       174      32     23.12   80.7  
-124    EMP0245   Male     Sales                65       163      35     24.46   71.8  
-125    EMP0246   Female   Marketing            60       159      37     23.73   89.5  
-126    EMP0249   Male     Quality Assurance    76       170      43     26.30   63.2  
-127    EMP0252   Female   Engineering          50       168      35     17.72   58.0  
-128    EMP0253   Male     Customer Support     59       172      31     19.94   68.8  
-129    EMP0254   Male     Quality Assurance    68       181      41     20.76   42.4  
-130    EMP0260   Female   Customer Support     61       162      38     23.24   36.5  
-131    EMP0261   Female   Quality Assurance    63       164      29     23.42   79.0  
-132    EMP0262   Male     IT & Data            89       168      25     31.53   74.4  
-133    EMP0263   Female   IT & Data            46       157      42     18.66   50.2  
-134    EMP0264   Male     Operations           56       164      29     20.82   38.2  
-135    EMP0266   Female   Sales                69       162      34     26.29   64.8  
-136    EMP0267   Female   Engineering          57       157      43     23.12   69.5  
-137    EMP0268   Female   Engineering          57       157      36     23.12   84.6  
-138    EMP0269   Male     Operations           80       173      32     26.73   43.2  
-139    EMP0271   Female   Quality Assurance    51       158      43     20.43   26.0  
-140    EMP0273   Female   IT & Data            62       163      40     23.34   67.6  
-141    EMP0275   Male     Operations           57       171      30     19.49   43.5  
-142    EMP0279   Female   Operations           68       167      38     24.38   65.5  
-143    EMP0280   Male     Marketing            68       176      31     21.95   58.4  
-144    EMP0281   Male     Sales                80       185      38     23.37   46.2  
-145    EMP0282   Female   Operations           50       161      32     19.29   34.0  
-146    EMP0285   Male     Engineering          73       174      27     24.11   52.9  
-147    EMP0286   Male     Operations           66       168      23     23.38   93.1  
-148    EMP0288   Male     IT & Data            63       178      41     19.88   56.2  
-149    EMP0290   Female   Operations           71       167      22     25.46   27.3  
-150    EMP0294   Male     Quality Assurance    65       159      25     25.71   46.6  
-151    EMP0295   Male     Sales                73       163      23     27.48   55.5  
-152    EMP0297   Female   Product & Design     63       158      37     25.24   42.1  
-153    EMP0298   Female   Marketing            51       163      35     19.20   79.9  
-154    EMP0300   Female   Marketing            70       165      31     25.71   81.1  
-155    EMP0301   Male     Engineering          71       168      22     25.16   58.5  
-156    EMP0302   Female   Operations           55       148      39     25.11   27.3  
-157    EMP0303   Female   Quality Assurance    47       153      34     20.08   42.8  
-158    EMP0306   Female   Finance              61       171      40     20.86   68.4  
-159    EMP0307   Male     Sales                85       180      49     26.23   61.0  
-160    EMP0311   Female   Quality Assurance    61       163      28     22.96   65.0  
-161    EMP0313   Female   Finance              54       163      37     20.32   45.4  
-162    EMP0316   Male     Sales                66       171      36     22.57   34.0  
-163    EMP0317   Male     Sales                72       179      38     22.47   45.3  
-164    EMP0318   Male     Marketing            74       171      37     25.31   66.6  
-165    EMP0320   Male     Quality Assurance    93       180      49     28.70   28.4  
-166    EMP0322   Female   Operations           53       153      33     22.64   49.6  
-167    EMP0325   Female   IT & Data            51       159      30     20.17   38.1  
-168    EMP0326   Male     Marketing            63       170      28     21.80   64.4  
-169    EMP0328   Female   Product & Design     69       169      46     24.16   84.0  
-170    EMP0331   Male     Customer Support     73       177      52     23.30   49.1  
-171    EMP0332   Female   Engineering          59       155      39     24.56   79.0  
-172    EMP0339   Female   Operations           52       163      39     19.57   54.8  
-173    EMP0340   Male     Operations           69       174      33     22.79   66.4  
-174    EMP0341   Male     Engineering          71       171      33     24.28   45.3  
-175    EMP0344   Male     Finance              72       177      28     22.98   61.1  
-176    EMP0345   Female   Sales                58       164      43     21.56   40.6  
-177    EMP0346   Female   Product & Design     49       162      40     18.67   45.5  
-178    EMP0350   Female   Finance              44       157      51     17.85   26.0  
-179    EMP0351   Female   Sales                41       153      28     17.51   65.6  
-180    EMP0352   Female   Customer Support     61       159      47     24.13   32.9  
-181    EMP0354   Male     Customer Support     75       170      22     25.95   70.5  
-182    EMP0355   Male     Customer Support     88       174      22     29.07   57.7  
-183    EMP0358   Female   Quality Assurance    66       154      33     27.83   81.4  
-184    EMP0360   Female   IT & Data            58       163      36     21.83   79.4  
-185    EMP0365   Male     Engineering          70       174      39     23.12   53.2  
-186    EMP0366   Female   Marketing            47       163      33     17.69   37.1  
-187    EMP0367   Male     Sales                63       175      29     20.57   65.2  
-188    EMP0368   Female   Operations           52       152      24     22.51   81.4  
-189    EMP0369   Male     Finance              62       167      22     22.23   95.6  
-190    EMP0371   Male     Engineering          75       171      28     25.65   38.9  
-191    EMP0372   Female   Customer Support     62       162      25     23.62   81.3  
-192    EMP0373   Female   Operations           58       153      34     24.78   49.9  
-193    EMP0374   Male     IT & Data            83       171      36     28.38   79.4  
-194    EMP0376   Female   Sales                60       164      33     22.31   44.7  
-195    EMP0377   Male     Customer Support     59       176      30     19.05   65.8  
-196    EMP0378   Male     Operations           89       180      29     27.47   47.5  
-197    EMP0381   Female   Operations           42       151      36     18.42   67.7  
-198    EMP0382   Female   Sales                54       163      46     20.32   53.1  
-199    EMP0388   Female   Engineering          64       156      34     26.30   65.3  
-200    EMP0389   Male     Product & Design     60       164      35     22.31   62.2  
-201    EMP0390   Male     Operations           66       174      37     21.80   47.7  
-202    EMP0392   Male     Engineering          71       166      33     25.77   37.2  
-203    EMP0395   Female   Operations           54       157      37     21.91   94.2  
-204    EMP0397   Female   Engineering          45       158      34     18.03   56.8  
-205    EMP0399   Male     Sales                78       171      25     26.67   61.5  
-206    EMP0403   Female   Engineering          58       162      36     22.10   55.6  
-207    EMP0405   Female   Customer Support     42       153      26     17.94   76.7  
-208    EMP0409   Female   IT & Data            49       154      35     20.66   44.4  
-209    EMP0413   Female   Product & Design     49       162      43     18.67   35.5  
-210    EMP0417   Male     Engineering          49       162      28     18.67   59.3  
-211    EMP0419   Female   Customer Support     58       165      39     21.30   56.3  
-212    EMP0420   Female   Human Resources      53       165      38     19.47   62.8  
-213    EMP0421   Male     IT & Data            62       171      37     21.20   43.5  
-214    EMP0423   Male     Marketing            86       174      22     28.41   78.7  
-215    EMP0424   Male     Sales                63       169      36     22.06   69.1  
-216    EMP0427   Female   Customer Support     52       156      34     21.37   44.1  
-217    EMP0430   Female   Finance              57       162      34     21.72   63.3  
-218    EMP0431   Female   Finance              61       164      39     22.68   54.6  
-219    EMP0433   Female   Marketing            51       160      28     19.92   54.8  
-220    EMP0434   Female   Engineering          64       162      40     24.39   66.8  
-221    EMP0436   Female   Operations           58       164      24     21.56   56.9  
-222    EMP0437   Female   IT & Data            61       162      36     23.24   33.7  
-223    EMP0438   Female   Sales                51       154      32     21.50   46.2  
-224    EMP0439   Female   Product & Design     44       156      35     18.08   59.6  
-225    EMP0441   Female   Operations           69       154      31     29.09   55.4  
-226    EMP0442   Female   Engineering          58       159      27     22.94   78.7  
-227    EMP0443   Female   Engineering          50       155      33     20.81   39.3  
-228    EMP0444   Female   Marketing            46       163      38     17.31   44.5  
-229    EMP0447   Female   Engineering          43       155      33     17.90   59.2  
-230    EMP0448   Male     Operations           66       168      42     23.38   86.1  
-231    EMP0449   Male     Marketing            80       179      32     24.97   26.0  
-232    EMP0455   Female   Product & Design     56       149      41     25.22   78.0  
-233    EMP0456   Female   Finance              52       158      43     20.83   74.7  
-234    EMP0457   Female   Marketing            51       157      27     20.69   83.7  
-235    EMP0459   Male     IT & Data            62       175      30     20.24   70.8  
-236    EMP0460   Female   Operations           72       167      42     25.82   64.9  
-237    EMP0462   Female   Customer Support     48       157      28     19.47   45.6  
-238    EMP0463   Female   IT & Data            52       163      48     19.57   61.3  
-239    EMP0467   Female   Marketing            79       178      22     24.93   65.8  
-240    EMP0473   Female   Operations           66       167      33     23.67   53.5  
-241    EMP0474   Female   Customer Support     52       169      22     18.21   55.7  
-242    EMP0475   Male     Sales                83       175      39     27.10   64.9  
-243    EMP0476   Female   Product & Design     64       166      38     23.23   60.8  
-244    EMP0477   Female   Human Resources      59       163      27     22.21   30.3  
-245    EMP0479   Female   IT & Data            58       156      25     23.83   46.6  
-246    EMP0481   Female   Sales                60       164      44     22.31   35.2  
-247    EMP0482   Male     Human Resources      69       168      31     24.45   86.8  
-248    EMP0483   Female   Human Resources      65       165      35     23.88   68.3  
-249    EMP0487   Female   Human Resources      67       168      37     23.74   40.9  
-250    EMP0489   Male     Customer Support     78       175      30     25.47   54.6  
-251    EMP0492   Female   Operations           54       159      31     21.36   94.7  
-252    EMP0493   Male     Operations           62       166      38     22.50   31.7  
-253    EMP0495   Female   Sales                48       165      37     17.63   37.5  
-254    EMP0496   Female   Customer Support     51       165      22     18.73   72.7  
-255    EMP0498   Female   Operations           43       155      47     17.90   39.6  
-256    EMP0499   Female   IT & Data            64       159      28     25.32   62.8  
-257    EMP0500   Female   Operations           66       165      38     24.24   61.9  
-258    EMP0501   Female   Marketing            67       163      35     25.22   58.9  
-259    EMP0510   Male     Marketing            67       178      42     21.15   63.0  
-260    EMP0511   Male     Quality Assurance    78       171      26     26.67   73.6  
-261    EMP0512   Male     Operations           47       158      30     18.83   70.5  
-262    EMP0515   Female   Operations           78       174      41     25.76   63.9  
-263    EMP0516   Female   Human Resources      61       157      29     24.75   37.2  
-264    EMP0517   Female   Quality Assurance    54       160      30     21.09   38.2  
-265    EMP0523   Female   Finance              45       161      43     17.36   33.4  
-266    EMP0528   Male     Sales                70       179      28     21.85   92.1  
-267    EMP0530   Male     Quality Assurance    77       173      22     25.73   59.2  
-268    EMP0531   Female   Engineering          65       168      22     23.03   51.9  
-269    EMP0532   Female   Sales                54       170      23     18.69   48.8  
-270    EMP0534   Female   Product & Design     50       158      22     20.03   74.0  
-271    EMP0535   Female   IT & Data            74       170      33     25.61   56.5  
-272    EMP0537   Female   Operations           67       166      38     24.31   64.8  
-273    EMP0538   Female   Finance              45       159      29     17.80   50.7  
-274    EMP0540   Male     Operations           71       174      30     23.45   80.6  
-275    EMP0545   Male     IT & Data            66       176      38     21.31   67.5  
-276    EMP0546   Female   Marketing            49       164      34     18.22   26.0  
-277    EMP0547   Male     Product & Design     62       173      32     20.72   78.7  
-278    EMP0551   Male     Human Resources      56       164      41     20.82   49.7  
-279    EMP0552   Male     Finance              54       173      30     18.04   46.2  
-280    EMP0554   Female   Customer Support     55       155      26     22.89   62.2  
-281    EMP0558   Female   Finance              47       150      39     20.89   64.3  
-282    EMP0559   Male     Engineering          60       177      35     19.15   75.4  
-283    EMP0560   Male     Finance              78       171      40     26.67   35.7  
-284    EMP0562   Female   Engineering          68       154      36     28.67   55.2  
-285    EMP0563   Male     Operations           68       176      36     21.95   85.3  
-286    EMP0565   Male     Sales                66       179      35     20.60   59.2  
-287    EMP0566   Female   Engineering          60       161      28     23.15   92.9  
-288    EMP0568   Female   Quality Assurance    53       156      39     21.78   55.4  
-289    EMP0569   Male     Sales                64       167      30     22.95   89.7  
-290    EMP0571   Female   Sales                67       162      39     25.53   81.3  
-291    EMP0572   Female   Sales                64       155      31     26.64   51.8  
-292    EMP0574   Male     Operations           90       186      28     26.01   53.5  
-293    EMP0575   Female   Product & Design     60       155      33     24.97   96.5  
-294    EMP0576   Female   Sales                57       167      22     20.44   98.0  
-295    EMP0577   Male     Operations           90       177      32     28.73   73.0  
-296    EMP0578   Female   Customer Support     58       161      35     22.38   64.1  
-297    EMP0579   Male     IT & Data            65       178      35     20.52   64.6  
-298    EMP0581   Female   Marketing            61       164      32     22.68   48.7  
-299    EMP0582   Male     Operations           80       168      49     28.34   52.2  
-300    EMP0583   Female   Engineering          69       165      26     25.34   46.7  
-301    EMP0584   Male     Operations           61       176      22     19.69   90.7  
-302    EMP0586   Female   Finance              52       155      22     21.64   65.4  
-303    EMP0588   Female   IT & Data            51       161      26     19.68   64.5  
-304    EMP0590   Female   Engineering          50       166      49     18.14   42.6  
-305    EMP0592   Male     Marketing            57       171      29     19.49   45.5  
-306    EMP0594   Female   Quality Assurance    48       155      48     19.98   65.5  
-307    EMP0595   Male     Operations           85       183      29     25.38   49.9  
-308    EMP0596   Male     Customer Support     76       175      39     24.82   47.6  
-309    EMP0597   Male     Marketing            57       161      33     21.99   61.9  
-310    EMP0601   Male     Marketing            68       172      30     22.99   55.4  
-311    EMP0603   Female   IT & Data            51       158      29     20.43   73.8  
-312    EMP0604   Female   Engineering          54       156      34     22.19   68.5  
-313    EMP0606   Male     Operations           63       172      34     21.30   54.6  
-314    EMP0612   Male     IT & Data            76       167      37     27.25   65.8  
-315    EMP0614   Female   Product & Design     48       155      36     19.98   77.7  
-316    EMP0616   Female   Engineering          54       164      28     20.08   63.6  
-317    EMP0618   Male     Quality Assurance    76       166      22     27.58   89.9  
-318    EMP0619   Female   Sales                52       159      31     20.57   42.8  
-319    EMP0620   Female   Finance              67       166      45     24.31   47.2  
-320    EMP0624   Male     Engineering          78       177      34     24.90   61.7  
-321    EMP0625   Female   Sales                61       165      33     22.41   59.2  
-322    EMP0626   Female   Sales                58       163      34     21.83   67.9  
-323    EMP0636   Female   Customer Support     55       165      40     20.20   56.6  
-324    EMP0637   Male     Operations           80       183      22     23.89   61.7  
-325    EMP0640   Male     Engineering          62       167      31     22.23   67.6  
-326    EMP0642   Female   Operations           57       168      33     20.20   88.1  
-327    EMP0643   Female   Quality Assurance    69       168      36     24.45   40.0  
-328    EMP0644   Male     Finance              55       173      22     18.38   72.8  
-329    EMP0645   Male     Sales                71       171      32     24.28   72.8  
-330    EMP0646   Female   Operations           45       153      36     19.22   73.7  
-331    EMP0654   Male     Human Resources      77       177      44     24.58   61.1  
-332    EMP0655   Female   Quality Assurance    54       154      27     22.77   66.3  
-333    EMP0657   Female   Sales                70       167      28     25.10   69.9  
-334    EMP0661   Male     Finance              86       174      22     28.41   58.6  
-335    EMP0662   Female   Customer Support     60       155      25     24.97   65.5  
-336    EMP0664   Female   Human Resources      47       150      28     20.89   77.5  
-337    EMP0665   Male     Engineering          86       177      31     27.45   57.4  
-338    EMP0666   Female   Marketing            49       168      36     17.36   56.1  
-339    EMP0667   Male     Engineering          77       182      37     23.25   65.4  
-340    EMP0670   Male     Finance              55       174      22     18.17   58.9  
-341    EMP0677   Male     Marketing            74       167      33     26.53   54.5  
-342    EMP0680   Female   Finance              53       165      24     19.47   48.4  
-343    EMP0681   Female   Finance              48       151      25     21.05   64.8  
-344    EMP0682   Male     Customer Support     55       173      31     18.38   63.9  
-345    EMP0684   Male     Engineering          71       171      39     24.28   54.7  
-346    EMP0688   Male     Engineering          74       175      33     24.16   72.8  
-347    EMP0690   Male     Engineering          77       178      29     24.30   48.9  
-348    EMP0693   Female   Customer Support     76       168      29     26.93   73.6  
-349    EMP0698   Female   Engineering          58       156      35     23.83   31.4  
-350    EMP0700   Female   Finance              51       158      33     20.43   64.1  
-351    EMP0703   Female   Engineering          60       165      46     22.04   80.3  
-352    EMP0704   Female   Sales                60       161      35     23.15   79.2  
-353    EMP0706   Female   Product & Design     57       161      37     21.99   39.3  
-354    EMP0707   Male     Engineering          88       185      36     25.71   51.0  
-355    EMP0710   Female   Operations           59       155      45     24.56   51.0  
-356    EMP0711   Male     Engineering          63       171      29     21.55   91.9  
-357    EMP0712   Male     Engineering          76       179      30     23.72   42.9  
-358    EMP0713   Male     Customer Support     71       168      33     25.16   82.6  
-359    EMP0720   Male     Marketing            76       177      42     24.26   73.5  
-360    EMP0721   Male     Quality Assurance    69       168      31     24.45   64.7  
-361    EMP0725   Male     Engineering          68       176      26     21.95   49.7  
-362    EMP0726   Male     Product & Design     79       179      37     24.66   79.4  
-363    EMP0727   Male     Sales                74       185      37     21.62   73.9  
-364    EMP0728   Male     Human Resources      104      182      44     31.40   28.8  
-365    EMP0729   Female   Marketing            43       155      39     17.90   67.3  
-366    EMP0733   Male     Marketing            70       178      22     22.09   66.8  
-367    EMP0734   Male     Customer Support     71       178      29     22.41   61.5  
-368    EMP0735   Male     Marketing            79       175      29     25.80   71.2  
-369    EMP0736   Female   Marketing            59       155      26     24.56   89.4  
-370    EMP0737   Female   IT & Data            57       169      31     19.96   84.1  
-371    EMP0740   Female   Engineering          61       157      34     24.75   55.7  
-372    EMP0742   Male     Engineering          82       176      36     26.47   72.9  
-373    EMP0743   Male     IT & Data            68       166      49     24.68   37.7  
-374    EMP0744   Female   Finance              48       153      24     20.50   79.0  
-375    EMP0745   Male     Engineering          59       173      40     19.71   34.1  
-376    EMP0746   Female   Quality Assurance    55       149      36     24.77   54.8  
-377    EMP0751   Female   Product & Design     62       157      27     25.15   83.8  
-378    EMP0753   Male     Sales                60       161      28     23.15   60.0  
-379    EMP0754   Female   Operations           44       159      32     17.40   54.8  
-380    EMP0755   Male     Sales                75       167      23     26.89   48.8  
-381    EMP0757   Female   Marketing            63       162      36     24.01   51.1  
-382    EMP0759   Male     Product & Design     88       172      37     29.75   66.2  
-383    EMP0760   Male     Product & Design     71       169      37     24.86   88.9  
-384    EMP0761   Female   Product & Design     61       169      26     21.36   88.4  
-385    EMP0763   Male     Quality Assurance    52       158      37     20.83   84.6  
-386    EMP0766   Female   Engineering          49       150      49     21.78   64.3  
-387    EMP0767   Female   Sales                62       168      34     21.97   67.5  
-388    EMP0770   Female   Engineering          55       162      35     20.96   44.5  
-389    EMP0773   Male     Sales                82       182      32     24.76   70.9  
-390    EMP0774   Female   Product & Design     50       156      48     20.55   51.1  
-391    EMP0775   Male     Sales                62       164      35     23.05   44.7  
-392    EMP0776   Male     Finance              68       168      26     24.09   58.6  
-393    EMP0778   Male     Operations           89       178      35     28.09   70.8  
-394    EMP0780   Female   Operations           62       161      39     23.92   56.0  
-395    EMP0781   Female   IT & Data            60       152      36     25.97   36.8  
-396    EMP0785   Female   Customer Support     62       157      22     25.15   45.7  
-397    EMP0791   Male     Customer Support     83       181      37     25.34   31.6  
-398    EMP0797   Male     Product & Design     68       170      42     23.53   37.3  
-399    EMP0798   Male     Human Resources      53       168      48     18.78   43.8  
-400    EMP0800   Male     Sales                65       169      40     22.76   62.9  
-401    EMP0801   Female   Quality Assurance    49       162      36     18.67   60.4  
-402    EMP0802   Female   Operations           55       162      38     20.96   60.7  
-403    EMP0803   Male     Marketing            71       174      38     23.45   51.7  
-404    EMP0804   Female   IT & Data            52       164      39     19.33   51.3  
-405    EMP0806   Female   Human Resources      62       159      32     24.52   66.7  
-406    EMP0807   Female   Marketing            61       167      38     21.87   51.1  
-407    EMP0810   Female   Sales                63       167      38     22.59   37.7  
-408    EMP0811   Female   Sales                60       163      51     22.58   49.5  
-409    EMP0812   Female   Customer Support     62       162      29     23.62   68.9  
-410    EMP0813   Female   Operations           50       160      22     19.53   43.3  
-411    EMP0814   Male     Engineering          90       190      37     24.93   75.6  
-412    EMP0815   Female   Product & Design     44       153      38     18.80   60.0  
-413    EMP0822   Female   IT & Data            58       159      22     22.94   45.3  
-414    EMP0825   Female   Customer Support     51       155      41     21.23   60.9  
-415    EMP0826   Female   Human Resources      50       154      43     21.08   53.4  
-416    EMP0827   Female   Engineering          53       159      24     20.96   51.6  
-417    EMP0828   Female   Customer Support     57       154      39     24.03   64.8  
-418    EMP0829   Female   Human Resources      56       159      35     22.15   54.5  
-419    EMP0830   Male     Sales                92       179      31     28.71   80.3  
-420    EMP0834   Female   Marketing            60       164      34     22.31   88.4  
-421    EMP0835   Male     Engineering          51       169      27     17.86   49.3  
-422    EMP0838   Male     Engineering          62       173      42     20.72   63.5  
-423    EMP0840   Male     IT & Data            83       171      47     28.38   63.0  
-424    EMP0841   Male     Engineering          59       169      45     20.66   52.7  
-425    EMP0842   Male     Sales                65       172      36     21.97   33.0  
-426    EMP0843   Female   Operations           65       165      32     23.88   33.8  
-427    EMP0848   Female   Engineering          48       157      41     19.47   62.9  
-428    EMP0851   Female   Sales                58       166      29     21.05   54.1  
-429    EMP0852   Female   Product & Design     65       158      26     26.04   70.5  
-430    EMP0854   Male     Sales                70       168      34     24.80   46.9  
-431    EMP0855   Female   Marketing            53       153      40     22.64   90.3  
-432    EMP0856   Female   Operations           51       148      23     23.28   55.3  
-433    EMP0857   Female   Quality Assurance    55       156      37     22.60   65.4  
-434    EMP0858   Female   Human Resources      65       166      30     23.59   67.9  
-435    EMP0859   Female   Operations           52       158      52     20.83   69.7  
-436    EMP0860   Male     Finance              69       182      37     20.83   86.5  
-437    EMP0861   Female   Customer Support     44       158      40     17.63   56.4  
-438    EMP0864   Male     IT & Data            66       171      39     22.57   70.8  
-439    EMP0866   Male     Finance              67       169      22     23.46   48.7  
-440    EMP0867   Male     Product & Design     65       161      35     25.08   62.3  
-441    EMP0870   Male     Customer Support     64       181      32     19.54   69.5  
-442    EMP0871   Male     Marketing            83       178      44     26.20   73.4  
-443    EMP0872   Female   Marketing            58       159      44     22.94   60.9  
-444    EMP0873   Female   Sales                52       161      34     20.06   47.0  
-445    EMP0878   Male     Quality Assurance    72       173      41     24.06   74.2  
-446    EMP0882   Male     IT & Data            73       173      22     24.39   78.0  
-447    EMP0883   Male     Operations           67       166      46     24.31   42.0  
-448    EMP0884   Female   Quality Assurance    47       161      37     18.13   33.0  
-449    EMP0885   Male     Engineering          82       173      30     27.40   32.9  
-450    EMP0886   Male     Human Resources      65       180      28     20.06   68.1  
-451    EMP0891   Male     Marketing            64       168      22     22.68   48.3  
-452    EMP0892   Female   Finance              60       164      32     22.31   82.5  
-453    EMP0893   Male     Marketing            60       178      38     18.94   42.7  
-454    EMP0894   Female   Engineering          45       160      36     17.58   53.0  
-455    EMP0896   Male     Marketing            79       174      27     26.09   67.4  
-456    EMP0898   Male     Product & Design     68       171      30     23.26   59.8  
-457    EMP0900   Female   Human Resources      59       168      49     20.90   35.4  
-458    EMP0904   Female   Sales                61       175      33     19.92   85.2  
-459    EMP0905   Male     Customer Support     69       176      39     22.28   49.1  
-460    EMP0906   Female   IT & Data            56       153      42     23.92   78.2  
-461    EMP0911   Female   IT & Data            47       148      34     21.46   45.4  
-462    EMP0913   Female   Marketing            59       160      40     23.05   56.2  
-463    EMP0915   Male     Engineering          77       177      24     24.58   46.3  
-464    EMP0918   Female   Sales                67       158      39     26.84   47.5  
-465    EMP0923   Male     Finance              80       168      31     28.34   41.1  
-466    EMP0924   Male     Engineering          73       171      33     24.96   70.7  
-467    EMP0925   Female   Customer Support     49       162      34     18.67   46.2  
-468    EMP0926   Male     Marketing            70       179      26     21.85   76.0  
-469    EMP0927   Male     Finance              63       174      31     20.81   56.4  
-470    EMP0930   Male     Operations           80       175      36     26.12   59.9  
-471    EMP0932   Male     Engineering          76       181      40     23.20   74.3  
-472    EMP0933   Male     Sales                54       161      34     20.83   56.4  
-473    EMP0934   Female   Customer Support     58       154      40     24.46   81.7  
-474    EMP0935   Female   Operations           52       157      40     21.10   26.0  
-475    EMP0936   Female   Human Resources      58       162      31     22.10   64.2  
-476    EMP0941   Male     Engineering          88       175      32     28.73   57.3  
-477    EMP0944   Female   Engineering          53       155      30     22.06   77.3  
-478    EMP0949   Female   Engineering          48       154      33     20.24   59.2  
-479    EMP0950   Male     Engineering          81       175      37     26.45   46.8  
-480    EMP0952   Male     Operations           70       175      46     22.86   71.9  
-481    EMP0953   Male     Engineering          68       176      30     21.95   53.7  
-482    EMP0956   Male     Product & Design     66       172      39     22.31   26.0  
-483    EMP0957   Female   Engineering          59       171      37     20.18   36.5  
-484    EMP0958   Female   Finance              49       158      33     19.63   67.8  
-485    EMP0959   Male     Sales                48       164      41     17.85   68.5  
-486    EMP0960   Female   Operations           62       168      24     21.97   82.0  
-487    EMP0961   Female   Quality Assurance    43       156      35     17.67   74.6  
-488    EMP0962   Female   Product & Design     67       165      25     24.61   35.9  
-489    EMP0968   Female   Product & Design     81       169      37     28.36   46.4  
-490    EMP0969   Male     Engineering          86       176      34     27.76   34.4  
-491    EMP0974   Male     Operations           68       176      47     21.95   64.9  
-492    EMP0975   Male     Sales                69       172      42     23.32   41.5  
-493    EMP0978   Female   Engineering          61       158      27     24.44   66.3  
-494    EMP0981   Female   IT & Data            57       158      30     22.83   69.3  
-495    EMP0983   Male     IT & Data            66       164      37     24.54   26.0  
-496    EMP0985   Male     Marketing            80       177      32     25.54   29.1  
-497    EMP0986   Female   Product & Design     51       170      44     17.65   34.9  
-498    EMP0994   Female   Sales                67       163      25     25.22   50.7  
-499    EMP0997   Female   Customer Support     56       166      22     20.32   75.4  
-500    EMP0999   Female   IT & Data            54       157      40     21.91   47.4  
-================================================================================
+======================================================================================
+No.    EmpID     Gender   Department              Weight   Height   Age    BMI     Skill 
+1      EMP0001   Female   O: Operations           52       158      22     20.83   86.7  
+2      EMP0003   Male     N: Network & Sec        86       188      35     24.33   43.7  
+3      EMP0005   Female   F: Finance              49       163      30     18.44   62.0  
+4      EMP0006   Male     C: Customer Support     89       180      23     27.47   56.5  
+5      EMP0008   Male     R: R&D Innovation       56       175      24     18.29   61.7  
+6      EMP0009   Female   M: Marketing            63       160      39     24.61   95.9  
+7      EMP0010   Female   L: Logistics            67       163      37     25.22   40.9  
+8      EMP0014   Male     G: General Admin        60       169      40     21.01   58.3  
+9      EMP0015   Male     Q: Quality Assurance    76       174      44     25.10   79.2  
+10     EMP0016   Male     J: Legal Affairs        58       164      27     21.56   77.3  
+11     EMP0021   Female   Q: Quality Assurance    53       159      31     20.96   41.4  
+12     EMP0024   Male     K: Key Accounts         79       175      32     25.80   58.0  
+13     EMP0027   Male     E: Engineering          74       178      44     23.36   47.3  
+14     EMP0029   Female   A: Accounting           65       174      34     21.47   65.8  
+15     EMP0031   Female   S: Sales                51       162      33     19.43   42.8  
+16     EMP0033   Female   G: General Admin        54       155      30     22.48   35.2  
+17     EMP0036   Female   B: BI & Analytics       54       151      51     23.68   29.0  
+18     EMP0037   Male     F: Finance              81       175      22     26.45   42.6  
+19     EMP0038   Male     C: Customer Support     67       169      23     23.46   65.6  
+20     EMP0040   Male     G: General Admin        88       188      36     24.90   30.6  
+21     EMP0042   Female   S: Sales                48       153      44     20.50   61.7  
+22     EMP0045   Female   H: Human Resources      56       161      40     21.60   98.0  
+23     EMP0047   Female   N: Network & Sec        48       158      40     19.23   39.7  
+24     EMP0048   Male     A: Accounting           80       171      32     27.36   69.7  
+25     EMP0049   Male     E: Engineering          90       181      31     27.47   49.3  
+26     EMP0054   Male     D: Data Science         75       182      32     22.64   38.6  
+27     EMP0061   Female   L: Logistics            60       154      39     25.30   61.5  
+28     EMP0063   Female   J: Legal Affairs        63       166      31     22.86   65.9  
+29     EMP0064   Female   J: Legal Affairs        64       164      41     23.80   66.5  
+30     EMP0067   Female   B: BI & Analytics       58       162      28     22.10   45.5  
+31     EMP0070   Male     A: Accounting           63       162      36     24.01   53.6  
+32     EMP0074   Female   S: Sales                49       154      33     20.66   68.3  
+33     EMP0075   Female   J: Legal Affairs        58       159      38     22.94   59.7  
+34     EMP0076   Female   C: Customer Support     57       159      39     22.55   60.5  
+35     EMP0079   Female   R: R&D Innovation       58       159      40     22.94   68.3  
+36     EMP0081   Female   R: R&D Innovation       70       157      38     28.40   58.4  
+37     EMP0082   Male     O: Operations           63       169      28     22.06   46.8  
+38     EMP0084   Male     O: Operations           70       177      23     22.34   47.7  
+39     EMP0088   Female   I: IT Infrastructure    54       158      28     21.63   55.7  
+40     EMP0093   Male     S: Sales                53       171      27     18.13   62.6  
+41     EMP0094   Female   M: Marketing            66       162      30     25.15   52.7  
+42     EMP0097   Male     I: IT Infrastructure    64       163      22     24.09   72.7  
+43     EMP0100   Male     O: Operations           56       160      22     21.87   72.9  
+44     EMP0101   Female   C: Customer Support     44       152      42     19.04   28.0  
+45     EMP0103   Male     P: Product & Design     60       171      39     20.52   77.9  
+46     EMP0104   Female   M: Marketing            67       168      40     23.74   40.4  
+47     EMP0108   Male     E: Engineering          72       158      41     28.84   50.4  
+48     EMP0109   Male     C: Customer Support     61       171      27     20.86   40.6  
+49     EMP0110   Female   A: Accounting           60       163      38     22.58   66.2  
+50     EMP0112   Female   E: Engineering          59       161      32     22.76   29.8  
+51     EMP0115   Male     D: Data Science         57       170      32     19.72   47.3  
+52     EMP0118   Female   Q: Quality Assurance    44       158      33     17.63   89.9  
+53     EMP0120   Male     I: IT Infrastructure    51       167      49     18.29   47.6  
+54     EMP0121   Male     K: Key Accounts         62       167      34     22.23   72.8  
+55     EMP0122   Male     O: Operations           79       177      29     25.22   90.4  
+56     EMP0128   Male     C: Customer Support     67       170      22     23.18   92.4  
+57     EMP0130   Female   I: IT Infrastructure    67       169      32     23.46   57.0  
+58     EMP0134   Female   Q: Quality Assurance    46       148      32     21.00   60.1  
+59     EMP0136   Male     A: Accounting           65       171      29     22.23   40.1  
+60     EMP0139   Male     F: Finance              65       167      38     23.31   59.7  
+61     EMP0140   Male     I: IT Infrastructure    76       183      37     22.69   55.3  
+62     EMP0145   Male     C: Customer Support     82       181      22     25.03   62.6  
+63     EMP0147   Male     S: Sales                77       171      33     26.33   61.2  
+64     EMP0148   Male     I: IT Infrastructure    69       163      43     25.97   73.2  
+65     EMP0150   Female   F: Finance              61       164      34     22.68   83.7  
+66     EMP0154   Female   D: Data Science         65       166      39     23.59   34.0  
+67     EMP0157   Male     H: Human Resources      54       172      43     18.25   44.5  
+68     EMP0158   Female   D: Data Science         56       158      41     22.43   52.2  
+69     EMP0159   Female   I: IT Infrastructure    54       162      41     20.58   63.3  
+70     EMP0162   Female   O: Operations           56       163      30     21.08   50.8  
+71     EMP0165   Male     D: Data Science         69       163      37     25.97   64.8  
+72     EMP0166   Female   M: Marketing            76       167      37     27.25   72.2  
+73     EMP0167   Female   S: Sales                48       162      41     18.29   51.9  
+74     EMP0170   Female   F: Finance              53       159      30     20.96   64.5  
+75     EMP0173   Male     C: Customer Support     79       173      45     26.40   55.0  
+76     EMP0174   Male     N: Network & Sec        69       178      39     21.78   61.5  
+77     EMP0178   Female   K: Key Accounts         63       165      39     23.14   60.0  
+78     EMP0182   Female   A: Accounting           53       163      26     19.95   86.9  
+79     EMP0186   Male     E: Engineering          76       169      42     26.61   57.9  
+80     EMP0187   Female   C: Customer Support     45       159      43     17.80   37.7  
+81     EMP0188   Female   N: Network & Sec        60       165      32     22.04   39.8  
+82     EMP0190   Male     C: Customer Support     63       170      29     21.80   49.3  
+83     EMP0193   Male     M: Marketing            65       164      28     24.17   73.9  
+84     EMP0194   Female   F: Finance              52       150      26     23.11   98.0  
+85     EMP0196   Male     K: Key Accounts         65       173      37     21.72   68.0  
+86     EMP0198   Male     F: Finance              58       174      30     19.16   66.9  
+87     EMP0199   Female   N: Network & Sec        49       152      38     21.21   64.1  
+88     EMP0201   Male     E: Engineering          66       168      27     23.38   67.3  
+89     EMP0202   Male     H: Human Resources      88       175      27     28.73   40.6  
+90     EMP0207   Female   E: Engineering          63       171      30     21.55   65.9  
+91     EMP0210   Male     B: BI & Analytics       69       172      40     23.32   43.1  
+92     EMP0212   Male     R: R&D Innovation       79       186      57     22.84   52.0  
+93     EMP0213   Female   D: Data Science         58       154      36     24.46   56.3  
+94     EMP0214   Female   H: Human Resources      60       158      23     24.03   44.2  
+95     EMP0215   Female   K: Key Accounts         73       164      35     27.14   31.6  
+96     EMP0217   Female   K: Key Accounts         49       156      45     20.13   35.5  
+97     EMP0218   Male     K: Key Accounts         51       167      32     18.29   55.1  
+98     EMP0219   Female   C: Customer Support     53       161      48     20.45   58.4  
+99     EMP0222   Male     Q: Quality Assurance    60       163      27     22.58   61.0  
+100    EMP0224   Male     S: Sales                78       171      46     26.67   30.8  
+101    EMP0226   Male     O: Operations           60       170      22     20.76   38.3  
+102    EMP0227   Female   G: General Admin        53       163      33     19.95   52.6  
+103    EMP0229   Male     B: BI & Analytics       64       171      28     21.89   64.8  
+104    EMP0230   Male     P: Product & Design     83       176      45     26.79   32.1  
+105    EMP0231   Female   I: IT Infrastructure    53       151      29     23.24   85.0  
+106    EMP0234   Male     L: Logistics            66       169      23     23.11   42.1  
+107    EMP0238   Male     J: Legal Affairs        71       167      28     25.46   57.8  
+108    EMP0239   Female   K: Key Accounts         71       161      31     27.39   53.8  
+109    EMP0242   Male     K: Key Accounts         63       176      34     20.34   77.6  
+110    EMP0243   Male     O: Operations           70       174      33     23.12   81.3  
+111    EMP0245   Male     F: Finance              64       163      36     24.09   73.0  
+112    EMP0246   Female   H: Human Resources      61       160      37     23.83   90.0  
+113    EMP0248   Female   O: Operations           67       162      25     25.53   66.9  
+114    EMP0249   Male     R: R&D Innovation       75       170      43     25.95   64.8  
+115    EMP0250   Female   L: Logistics            58       167      22     20.80   50.6  
+116    EMP0251   Female   C: Customer Support     56       155      40     23.31   82.2  
+117    EMP0253   Male     K: Key Accounts         59       172      32     19.94   69.7  
+118    EMP0255   Male     R: R&D Innovation       71       169      23     24.86   53.2  
+119    EMP0257   Male     I: IT Infrastructure    83       173      25     27.73   95.2  
+120    EMP0258   Female   D: Data Science         52       162      38     19.81   68.9  
+121    EMP0259   Male     I: IT Infrastructure    68       173      33     22.72   51.8  
+122    EMP0260   Female   L: Logistics            61       163      38     22.96   39.0  
+123    EMP0261   Male     R: R&D Innovation       76       176      30     24.54   78.4  
+124    EMP0263   Female   M: Marketing            47       158      42     18.83   52.0  
+125    EMP0264   Male     D: Data Science         56       164      30     20.82   40.0  
+126    EMP0265   Female   I: IT Infrastructure    73       160      31     28.52   32.5  
+127    EMP0267   Female   B: BI & Analytics       57       157      43     23.12   70.7  
+128    EMP0270   Female   R: R&D Innovation       57       154      43     24.03   66.7  
+129    EMP0273   Female   M: Marketing            62       164      41     23.05   68.8  
+130    EMP0274   Female   D: Data Science         56       157      38     22.72   48.4  
+131    EMP0277   Male     O: Operations           66       165      32     24.24   64.9  
+132    EMP0279   Male     E: Engineering          81       179      38     25.28   65.8  
+133    EMP0280   Male     K: Key Accounts         68       176      32     21.95   59.6  
+134    EMP0282   Female   E: Engineering          50       161      33     19.29   35.9  
+135    EMP0283   Male     N: Network & Sec        65       167      31     23.31   48.7  
+136    EMP0284   Female   E: Engineering          63       172      39     21.30   62.5  
+137    EMP0285   Male     B: BI & Analytics       72       174      28     23.78   54.7  
+138    EMP0286   Male     E: Engineering          66       168      24     23.38   93.3  
+139    EMP0288   Male     M: Marketing            64       178      41     20.20   58.0  
+140    EMP0289   Male     M: Marketing            68       171      40     23.26   36.0  
+141    EMP0293   Female   D: Data Science         59       161      34     22.76   59.5  
+142    EMP0295   Male     F: Finance              72       163      24     27.10   57.2  
+143    EMP0298   Female   I: IT Infrastructure    51       163      35     19.20   80.7  
+144    EMP0299   Female   S: Sales                55       154      32     23.19   48.7  
+145    EMP0301   Male     C: Customer Support     70       168      22     24.80   60.5  
+146    EMP0302   Female   E: Engineering          55       148      40     25.11   29.3  
+147    EMP0303   Female   R: R&D Innovation       48       154      35     20.24   44.6  
+148    EMP0307   Female   G: General Admin        69       167      49     24.74   63.9  
+149    EMP0309   Male     O: Operations           86       177      29     27.45   75.5  
+150    EMP0310   Male     E: Engineering          75       178      36     23.67   77.2  
+151    EMP0311   Female   R: R&D Innovation       62       164      29     23.05   65.9  
+152    EMP0316   Female   H: Human Resources      55       160      36     21.48   35.3  
+153    EMP0317   Male     G: General Admin        72       179      38     22.47   47.2  
+154    EMP0320   Male     R: R&D Innovation       92       180      49     28.40   30.8  
+155    EMP0323   Male     G: General Admin        64       173      33     21.38   71.6  
+156    EMP0325   Male     N: Network & Sec        62       170      30     21.45   41.6  
+157    EMP0329   Male     L: Logistics            74       180      26     22.84   55.8  
+158    EMP0332   Female   C: Customer Support     59       156      39     24.24   80.1  
+159    EMP0333   Female   M: Marketing            65       161      28     25.08   54.0  
+160    EMP0334   Male     S: Sales                74       175      30     24.16   31.4  
+161    EMP0339   Female   E: Engineering          52       163      40     19.57   56.0  
+162    EMP0341   Male     B: BI & Analytics       71       171      34     24.28   46.9  
+163    EMP0344   Male     O: Operations           71       177      29     22.66   62.6  
+164    EMP0345   Female   G: General Admin        58       164      43     21.56   42.6  
+165    EMP0346   Female   Q: Quality Assurance    50       162      40     19.05   47.7  
+166    EMP0347   Male     P: Product & Design     65       172      39     21.97   54.3  
+167    EMP0348   Female   D: Data Science         50       155      39     20.81   66.3  
+168    EMP0350   Female   P: Product & Design     46       158      50     18.43   28.0  
+169    EMP0351   Female   F: Finance              42       154      28     17.71   67.1  
+170    EMP0354   Male     L: Logistics            74       170      23     25.61   71.7  
+171    EMP0355   Female   K: Key Accounts         71       162      22     27.05   61.4  
+172    EMP0356   Female   D: Data Science         56       157      30     22.72   47.6  
+173    EMP0360   Female   M: Marketing            58       163      37     21.83   79.9  
+174    EMP0362   Male     A: Accounting           72       175      30     23.51   77.9  
+175    EMP0365   Male     A: Accounting           69       173      39     23.05   54.9  
+176    EMP0366   Female   I: IT Infrastructure    48       163      33     18.07   39.5  
+177    EMP0367   Male     H: Human Resources      63       175      30     20.57   66.2  
+178    EMP0368   Female   E: Engineering          53       153      25     22.64   81.8  
+179    EMP0369   Male     O: Operations           63       168      22     22.32   96.3  
+180    EMP0370   Male     E: Engineering          79       170      23     27.34   74.2  
+181    EMP0371   Male     A: Accounting           74       171      28     25.31   41.4  
+182    EMP0375   Female   L: Logistics            50       161      29     19.29   42.9  
+183    EMP0377   Male     K: Key Accounts         59       176      31     19.05   66.7  
+184    EMP0380   Male     H: Human Resources      75       180      40     23.15   56.0  
+185    EMP0386   Female   N: Network & Sec        48       157      35     19.47   68.4  
+186    EMP0387   Female   S: Sales                60       161      37     23.15   63.4  
+187    EMP0389   Female   Q: Quality Assurance    50       154      35     21.08   62.3  
+188    EMP0390   Male     E: Engineering          66       174      38     21.80   49.2  
+189    EMP0392   Male     A: Accounting           70       166      34     25.40   39.4  
+190    EMP0393   Male     E: Engineering          67       161      35     25.85   63.6  
+191    EMP0394   Male     F: Finance              76       174      25     25.10   69.0  
+192    EMP0402   Male     R: R&D Innovation       60       169      28     21.01   45.5  
+193    EMP0404   Male     R: R&D Innovation       77       178      27     24.30   58.9  
+194    EMP0409   Female   N: Network & Sec        50       155      36     20.81   46.1  
+195    EMP0411   Male     J: Legal Affairs        68       173      38     22.72   58.0  
+196    EMP0412   Male     F: Finance              64       165      29     23.51   50.4  
+197    EMP0413   Female   P: Product & Design     51       163      43     19.20   38.1  
+198    EMP0416   Female   P: Product & Design     60       163      35     22.58   82.1  
+199    EMP0420   Female   S: Sales                53       165      39     19.47   63.7  
+200    EMP0421   Male     N: Network & Sec        62       171      37     21.20   45.4  
+201    EMP0422   Male     P: Product & Design     61       169      27     21.36   76.6  
+202    EMP0423   Male     J: Legal Affairs        85       174      22     28.08   80.0  
+203    EMP0424   Male     G: General Admin        63       169      37     22.06   69.9  
+204    EMP0426   Female   O: Operations           55       159      36     21.76   52.1  
+205    EMP0427   Female   L: Logistics            53       157      34     21.50   46.2  
+206    EMP0428   Female   G: General Admin        62       151      26     27.19   42.1  
+207    EMP0429   Female   M: Marketing            50       159      28     19.78   71.6  
+208    EMP0432   Female   N: Network & Sec        59       163      37     22.21   69.7  
+209    EMP0434   Male     B: BI & Analytics       77       174      40     25.43   66.9  
+210    EMP0435   Male     S: Sales                68       174      47     22.46   31.7  
+211    EMP0436   Female   D: Data Science         59       165      25     21.67   58.3  
+212    EMP0439   Female   P: Product & Design     44       156      35     18.08   61.0  
+213    EMP0440   Female   O: Operations           59       160      43     23.05   49.2  
+214    EMP0441   Female   D: Data Science         69       155      32     28.72   56.9  
+215    EMP0443   Female   C: Customer Support     50       156      33     20.55   41.1  
+216    EMP0444   Female   I: IT Infrastructure    48       164      39     17.85   46.6  
+217    EMP0446   Male     D: Data Science         65       163      33     24.46   63.6  
+218    EMP0448   Female   D: Data Science         54       157      42     21.91   87.0  
+219    EMP0450   Male     M: Marketing            66       185      41     19.28   28.0  
+220    EMP0451   Male     A: Accounting           54       172      36     18.25   56.3  
+221    EMP0453   Male     A: Accounting           80       176      29     25.83   75.1  
+222    EMP0455   Male     Q: Quality Assurance    67       160      41     26.17   77.8  
+223    EMP0457   Female   J: Legal Affairs        51       158      27     20.43   84.3  
+224    EMP0460   Female   E: Engineering          71       167      42     25.46   66.4  
+225    EMP0461   Female   S: Sales                51       166      35     18.51   59.9  
+226    EMP0465   Male     E: Engineering          66       167      42     23.67   46.8  
+227    EMP0470   Male     O: Operations           61       174      30     20.15   54.6  
+228    EMP0471   Male     S: Sales                60       171      33     20.52   41.5  
+229    EMP0474   Female   K: Key Accounts         53       169      22     18.56   57.7  
+230    EMP0475   Female   G: General Admin        67       163      39     25.22   68.1  
+231    EMP0476   Male     P: Product & Design     78       179      39     24.34   60.7  
+232    EMP0477   Female   S: Sales                60       164      28     22.31   32.5  
+233    EMP0479   Female   M: Marketing            57       156      26     23.42   48.7  
+234    EMP0480   Male     E: Engineering          75       166      34     27.22   70.9  
+235    EMP0483   Female   S: Sales                65       165      35     23.88   69.6  
+236    EMP0484   Female   M: Marketing            55       166      34     19.96   83.6  
+237    EMP0485   Male     S: Sales                57       164      26     21.19   82.5  
+238    EMP0486   Female   F: Finance              59       158      46     23.63   82.7  
+239    EMP0489   Male     L: Logistics            78       175      31     25.47   55.9  
+240    EMP0490   Female   Q: Quality Assurance    54       174      36     17.84   55.8  
+241    EMP0491   Female   E: Engineering          55       163      28     20.70   72.3  
+242    EMP0495   Female   H: Human Resources      49       166      37     17.78   39.7  
+243    EMP0496   Female   K: Key Accounts         53       166      22     19.23   74.4  
+244    EMP0497   Male     L: Logistics            65       180      46     20.06   68.5  
+245    EMP0500   Male     F: Finance              79       177      38     25.22   62.2  
+246    EMP0503   Male     D: Data Science         67       179      27     20.91   98.0  
+247    EMP0505   Female   S: Sales                61       158      39     24.44   50.3  
+248    EMP0509   Female   O: Operations           52       165      36     19.10   84.9  
+249    EMP0510   Female   J: Legal Affairs        56       166      42     20.32   63.4  
+250    EMP0513   Female   E: Engineering          63       163      36     23.71   67.2  
+251    EMP0515   Female   F: Finance              77       174      41     25.43   65.4  
+252    EMP0519   Male     P: Product & Design     70       173      42     23.39   67.2  
+253    EMP0521   Female   L: Logistics            63       165      37     23.14   87.1  
+254    EMP0524   Male     D: Data Science         68       173      29     22.72   87.7  
+255    EMP0525   Female   D: Data Science         50       167      34     17.93   81.5  
+256    EMP0529   Male     L: Logistics            70       171      34     23.94   54.6  
+257    EMP0534   Female   P: Product & Design     51       158      22     20.43   75.6  
+258    EMP0535   Male     N: Network & Sec        88       182      34     26.57   56.6  
+259    EMP0536   Female   S: Sales                58       164      43     21.56   49.5  
+260    EMP0537   Male     D: Data Science         82       179      38     25.59   64.6  
+261    EMP0544   Female   A: Accounting           51       169      34     17.86   70.1  
+262    EMP0545   Male     M: Marketing            67       176      38     21.63   69.1  
+263    EMP0546   Female   K: Key Accounts         50       164      34     18.59   28.0  
+264    EMP0550   Male     C: Customer Support     67       176      22     21.63   74.5  
+265    EMP0551   Male     S: Sales                56       164      41     20.82   51.4  
+266    EMP0552   Female   O: Operations           46       161      30     17.75   47.7  
+267    EMP0553   Male     K: Key Accounts         87       180      29     26.85   49.5  
+268    EMP0556   Male     H: Human Resources      66       167      31     23.67   87.9  
+269    EMP0557   Female   Q: Quality Assurance    56       161      40     21.60   53.3  
+270    EMP0560   Female   O: Operations           64       160      41     25.00   39.2  
+271    EMP0561   Female   M: Marketing            61       161      33     23.53   72.0  
+272    EMP0562   Female   C: Customer Support     68       155      36     28.30   57.1  
+273    EMP0564   Female   O: Operations           61       162      40     23.24   98.0  
+274    EMP0568   Female   Q: Quality Assurance    54       157      39     21.91   57.1  
+275    EMP0569   Male     F: Finance              64       167      31     22.95   90.0  
+276    EMP0570   Female   O: Operations           68       168      36     24.09   64.3  
+277    EMP0571   Female   G: General Admin        67       163      39     25.22   82.3  
+278    EMP0572   Female   H: Human Resources      64       156      31     26.30   53.8  
+279    EMP0574   Female   E: Engineering          73       173      29     24.39   56.6  
+280    EMP0575   Female   P: Product & Design     61       156      34     25.07   96.4  
+281    EMP0576   Female   G: General Admin        58       168      23     20.55   98.0  
+282    EMP0578   Female   K: Key Accounts         58       161      35     22.38   65.5  
+283    EMP0580   Male     I: IT Infrastructure    74       168      32     26.22   59.0  
+284    EMP0581   Female   I: IT Infrastructure    61       164      33     22.68   50.2  
+285    EMP0583   Male     A: Accounting           82       177      27     26.17   47.4  
+286    EMP0584   Male     D: Data Science         62       176      23     20.02   91.3  
+287    EMP0585   Female   J: Legal Affairs        44       158      36     17.63   53.9  
+288    EMP0592   Male     J: Legal Affairs        58       171      29     19.84   47.8  
+289    EMP0593   Female   R: R&D Innovation       57       159      26     22.55   84.5  
+290    EMP0594   Female   R: R&D Innovation       49       156      48     20.13   66.8  
+291    EMP0596   Male     L: Logistics            75       175      39     24.49   49.7  
+292    EMP0598   Male     A: Accounting           59       168      32     20.90   48.0  
+293    EMP0601   Male     I: IT Infrastructure    68       172      31     22.99   56.7  
+294    EMP0602   Male     H: Human Resources      67       165      36     24.61   58.5  
+295    EMP0603   Female   N: Network & Sec        52       158      30     20.83   75.0  
+296    EMP0605   Male     M: Marketing            64       171      30     21.89   28.0  
+297    EMP0607   Male     G: General Admin        67       181      35     20.45   56.4  
+298    EMP0610   Female   Q: Quality Assurance    63       167      22     22.59   88.4  
+299    EMP0611   Female   I: IT Infrastructure    61       161      31     23.53   62.1  
+300    EMP0612   Male     M: Marketing            76       168      37     26.93   67.3  
+301    EMP0615   Male     P: Product & Design     65       165      41     23.88   73.1  
+302    EMP0616   Female   B: BI & Analytics       55       165      29     20.20   64.8  
+303    EMP0617   Male     L: Logistics            73       179      42     22.78   58.3  
+304    EMP0620   Female   O: Operations           67       166      45     24.31   49.0  
+305    EMP0621   Female   I: IT Infrastructure    53       165      22     19.47   66.8  
+306    EMP0624   Male     D: Data Science         77       177      35     24.58   63.0  
+307    EMP0625   Female   F: Finance              61       165      34     22.41   60.4  
+308    EMP0626   Female   F: Finance              59       164      34     21.94   69.3  
+309    EMP0628   Male     R: R&D Innovation       78       172      35     26.37   56.2  
+310    EMP0629   Female   L: Logistics            67       164      35     24.91   82.3  
+311    EMP0631   Female   I: IT Infrastructure    63       159      39     24.92   63.6  
+312    EMP0632   Male     J: Legal Affairs        81       174      34     26.75   36.5  
+313    EMP0634   Female   B: BI & Analytics       55       160      38     21.48   77.2  
+314    EMP0635   Female   P: Product & Design     41       152      26     17.75   38.0  
+315    EMP0636   Male     M: Marketing            68       178      40     21.46   59.5  
+316    EMP0639   Male     E: Engineering          71       181      45     21.67   63.7  
+317    EMP0642   Female   E: Engineering          58       168      33     20.55   89.1  
+318    EMP0644   Male     O: Operations           56       173      22     18.71   74.3  
+319    EMP0645   Male     G: General Admin        70       171      32     23.94   74.3  
+320    EMP0648   Female   R: R&D Innovation       55       163      33     20.70   82.1  
+321    EMP0649   Female   O: Operations           59       168      31     20.90   67.1  
+322    EMP0650   Male     P: Product & Design     71       175      42     23.18   49.1  
+323    EMP0651   Female   K: Key Accounts         65       169      31     22.76   67.7  
+324    EMP0652   Male     B: BI & Analytics       84       177      40     26.81   55.6  
+325    EMP0654   Male     S: Sales                76       177      44     24.26   62.7  
+326    EMP0657   Female   F: Finance              69       167      29     24.74   71.1  
+327    EMP0658   Male     H: Human Resources      69       164      35     25.65   47.6  
+328    EMP0660   Male     K: Key Accounts         63       181      32     19.23   45.9  
+329    EMP0662   Female   L: Logistics            60       156      26     24.65   66.9  
+330    EMP0663   Male     P: Product & Design     74       181      23     22.59   62.5  
+331    EMP0666   Male     I: IT Infrastructure    60       180      36     18.52   58.9  
+332    EMP0670   Male     O: Operations           55       174      22     18.17   60.4  
+333    EMP0671   Male     D: Data Science         69       179      30     21.53   39.9  
+334    EMP0672   Female   O: Operations           55       155      36     22.89   58.5  
+335    EMP0678   Female   M: Marketing            61       165      39     22.41   82.8  
+336    EMP0679   Male     H: Human Resources      67       180      35     20.68   78.0  
+337    EMP0681   Female   O: Operations           49       152      26     21.21   66.0  
+338    EMP0682   Male     L: Logistics            56       173      31     18.71   65.5  
+339    EMP0686   Male     A: Accounting           69       171      35     23.60   28.7  
+340    EMP0687   Female   I: IT Infrastructure    50       153      35     21.36   48.5  
+341    EMP0690   Female   B: BI & Analytics       63       165      30     23.14   51.7  
+342    EMP0692   Male     N: Network & Sec        83       174      32     27.41   71.1  
+343    EMP0694   Female   J: Legal Affairs        63       162      32     24.01   47.3  
+344    EMP0695   Male     E: Engineering          79       178      25     24.93   61.0  
+345    EMP0696   Male     K: Key Accounts         66       170      33     22.84   84.0  
+346    EMP0697   Male     H: Human Resources      77       168      41     27.28   50.1  
+347    EMP0700   Female   O: Operations           52       159      34     20.57   65.2  
+348    EMP0701   Male     J: Legal Affairs        67       170      37     23.18   32.0  
+349    EMP0702   Female   P: Product & Design     52       164      41     19.33   50.9  
+350    EMP0707   Male     C: Customer Support     87       185      36     25.42   53.0  
+351    EMP0709   Male     R: R&D Innovation       77       175      33     25.14   71.3  
+352    EMP0715   Female   E: Engineering          56       159      37     22.15   81.1  
+353    EMP0716   Male     A: Accounting           77       177      32     24.58   59.3  
+354    EMP0717   Female   F: Finance              61       161      38     23.53   44.8  
+355    EMP0720   Female   J: Legal Affairs        63       165      43     23.14   75.4  
+356    EMP0723   Female   N: Network & Sec        56       160      32     21.87   69.8  
+357    EMP0726   Male     Q: Quality Assurance    79       179      37     24.66   80.2  
+358    EMP0729   Female   K: Key Accounts         44       155      39     18.31   68.8  
+359    EMP0730   Male     S: Sales                66       172      31     22.31   44.0  
+360    EMP0732   Female   H: Human Resources      58       157      27     23.53   66.3  
+361    EMP0737   Female   M: Marketing            57       169      31     19.96   84.9  
+362    EMP0738   Male     I: IT Infrastructure    72       178      46     22.72   43.4  
+363    EMP0739   Male     E: Engineering          73       175      40     23.84   64.4  
+364    EMP0740   Female   B: BI & Analytics       60       157      35     24.34   57.4  
+365    EMP0742   Male     B: BI & Analytics       81       176      37     26.15   73.9  
+366    EMP0743   Male     M: Marketing            68       166      49     24.68   39.6  
+367    EMP0745   Male     D: Data Science         60       173      40     20.05   36.6  
+368    EMP0748   Female   S: Sales                50       162      28     19.05   31.7  
+369    EMP0750   Male     Q: Quality Assurance    66       165      30     24.24   60.6  
+370    EMP0756   Male     Q: Quality Assurance    63       158      37     25.24   60.1  
+371    EMP0758   Male     H: Human Resources      92       183      34     27.47   49.3  
+372    EMP0759   Male     Q: Quality Assurance    86       172      38     29.07   67.7  
+373    EMP0760   Male     Q: Quality Assurance    70       169      38     24.51   89.5  
+374    EMP0761   Female   P: Product & Design     61       169      27     21.36   88.7  
+375    EMP0762   Female   R: R&D Innovation       67       157      28     27.18   59.1  
+376    EMP0763   Female   Q: Quality Assurance    43       148      38     19.63   83.6  
+377    EMP0764   Male     O: Operations           65       167      37     23.31   67.3  
+378    EMP0766   Female   B: BI & Analytics       50       151      49     21.93   65.6  
+379    EMP0767   Female   H: Human Resources      62       168      34     21.97   68.8  
+380    EMP0769   Male     L: Logistics            62       169      40     21.71   41.5  
+381    EMP0770   Male     C: Customer Support     67       174      35     22.13   47.7  
+382    EMP0772   Female   A: Accounting           50       162      30     19.05   65.7  
+383    EMP0775   Male     F: Finance              62       164      35     23.05   46.7  
+384    EMP0776   Female   O: Operations           57       158      27     22.83   61.2  
+385    EMP0777   Female   E: Engineering          59       161      51     22.76   72.7  
+386    EMP0779   Female   A: Accounting           60       155      34     24.97   71.4  
+387    EMP0781   Male     N: Network & Sec        73       164      36     27.14   37.6  
+388    EMP0784   Female   S: Sales                52       161      36     20.06   71.9  
+389    EMP0786   Male     R: R&D Innovation       60       168      40     21.26   75.9  
+390    EMP0788   Male     M: Marketing            67       171      38     22.91   65.5  
+391    EMP0789   Male     M: Marketing            60       175      51     19.59   43.9  
+392    EMP0790   Female   O: Operations           49       150      40     21.78   49.6  
+393    EMP0792   Female   I: IT Infrastructure    72       166      33     26.13   79.5  
+394    EMP0793   Male     E: Engineering          59       164      43     21.94   64.4  
+395    EMP0794   Male     L: Logistics            75       170      39     25.95   66.4  
+396    EMP0795   Female   E: Engineering          61       168      32     21.61   63.8  
+397    EMP0798   Female   S: Sales                44       157      48     17.85   44.5  
+398    EMP0799   Male     P: Product & Design     60       172      47     20.28   62.3  
+399    EMP0802   Female   E: Engineering          55       162      38     20.96   62.1  
+400    EMP0803   Male     J: Legal Affairs        70       174      39     23.12   53.5  
+401    EMP0804   Female   M: Marketing            53       164      39     19.71   53.4  
+402    EMP0806   Female   S: Sales                62       159      32     24.52   68.0  
+403    EMP0808   Male     L: Logistics            72       181      29     21.98   36.0  
+404    EMP0809   Male     C: Customer Support     67       180      39     20.68   69.3  
+405    EMP0810   Female   G: General Admin        63       167      39     22.59   39.5  
+406    EMP0811   Female   F: Finance              60       163      51     22.58   51.1  
+407    EMP0813   Male     F: Finance              61       172      22     20.62   46.6  
+408    EMP0814   Male     B: BI & Analytics       89       190      38     24.65   76.5  
+409    EMP0817   Male     O: Operations           71       182      35     21.43   89.7  
+410    EMP0818   Female   S: Sales                57       167      37     20.44   28.0  
+411    EMP0823   Female   F: Finance              49       160      24     19.14   33.1  
+412    EMP0824   Female   P: Product & Design     47       156      46     19.31   72.6  
+413    EMP0825   Female   L: Logistics            51       156      42     20.96   61.6  
+414    EMP0828   Female   L: Logistics            57       155      39     23.73   66.4  
+415    EMP0831   Male     O: Operations           69       170      22     23.88   72.0  
+416    EMP0832   Female   O: Operations           52       167      37     18.65   45.5  
+417    EMP0834   Female   I: IT Infrastructure    60       164      35     22.31   88.7  
+418    EMP0835   Female   C: Customer Support     44       158      28     17.63   50.4  
+419    EMP0837   Female   S: Sales                61       165      40     22.41   66.1  
+420    EMP0840   Male     N: Network & Sec        82       171      47     28.04   64.5  
+421    EMP0843   Female   E: Engineering          65       166      33     23.59   36.0  
+422    EMP0844   Male     N: Network & Sec        78       173      48     26.06   74.7  
+423    EMP0845   Female   Q: Quality Assurance    50       158      42     20.03   57.8  
+424    EMP0848   Female   C: Customer Support     50       158      41     20.03   64.8  
+425    EMP0850   Male     H: Human Resources      76       175      37     24.82   76.3  
+426    EMP0852   Female   Q: Quality Assurance    65       158      27     26.04   71.3  
+427    EMP0853   Male     Q: Quality Assurance    57       173      40     19.05   43.4  
+428    EMP0854   Male     G: General Admin        69       168      34     24.45   49.1  
+429    EMP0855   Male     H: Human Resources      64       165      40     23.51   89.9  
+430    EMP0856   Female   E: Engineering          52       150      24     23.11   56.9  
+431    EMP0857   Female   R: R&D Innovation       55       157      37     22.31   66.7  
+432    EMP0860   Male     O: Operations           68       181      37     20.76   87.1  
+433    EMP0861   Female   L: Logistics            45       159      40     17.80   58.0  
+434    EMP0865   Female   C: Customer Support     53       158      30     21.23   28.0  
+435    EMP0869   Female   I: IT Infrastructure    61       165      46     22.41   32.2  
+436    EMP0870   Female   M: Marketing            54       169      32     18.91   69.9  
+437    EMP0876   Female   H: Human Resources      44       157      34     17.85   71.1  
+438    EMP0877   Female   F: Finance              70       164      25     26.03   80.9  
+439    EMP0881   Male     M: Marketing            76       173      34     25.39   28.0  
+440    EMP0882   Female   M: Marketing            59       161      22     22.76   80.8  
+441    EMP0884   Male     R: R&D Innovation       59       173      37     19.71   36.9  
+442    EMP0886   Male     S: Sales                65       179      29     20.29   69.2  
+443    EMP0888   Female   F: Finance              52       159      26     20.57   59.8  
+444    EMP0889   Male     B: BI & Analytics       72       176      38     23.24   45.5  
+445    EMP0890   Female   B: BI & Analytics       60       158      28     24.03   72.3  
+446    EMP0891   Male     I: IT Infrastructure    64       168      22     22.68   50.3  
+447    EMP0901   Female   A: Accounting           58       172      38     19.61   48.5  
+448    EMP0904   Female   F: Finance              61       174      33     20.15   86.1  
+449    EMP0907   Female   S: Sales                51       161      36     19.68   79.2  
+450    EMP0908   Female   P: Product & Design     67       163      40     25.22   38.2  
+451    EMP0909   Male     O: Operations           70       168      43     24.80   59.6  
+452    EMP0919   Female   P: Product & Design     54       168      28     19.13   74.8  
+453    EMP0920   Male     I: IT Infrastructure    69       173      26     23.05   61.0  
+454    EMP0922   Female   B: BI & Analytics       46       161      27     17.75   42.9  
+455    EMP0924   Male     C: Customer Support     73       171      33     24.96   71.9  
+456    EMP0927   Female   O: Operations           52       162      32     19.81   56.5  
+457    EMP0928   Female   C: Customer Support     54       156      38     22.19   72.4  
+458    EMP0929   Female   B: BI & Analytics       57       164      41     21.19   70.4  
+459    EMP0930   Female   E: Engineering          66       163      37     24.84   62.3  
+460    EMP0931   Male     S: Sales                50       165      22     18.37   60.4  
+461    EMP0932   Male     A: Accounting           75       180      40     23.15   75.3  
+462    EMP0935   Female   E: Engineering          52       158      40     20.83   28.0  
+463    EMP0938   Female   G: General Admin        71       164      30     26.40   65.5  
+464    EMP0941   Male     A: Accounting           86       175      33     28.08   59.1  
+465    EMP0942   Male     Q: Quality Assurance    65       172      26     21.97   39.2  
+466    EMP0945   Male     D: Data Science         71       175      30     23.18   80.4  
+467    EMP0946   Male     P: Product & Design     70       176      36     22.60   47.3  
+468    EMP0949   Female   C: Customer Support     49       155      34     20.40   60.5  
+469    EMP0950   Male     C: Customer Support     79       174      37     26.09   48.9  
+470    EMP0952   Female   E: Engineering          57       163      46     21.45   72.2  
+471    EMP0953   Male     A: Accounting           68       176      31     21.95   55.1  
+472    EMP0955   Female   R: R&D Innovation       60       160      43     23.44   71.3  
+473    EMP0956   Male     P: Product & Design     66       172      40     22.31   28.0  
+474    EMP0957   Female   C: Customer Support     59       171      37     20.18   38.6  
+475    EMP0959   Male     F: Finance              49       164      41     18.22   69.9  
+476    EMP0960   Male     E: Engineering          76       181      25     23.20   82.4  
+477    EMP0962   Female   P: Product & Design     66       165      26     24.24   38.3  
+478    EMP0963   Female   E: Engineering          69       171      39     23.60   53.4  
+479    EMP0967   Female   O: Operations           63       169      22     22.06   72.9  
+480    EMP0971   Female   L: Logistics            64       164      36     23.80   66.7  
+481    EMP0973   Female   C: Customer Support     50       156      32     20.55   72.7  
+482    EMP0974   Female   E: Engineering          56       164      47     20.82   64.9  
+483    EMP0976   Male     P: Product & Design     84       177      26     26.81   71.3  
+484    EMP0977   Male     B: BI & Analytics       69       167      24     24.74   71.4  
+485    EMP0978   Female   A: Accounting           61       158      28     24.44   67.3  
+486    EMP0979   Male     L: Logistics            73       174      30     24.11   58.0  
+487    EMP0980   Female   M: Marketing            60       161      29     23.15   86.4  
+488    EMP0982   Female   E: Engineering          63       171      39     21.55   46.5  
+489    EMP0983   Male     N: Network & Sec        65       164      38     24.17   28.0  
+490    EMP0984   Female   C: Customer Support     76       166      44     27.58   40.7  
+491    EMP0985   Male     I: IT Infrastructure    79       177      33     25.22   31.5  
+492    EMP0988   Male     S: Sales                56       176      34     18.08   54.6  
+493    EMP0989   Female   C: Customer Support     54       171      41     18.47   64.2  
+494    EMP0991   Male     E: Engineering          73       174      34     24.11   67.1  
+495    EMP0992   Male     H: Human Resources      77       177      34     24.58   46.3  
+496    EMP0995   Male     M: Marketing            62       171      47     21.20   45.7  
+497    EMP0997   Female   K: Key Accounts         56       166      22     20.32   76.6  
+498    EMP0998   Female   G: General Admin        60       159      33     23.73   76.4  
+499    EMP0999   Female   N: Network & Sec        54       158      41     21.63   48.5  
+500    EMP1000   Female   C: Customer Support     52       164      31     19.33   57.4  
+======================================================================================
  รายชื่อสมาชิกทีมสีเขียว (Team Green: 500 คน)
-================================================================================
-No.    EmpID     Gender   Department           Weight   Height   Age    BMI     Skill 
-1      EMP0003   Female   IT & Data            71       175      35     23.18   42.9  
-2      EMP0004   Male     Engineering          72       171      27     24.62   51.4  
-3      EMP0006   Female   Engineering          75       168      22     26.57   56.2  
-4      EMP0007   Male     Sales                57       169      37     19.96   26.0  
-5      EMP0008   Female   Quality Assurance    46       162      23     17.53   59.8  
-6      EMP0013   Female   Quality Assurance    49       159      30     19.38   58.0  
-7      EMP0014   Male     Sales                60       169      39     21.01   57.2  
-8      EMP0019   Female   Sales                72       175      42     23.51   62.1  
-9      EMP0021   Female   Product & Design     52       158      31     20.83   39.1  
-10     EMP0022   Female   Sales                58       167      25     20.80   65.2  
-11     EMP0023   Male     Engineering          57       167      38     20.44   64.9  
-12     EMP0025   Male     Marketing            66       174      34     21.80   54.6  
-13     EMP0026   Female   Engineering          51       157      22     20.69   80.3  
-14     EMP0029   Female   Engineering          65       174      34     21.47   64.4  
-15     EMP0035   Male     Customer Support     60       180      39     18.52   59.7  
-16     EMP0037   Male     Sales                82       175      22     26.78   40.1  
-17     EMP0038   Male     Engineering          67       169      22     23.46   64.5  
-18     EMP0040   Female   Sales                72       175      35     23.51   30.1  
-19     EMP0044   Female   Product & Design     70       160      33     27.34   32.8  
-20     EMP0048   Male     Engineering          81       171      32     27.70   68.2  
-21     EMP0049   Male     Operations           91       181      30     27.78   47.6  
-22     EMP0051   Female   Quality Assurance    50       149      34     22.52   97.1  
-23     EMP0052   Female   Customer Support     57       161      37     21.99   48.1  
-24     EMP0056   Female   Engineering          54       154      35     22.77   66.3  
-25     EMP0057   Female   Customer Support     60       166      32     21.77   85.4  
-26     EMP0058   Male     Sales                71       171      40     24.28   61.9  
-27     EMP0060   Female   Engineering          51       165      35     18.73   34.3  
-28     EMP0067   Male     Engineering          71       173      27     23.72   42.8  
-29     EMP0068   Female   Engineering          41       153      46     17.51   50.0  
-30     EMP0069   Female   Marketing            56       165      22     20.57   61.2  
-31     EMP0070   Male     Engineering          64       162      36     24.39   51.5  
-32     EMP0072   Male     Sales                70       172      32     23.66   57.6  
-33     EMP0073   Female   Operations           55       159      32     21.76   59.9  
-34     EMP0078   Female   Operations           56       154      42     23.61   68.1  
-35     EMP0080   Male     Sales                68       177      38     21.71   26.0  
-36     EMP0081   Female   Quality Assurance    70       156      38     28.76   56.7  
-37     EMP0082   Female   Finance              51       157      27     20.69   43.6  
-38     EMP0087   Female   Product & Design     58       171      38     19.84   50.0  
-39     EMP0088   Female   Marketing            53       157      28     21.50   53.8  
-40     EMP0096   Female   IT & Data            48       152      32     20.78   54.7  
-41     EMP0097   Female   Marketing            53       152      22     22.94   72.7  
-42     EMP0098   Female   Quality Assurance    55       158      23     22.03   65.8  
-43     EMP0099   Male     Sales                70       176      40     22.60   52.3  
-44     EMP0105   Female   Customer Support     58       166      38     21.05   47.5  
-45     EMP0107   Male     Product & Design     80       179      42     24.97   61.1  
-46     EMP0109   Male     Engineering          61       171      26     20.86   38.8  
-47     EMP0110   Female   Engineering          60       162      37     22.86   64.9  
-48     EMP0111   Female   Product & Design     52       149      34     23.42   43.4  
-49     EMP0113   Male     Marketing            75       179      27     23.41   61.9  
-50     EMP0115   Male     Operations           56       170      31     19.38   45.4  
-51     EMP0128   Male     Engineering          68       170      22     23.53   91.3  
-52     EMP0129   Female   IT & Data            50       151      33     21.93   46.6  
-53     EMP0131   Male     Human Resources      81       180      35     25.00   50.7  
-54     EMP0133   Male     Operations           76       165      29     27.92   73.0  
-55     EMP0135   Male     Engineering          88       175      28     28.73   78.0  
-56     EMP0137   Female   Sales                56       158      34     22.43   69.5  
-57     EMP0139   Male     Sales                65       167      38     23.31   58.2  
-58     EMP0140   Male     Marketing            77       184      36     22.74   53.9  
-59     EMP0141   Female   IT & Data            48       158      48     19.23   76.6  
-60     EMP0143   Female   Engineering          68       162      32     25.91   49.0  
-61     EMP0144   Female   Engineering          53       157      36     21.50   50.7  
-62     EMP0146   Female   Customer Support     75       178      48     23.67   51.4  
-63     EMP0148   Male     Marketing            70       163      43     26.35   71.8  
-64     EMP0150   Female   Sales                61       164      33     22.68   83.3  
-65     EMP0151   Male     IT & Data            62       167      38     22.23   54.0  
-66     EMP0152   Female   Engineering          50       163      47     18.82   62.8  
-67     EMP0153   Female   Operations           53       160      45     20.70   85.8  
-68     EMP0155   Female   Marketing            68       156      32     27.94   52.4  
-69     EMP0158   Female   Operations           56       158      41     22.43   50.4  
-70     EMP0160   Male     IT & Data            62       165      28     22.77   57.3  
-71     EMP0161   Female   Operations           57       159      30     22.55   54.0  
-72     EMP0162   Female   Finance              55       163      29     20.70   48.9  
-73     EMP0164   Female   Human Resources      52       163      43     19.57   49.1  
-74     EMP0166   Female   IT & Data            77       167      36     27.61   71.2  
-75     EMP0167   Female   Human Resources      47       162      41     17.91   49.9  
-76     EMP0169   Female   Operations           61       163      35     22.96   98.0  
-77     EMP0170   Female   Sales                53       159      29     20.96   63.5  
-78     EMP0173   Male     Engineering          80       173      45     26.73   53.2  
-79     EMP0174   Male     IT & Data            69       178      38     21.78   60.4  
-80     EMP0176   Male     Marketing            74       170      35     25.61   40.8  
-81     EMP0177   Female   Operations           48       157      32     19.47   53.3  
-82     EMP0180   Male     Sales                71       181      32     21.67   47.2  
-83     EMP0184   Male     Engineering          95       174      38     31.38   67.9  
-84     EMP0185   Male     Engineering          89       174      40     29.40   37.6  
-85     EMP0186   Male     Operations           77       169      41     26.96   56.5  
-86     EMP0188   Male     IT & Data            74       178      31     23.36   37.5  
-87     EMP0189   Female   Sales                67       163      26     25.22   72.3  
-88     EMP0190   Male     Engineering          63       170      29     21.80   47.3  
-89     EMP0191   Female   Engineering          60       160      28     23.44   76.0  
-90     EMP0194   Female   Sales                51       149      25     22.97   98.0  
-91     EMP0195   Male     Customer Support     78       177      34     24.90   37.5  
-92     EMP0197   Female   Sales                69       168      35     24.45   32.2  
-93     EMP0198   Male     Sales                57       174      29     18.83   65.6  
-94     EMP0201   Male     Operations           66       168      26     23.38   66.3  
-95     EMP0202   Male     Sales                89       175      26     29.06   38.6  
-96     EMP0203   Male     Customer Support     59       172      23     19.94   67.6  
-97     EMP0205   Female   Product & Design     55       155      36     22.89   42.5  
-98     EMP0207   Female   Operations           63       171      29     21.55   64.9  
-99     EMP0208   Female   Operations           62       158      46     24.84   53.2  
-100    EMP0211   Male     Marketing            71       174      22     23.45   50.3  
-101    EMP0213   Female   Operations           58       154      36     24.46   54.7  
-102    EMP0216   Female   Marketing            62       161      33     23.92   63.2  
-103    EMP0218   Male     Customer Support     50       167      32     17.93   53.1  
-104    EMP0221   Male     Finance              75       169      22     26.26   69.2  
-105    EMP0222   Male     Product & Design     60       163      27     22.58   59.4  
-106    EMP0224   Male     Human Resources      79       171      46     27.02   28.2  
-107    EMP0225   Female   Product & Design     45       161      27     17.36   71.9  
-108    EMP0226   Female   Finance              48       158      22     19.23   34.3  
-109    EMP0227   Female   Sales                52       163      33     19.57   50.5  
-110    EMP0229   Female   Engineering          53       159      28     20.96   62.4  
-111    EMP0231   Male     Marketing            65       162      29     24.77   82.5  
-112    EMP0232   Male     Engineering          76       165      32     27.92   31.7  
-113    EMP0233   Male     IT & Data            91       172      31     30.76   34.2  
-114    EMP0234   Male     Customer Support     66       169      22     23.11   40.2  
-115    EMP0236   Female   Engineering          62       159      36     24.52   26.0  
-116    EMP0237   Female   Product & Design     60       160      29     23.44   68.2  
-117    EMP0239   Female   Customer Support     71       160      30     27.73   52.2  
-118    EMP0240   Female   Engineering          56       156      34     23.01   59.2  
-119    EMP0241   Male     Engineering          59       163      27     22.21   76.9  
-120    EMP0242   Female   Customer Support     51       164      34     18.96   75.1  
-121    EMP0244   Male     Operations           69       166      42     25.04   37.6  
-122    EMP0247   Female   Marketing            59       154      38     24.88   55.3  
-123    EMP0248   Male     Finance              81       173      24     27.06   64.3  
-124    EMP0250   Male     Customer Support     71       179      22     22.16   50.2  
-125    EMP0251   Female   Engineering          56       154      40     23.61   81.1  
-126    EMP0255   Female   Quality Assurance    58       157      22     23.53   53.2  
-127    EMP0256   Female   Product & Design     63       167      50     22.59   71.8  
-128    EMP0257   Female   Marketing            69       161      25     26.62   96.0  
-129    EMP0258   Male     Operations           64       174      37     21.14   69.6  
-130    EMP0259   Female   Marketing            56       161      33     21.60   49.2  
-131    EMP0265   Female   Marketing            75       160      30     29.30   29.7  
-132    EMP0270   Female   Quality Assurance    57       154      42     24.03   65.9  
-133    EMP0272   Male     Engineering          73       165      26     26.81   71.7  
-134    EMP0274   Female   Operations           56       157      37     22.72   46.8  
-135    EMP0276   Male     Customer Support     70       166      34     25.40   48.9  
-136    EMP0277   Male     Finance              67       165      31     24.61   63.5  
-137    EMP0278   Female   Customer Support     54       169      34     18.91   32.4  
-138    EMP0283   Male     IT & Data            65       167      30     23.31   47.1  
-139    EMP0284   Female   Operations           63       172      38     21.30   61.5  
-140    EMP0287   Male     Operations           77       182      35     23.25   64.0  
-141    EMP0289   Female   IT & Data            56       159      40     22.15   34.2  
-142    EMP0291   Female   Sales                55       161      49     21.22   57.0  
-143    EMP0292   Female   IT & Data            72       177      35     22.98   54.5  
-144    EMP0293   Female   Operations           58       160      34     22.66   58.0  
-145    EMP0296   Male     IT & Data            63       168      25     22.32   40.4  
-146    EMP0299   Male     Human Resources      68       165      31     24.98   45.2  
-147    EMP0304   Male     Sales                64       174      28     21.14   96.6  
-148    EMP0305   Female   Operations           53       158      29     21.23   68.0  
-149    EMP0308   Female   Marketing            46       160      23     17.97   72.0  
-150    EMP0309   Male     Finance              89       178      28     28.09   74.2  
-151    EMP0310   Female   Operations           61       165      36     22.41   77.4  
-152    EMP0312   Male     Quality Assurance    72       178      35     22.72   81.7  
-153    EMP0314   Female   Human Resources      50       153      43     21.36   43.4  
-154    EMP0315   Male     Marketing            60       165      29     22.04   59.4  
-155    EMP0319   Male     Product & Design     74       185      32     21.62   53.7  
-156    EMP0321   Female   IT & Data            63       166      44     22.86   85.7  
-157    EMP0323   Male     Sales                63       173      32     21.05   70.4  
-158    EMP0324   Male     Operations           80       174      44     26.42   28.3  
-159    EMP0327   Female   Finance              72       171      23     24.62   63.9  
-160    EMP0329   Male     Customer Support     74       180      25     22.84   54.3  
-161    EMP0330   Female   Sales                70       158      39     28.04   42.8  
-162    EMP0333   Female   IT & Data            65       160      27     25.39   52.3  
-163    EMP0334   Male     Human Resources      74       175      29     24.16   29.3  
-164    EMP0335   Female   IT & Data            54       159      30     21.36   48.4  
-165    EMP0336   Male     Finance              82       178      27     25.88   83.6  
-166    EMP0337   Female   Finance              53       161      38     20.45   60.6  
-167    EMP0338   Female   Marketing            48       158      25     19.23   56.6  
-168    EMP0342   Male     Product & Design     64       166      39     23.23   44.8  
-169    EMP0343   Female   Operations           64       164      25     23.80   57.2  
-170    EMP0347   Male     Product & Design     65       172      39     21.97   52.6  
-171    EMP0348   Female   Operations           49       154      39     20.66   64.9  
-172    EMP0349   Male     Sales                66       167      38     23.67   35.9  
-173    EMP0353   Female   Sales                52       164      45     19.33   83.9  
-174    EMP0356   Female   Operations           55       156      29     22.60   46.1  
-175    EMP0357   Female   Sales                56       159      39     22.15   67.0  
-176    EMP0359   Female   Marketing            53       162      29     20.20   38.0  
-177    EMP0361   Female   Sales                60       166      28     21.77   49.4  
-178    EMP0362   Male     Engineering          73       176      30     23.57   76.8  
-179    EMP0363   Male     Sales                73       171      36     24.96   49.4  
-180    EMP0364   Female   Operations           60       164      33     22.31   61.2  
-181    EMP0370   Male     Operations           80       170      22     27.68   73.1  
-182    EMP0375   Female   Customer Support     50       161      28     19.29   41.3  
-183    EMP0379   Male     Marketing            64       167      33     22.95   48.2  
-184    EMP0380   Male     Sales                75       180      39     23.15   54.8  
-185    EMP0383   Female   Engineering          61       160      37     23.83   83.2  
-186    EMP0384   Female   Customer Support     53       153      49     22.64   44.3  
-187    EMP0385   Male     Quality Assurance    62       165      29     22.77   96.2  
-188    EMP0386   Female   IT & Data            46       156      35     18.90   66.6  
-189    EMP0387   Male     Human Resources      73       173      36     24.39   61.0  
-190    EMP0391   Female   Customer Support     61       159      31     24.13   65.5  
-191    EMP0393   Male     Operations           67       161      34     25.85   62.6  
-192    EMP0394   Male     Sales                76       174      25     25.10   67.7  
-193    EMP0396   Female   Product & Design     61       164      37     22.68   57.7  
-194    EMP0398   Male     Operations           75       177      26     23.94   52.5  
-195    EMP0400   Female   Sales                59       163      42     22.21   71.0  
-196    EMP0401   Female   Quality Assurance    59       152      51     25.54   70.2  
-197    EMP0402   Male     Quality Assurance    60       169      27     21.01   43.8  
-198    EMP0404   Female   Quality Assurance    63       166      26     22.86   59.3  
-199    EMP0406   Female   Engineering          48       153      28     20.50   42.7  
-200    EMP0407   Female   Engineering          54       156      40     22.19   50.3  
-201    EMP0408   Female   Sales                50       161      27     19.29   26.0  
-202    EMP0410   Female   IT & Data            44       158      41     17.63   37.5  
-203    EMP0411   Male     Marketing            68       173      38     22.72   56.5  
-204    EMP0412   Male     Sales                64       165      29     23.51   48.5  
-205    EMP0414   Female   Operations           66       167      42     23.67   37.7  
-206    EMP0415   Female   Engineering          66       161      33     25.46   47.9  
-207    EMP0416   Male     Finance              74       175      35     24.16   79.5  
-208    EMP0418   Male     Engineering          51       161      35     19.68   60.4  
-209    EMP0422   Male     Finance              60       168      26     21.26   75.7  
-210    EMP0425   Female   Sales                52       156      27     21.37   67.9  
-211    EMP0426   Female   Finance              55       159      36     21.76   50.4  
-212    EMP0428   Female   Sales                62       150      26     27.56   39.6  
-213    EMP0429   Female   IT & Data            48       158      27     19.23   70.2  
-214    EMP0432   Male     IT & Data            72       175      37     23.51   67.6  
-215    EMP0435   Male     Human Resources      68       174      47     22.46   29.4  
-216    EMP0440   Female   Finance              58       159      43     22.94   47.6  
-217    EMP0445   Male     Engineering          79       175      41     25.80   85.8  
-218    EMP0446   Male     Operations           65       163      33     24.46   62.2  
-219    EMP0450   Male     IT & Data            65       185      41     18.99   26.0  
-220    EMP0451   Male     Engineering          53       172      35     17.92   54.8  
-221    EMP0452   Male     Human Resources      66       176      23     21.31   59.9  
-222    EMP0453   Male     Engineering          81       176      28     26.15   74.1  
-223    EMP0454   Male     Quality Assurance    63       183      41     18.81   26.0  
-224    EMP0458   Female   Finance              62       170      22     21.45   68.4  
-225    EMP0461   Female   Human Resources      51       166      35     18.51   58.5  
-226    EMP0464   Male     Marketing            83       178      25     26.20   48.6  
-227    EMP0465   Male     Operations           66       166      42     23.95   44.7  
-228    EMP0466   Male     Engineering          71       170      30     24.57   52.8  
-229    EMP0468   Female   Product & Design     55       157      42     22.31   58.4  
-230    EMP0469   Male     Customer Support     58       179      40     18.10   38.3  
-231    EMP0470   Female   Finance              49       162      29     18.67   51.6  
-232    EMP0471   Male     Human Resources      60       171      32     20.52   39.8  
-233    EMP0472   Male     Marketing            69       171      33     23.60   78.9  
-234    EMP0478   Male     Operations           91       173      29     30.41   52.1  
-235    EMP0480   Male     Operations           76       166      33     27.58   69.8  
-236    EMP0484   Female   IT & Data            53       165      34     19.47   82.3  
-237    EMP0485   Female   Human Resources      46       152      25     19.91   80.6  
-238    EMP0486   Female   Sales                58       157      46     23.53   82.1  
-239    EMP0488   Female   Engineering          64       163      34     24.09   40.3  
-240    EMP0490   Male     Quality Assurance    64       188      36     18.11   54.5  
-241    EMP0491   Female   Operations           55       163      27     20.70   71.5  
-242    EMP0494   Female   Operations           54       153      35     23.07   69.7  
-243    EMP0497   Female   Customer Support     52       168      46     18.42   65.6  
-244    EMP0502   Female   Finance              53       154      36     22.35   26.0  
-245    EMP0503   Male     Operations           66       179      26     20.60   98.0  
-246    EMP0504   Female   Engineering          62       168      22     21.97   84.6  
-247    EMP0505   Female   Quality Assurance    61       157      38     24.75   48.5  
-248    EMP0506   Male     Customer Support     69       177      33     22.02   33.9  
-249    EMP0507   Male     Operations           78       180      38     24.07   69.2  
-250    EMP0508   Female   Customer Support     59       157      31     23.94   57.1  
-251    EMP0509   Female   Finance              50       164      35     18.59   84.0  
-252    EMP0513   Female   Operations           63       163      36     23.71   66.0  
-253    EMP0514   Male     IT & Data            67       165      23     24.61   71.2  
-254    EMP0518   Female   Sales                69       162      29     26.29   91.3  
-255    EMP0519   Female   Product & Design     58       161      42     22.38   66.8  
-256    EMP0520   Female   Quality Assurance    58       163      31     21.83   68.5  
-257    EMP0521   Male     Customer Support     77       177      37     24.58   84.9  
-258    EMP0522   Male     Operations           87       183      25     25.98   80.9  
-259    EMP0524   Male     Operations           68       173      28     22.72   87.3  
-260    EMP0525   Female   Engineering          49       167      34     17.57   80.4  
-261    EMP0526   Female   Customer Support     69       163      26     25.97   65.5  
-262    EMP0527   Male     Quality Assurance    83       185      34     24.25   58.3  
-263    EMP0529   Male     Customer Support     70       171      33     23.94   53.3  
-264    EMP0533   Male     IT & Data            70       180      38     21.60   65.8  
-265    EMP0536   Female   Human Resources      57       163      42     21.45   47.9  
-266    EMP0539   Female   Finance              46       148      22     21.00   72.3  
-267    EMP0541   Female   Finance              43       150      37     19.11   51.1  
-268    EMP0542   Female   Finance              58       164      41     21.56   66.7  
-269    EMP0543   Female   Sales                50       166      35     18.14   26.4  
-270    EMP0544   Female   Engineering          50       169      33     17.51   69.0  
-271    EMP0548   Female   Product & Design     60       160      23     23.44   93.1  
-272    EMP0549   Female   Product & Design     66       171      46     22.57   73.2  
-273    EMP0550   Male     Engineering          67       176      22     21.63   73.3  
-274    EMP0553   Male     Customer Support     89       180      29     27.47   47.0  
-275    EMP0555   Female   IT & Data            61       161      30     23.53   51.7  
-276    EMP0556   Male     Sales                66       167      30     23.67   87.5  
-277    EMP0557   Female   Product & Design     55       160      40     21.48   51.5  
-278    EMP0561   Male     IT & Data            74       172      32     25.01   69.6  
-279    EMP0564   Female   Finance              62       162      39     23.62   98.0  
-280    EMP0567   Female   Product & Design     66       159      29     26.11   26.0  
-281    EMP0570   Female   Finance              67       167      35     24.02   63.3  
-282    EMP0573   Male     Sales                75       177      37     23.94   51.9  
-283    EMP0580   Female   Marketing            61       156      31     25.07   59.2  
-284    EMP0585   Male     Marketing            51       169      35     17.86   52.9  
-285    EMP0587   Female   Sales                44       156      41     18.08   78.1  
-286    EMP0589   Male     Marketing            74       166      35     26.85   41.2  
-287    EMP0591   Female   Finance              55       158      34     22.03   59.5  
-288    EMP0593   Female   Quality Assurance    56       158      25     22.43   84.0  
-289    EMP0598   Male     Engineering          59       168      32     20.90   46.1  
-290    EMP0599   Male     Human Resources      66       168      30     23.38   57.5  
-291    EMP0600   Male     Customer Support     61       165      31     22.41   65.8  
-292    EMP0602   Female   Sales                55       153      36     23.50   58.2  
-293    EMP0605   Male     IT & Data            63       171      29     21.55   26.0  
-294    EMP0607   Male     Sales                66       181      34     20.15   54.8  
-295    EMP0608   Male     Engineering          84       169      34     29.41   63.5  
-296    EMP0609   Female   Engineering          60       162      28     22.86   50.5  
-297    EMP0610   Female   Product & Design     63       166      22     22.86   87.2  
-298    EMP0611   Male     Marketing            74       172      30     25.01   59.3  
-299    EMP0613   Female   Quality Assurance    56       161      38     21.60   36.8  
-300    EMP0615   Female   Product & Design     54       154      41     22.77   73.3  
-301    EMP0617   Female   Customer Support     60       167      41     21.51   56.3  
-302    EMP0621   Male     Marketing            64       177      22     20.43   66.5  
-303    EMP0622   Male     Engineering          67       169      35     23.46   52.8  
-304    EMP0623   Female   Marketing            52       160      48     20.31   28.3  
-305    EMP0627   Male     Human Resources      55       174      36     18.17   40.4  
-306    EMP0628   Female   Quality Assurance    65       160      34     25.39   56.0  
-307    EMP0629   Female   Customer Support     67       163      35     25.22   81.2  
-308    EMP0630   Female   Customer Support     58       165      38     21.30   87.5  
-309    EMP0631   Female   Marketing            64       159      39     25.32   61.8  
-310    EMP0632   Female   Marketing            68       162      34     25.91   35.3  
-311    EMP0633   Female   Operations           56       159      35     22.15   65.6  
-312    EMP0634   Male     Engineering          67       171      38     22.91   76.9  
-313    EMP0635   Male     Product & Design     48       162      25     18.29   36.8  
-314    EMP0638   Female   Operations           53       156      43     21.78   49.4  
-315    EMP0639   Male     Operations           71       181      45     21.67   62.4  
-316    EMP0641   Female   Engineering          62       170      49     21.45   70.2  
-317    EMP0647   Male     IT & Data            67       176      22     21.63   44.2  
-318    EMP0648   Male     Quality Assurance    66       174      32     21.80   82.8  
-319    EMP0649   Male     Finance              71       180      30     21.91   67.3  
-320    EMP0650   Male     Product & Design     72       175      42     23.51   47.0  
-321    EMP0651   Female   Marketing            65       168      30     23.03   66.4  
-322    EMP0652   Male     Engineering          85       177      40     27.13   53.8  
-323    EMP0653   Male     Operations           69       175      39     22.53   77.9  
-324    EMP0656   Female   Finance              53       163      33     19.95   79.3  
-325    EMP0658   Male     Sales                70       164      34     26.03   45.7  
-326    EMP0659   Female   Engineering          53       164      34     19.71   92.1  
-327    EMP0660   Male     Customer Support     62       181      32     18.92   43.7  
-328    EMP0663   Male     Product & Design     74       182      22     22.34   61.1  
-329    EMP0668   Female   Quality Assurance    65       162      32     24.77   73.2  
-330    EMP0669   Female   Marketing            52       162      33     19.81   65.0  
-331    EMP0671   Male     Operations           69       179      30     21.53   37.7  
-332    EMP0672   Male     Finance              66       165      35     24.24   55.8  
-333    EMP0673   Female   Human Resources      44       156      38     18.08   57.9  
-334    EMP0674   Male     Human Resources      77       174      25     25.43   85.7  
-335    EMP0675   Female   Quality Assurance    60       165      25     22.04   64.4  
-336    EMP0676   Male     IT & Data            75       175      37     24.49   26.0  
-337    EMP0678   Male     IT & Data            74       177      39     23.62   80.9  
-338    EMP0679   Male     Sales                67       180      35     20.68   77.1  
-339    EMP0683   Female   Product & Design     56       155      31     23.31   48.7  
-340    EMP0685   Male     Marketing            66       182      41     19.93   45.5  
-341    EMP0686   Male     Engineering          69       171      34     23.60   26.6  
-342    EMP0687   Female   Marketing            49       152      34     21.21   46.8  
-343    EMP0689   Male     Sales                71       179      48     22.16   76.5  
-344    EMP0691   Female   Product & Design     53       164      40     19.71   77.8  
-345    EMP0692   Male     IT & Data            85       175      31     27.76   70.0  
-346    EMP0694   Female   Marketing            63       161      31     24.30   45.4  
-347    EMP0695   Male     Operations           80       178      24     25.25   59.4  
-348    EMP0696   Female   Customer Support     55       159      32     21.76   83.1  
-349    EMP0697   Female   Sales                64       156      40     26.30   49.8  
-350    EMP0699   Male     Operations           67       173      34     22.39   59.5  
-351    EMP0701   Male     Marketing            67       169      36     23.46   29.7  
-352    EMP0702   Female   Finance              51       163      41     19.20   49.1  
-353    EMP0705   Male     Sales                65       178      26     20.52   57.5  
-354    EMP0708   Female   Operations           57       158      29     22.83   67.5  
-355    EMP0709   Female   Quality Assurance    64       163      32     24.09   71.7  
-356    EMP0714   Female   Sales                51       156      36     20.96   77.2  
-357    EMP0715   Female   Operations           55       158      36     22.03   80.5  
-358    EMP0716   Male     Engineering          77       177      32     24.58   57.8  
-359    EMP0717   Female   Sales                61       161      38     23.53   42.9  
-360    EMP0718   Male     IT & Data            81       167      38     29.04   43.2  
-361    EMP0719   Male     Customer Support     79       171      31     27.02   65.9  
-362    EMP0722   Female   Finance              60       163      31     22.58   26.4  
-363    EMP0723   Female   IT & Data            55       159      32     21.76   68.4  
-364    EMP0724   Male     Operations           67       186      22     19.37   34.2  
-365    EMP0730   Male     Human Resources      66       172      31     22.31   41.9  
-366    EMP0731   Female   Finance              49       162      28     18.67   67.9  
-367    EMP0732   Female   Marketing            58       157      26     23.53   65.2  
-368    EMP0738   Male     Marketing            72       178      46     22.72   41.5  
-369    EMP0739   Male     Operations           73       175      40     23.84   63.0  
-370    EMP0741   Female   IT & Data            60       156      38     24.65   46.4  
-371    EMP0747   Female   Engineering          48       162      30     18.29   34.1  
-372    EMP0748   Female   Human Resources      48       161      27     18.52   29.1  
-373    EMP0749   Female   Customer Support     52       164      33     19.33   51.1  
-374    EMP0750   Male     Product & Design     65       164      30     24.17   59.2  
-375    EMP0752   Male     Product & Design     68       190      34     18.84   74.0  
-376    EMP0756   Male     Product & Design     63       158      37     25.24   58.6  
-377    EMP0758   Male     Sales                94       183      33     28.07   47.3  
-378    EMP0762   Female   Quality Assurance    68       157      27     27.59   57.5  
-379    EMP0764   Male     Finance              66       167      37     23.67   65.6  
-380    EMP0765   Male     Engineering          73       170      36     25.26   94.3  
-381    EMP0768   Female   Finance              48       165      32     17.63   77.7  
-382    EMP0769   Female   Customer Support     51       157      40     20.69   38.4  
-383    EMP0771   Male     Operations           59       165      22     21.67   64.3  
-384    EMP0772   Female   Engineering          49       161      29     18.90   64.6  
-385    EMP0777   Female   Operations           58       160      52     22.66   71.5  
-386    EMP0779   Female   Engineering          60       154      33     25.30   70.3  
-387    EMP0782   Male     IT & Data            72       172      33     24.34   82.5  
-388    EMP0783   Male     Customer Support     65       181      30     19.84   72.5  
-389    EMP0784   Female   Quality Assurance    51       160      36     19.92   70.6  
-390    EMP0786   Male     Quality Assurance    60       168      39     21.26   75.3  
-391    EMP0787   Male     IT & Data            73       177      35     23.30   66.9  
-392    EMP0788   Female   IT & Data            55       159      38     21.76   63.8  
-393    EMP0789   Male     IT & Data            60       175      52     19.59   41.8  
-394    EMP0790   Female   Finance              48       149      40     21.62   47.6  
-395    EMP0792   Female   Marketing            73       166      32     26.49   78.6  
-396    EMP0793   Male     Operations           58       163      42     21.83   63.3  
-397    EMP0794   Female   Customer Support     62       158      39     24.84   66.5  
-398    EMP0795   Female   Operations           61       168      31     21.61   62.7  
-399    EMP0796   Female   Finance              58       157      30     23.53   55.0  
-400    EMP0799   Female   Product & Design     48       160      47     18.75   59.3  
-401    EMP0805   Male     Engineering          59       170      32     20.42   31.7  
-402    EMP0808   Male     Customer Support     73       182      29     22.04   33.7  
-403    EMP0809   Male     Engineering          68       181      38     20.76   68.6  
-404    EMP0816   Female   Marketing            61       159      33     24.13   32.5  
-405    EMP0817   Male     Finance              71       182      35     21.43   89.1  
-406    EMP0818   Female   Human Resources      57       167      36     20.44   26.0  
-407    EMP0819   Female   Sales                59       161      43     22.76   85.3  
-408    EMP0820   Male     Sales                62       172      37     20.96   63.2  
-409    EMP0821   Female   Human Resources      55       164      50     20.45   42.7  
-410    EMP0823   Female   Sales                48       159      23     18.99   30.9  
-411    EMP0824   Female   Product & Design     46       155      46     19.15   71.5  
-412    EMP0831   Female   Finance              56       158      22     22.43   72.1  
-413    EMP0832   Female   Finance              51       167      37     18.29   43.2  
-414    EMP0833   Female   Engineering          74       171      24     25.31   53.3  
-415    EMP0836   Female   Engineering          58       159      28     22.94   86.6  
-416    EMP0837   Male     Human Resources      74       177      40     23.62   63.7  
-417    EMP0839   Female   Marketing            57       158      36     22.83   53.9  
-418    EMP0844   Male     IT & Data            79       173      48     26.40   73.5  
-419    EMP0845   Male     Product & Design     60       169      42     21.01   57.5  
-420    EMP0846   Female   Marketing            48       166      35     17.42   65.8  
-421    EMP0847   Female   Sales                61       160      35     23.83   74.6  
-422    EMP0849   Female   Finance              79       174      25     26.09   69.7  
-423    EMP0850   Male     Marketing            77       175      36     25.14   75.3  
-424    EMP0853   Male     Product & Design     57       173      40     19.05   41.5  
-425    EMP0862   Male     Finance              72       167      33     25.82   51.2  
-426    EMP0863   Female   IT & Data            57       153      37     24.35   37.2  
-427    EMP0865   Female   Engineering          53       157      30     21.50   26.0  
-428    EMP0868   Female   Human Resources      67       159      22     26.50   66.4  
-429    EMP0869   Female   Marketing            61       165      46     22.41   29.9  
-430    EMP0874   Male     Customer Support     63       173      31     21.05   94.5  
-431    EMP0875   Male     Human Resources      54       167      41     19.36   53.2  
-432    EMP0876   Female   Sales                43       156      33     17.67   70.2  
-433    EMP0877   Female   Sales                71       164      24     26.40   79.9  
-434    EMP0879   Male     Customer Support     63       173      46     21.05   32.9  
-435    EMP0880   Female   Customer Support     54       155      27     22.48   64.2  
-436    EMP0881   Male     IT & Data            77       173      33     25.73   26.0  
-437    EMP0887   Male     Customer Support     61       161      34     23.53   48.1  
-438    EMP0888   Female   Sales                52       159      26     20.57   58.2  
-439    EMP0889   Female   Engineering          59       164      38     21.94   43.8  
-440    EMP0890   Male     Engineering          73       169      27     25.56   69.8  
-441    EMP0895   Female   Human Resources      48       165      22     17.63   59.9  
-442    EMP0897   Female   Sales                57       163      26     21.45   78.5  
-443    EMP0899   Male     Marketing            75       174      33     24.77   69.1  
-444    EMP0901   Female   Engineering          58       173      38     19.38   46.4  
-445    EMP0902   Male     IT & Data            85       174      35     28.08   71.8  
-446    EMP0903   Male     Marketing            55       171      29     18.81   45.0  
-447    EMP0907   Female   Quality Assurance    50       161      35     19.29   78.2  
-448    EMP0908   Female   Finance              67       163      40     25.22   36.1  
-449    EMP0909   Male     Finance              70       167      43     25.10   57.9  
-450    EMP0910   Male     Engineering          74       181      34     22.59   98.0  
-451    EMP0912   Female   Operations           48       161      35     18.52   68.2  
-452    EMP0914   Male     Marketing            66       175      41     21.55   86.4  
-453    EMP0916   Female   Customer Support     60       159      42     23.73   39.6  
-454    EMP0917   Female   Marketing            48       156      36     19.72   75.4  
-455    EMP0919   Male     Finance              65       180      28     20.06   74.8  
-456    EMP0920   Male     Marketing            70       173      25     23.39   59.3  
-457    EMP0921   Female   Marketing            45       160      42     17.58   73.2  
-458    EMP0922   Female   Engineering          45       160      27     17.58   40.7  
-459    EMP0928   Female   Engineering          54       155      37     22.48   71.9  
-460    EMP0929   Female   Engineering          57       164      41     21.19   69.2  
-461    EMP0931   Male     Human Resources      49       165      22     18.00   58.4  
-462    EMP0937   Female   Product & Design     55       171      25     18.81   62.8  
-463    EMP0938   Male     Sales                87       176      29     28.09   62.7  
-464    EMP0939   Female   Engineering          48       159      30     18.99   38.4  
-465    EMP0940   Male     Engineering          76       170      27     26.30   49.4  
-466    EMP0942   Male     Quality Assurance    65       172      25     21.97   37.3  
-467    EMP0943   Female   IT & Data            62       166      35     22.50   60.6  
-468    EMP0945   Male     Operations           71       175      29     23.18   79.8  
-469    EMP0946   Male     Product & Design     71       176      35     22.92   45.4  
-470    EMP0947   Male     Operations           72       175      46     23.51   57.3  
-471    EMP0948   Female   Customer Support     52       158      40     20.83   61.0  
-472    EMP0951   Male     Quality Assurance    83       175      28     27.10   26.0  
-473    EMP0954   Female   Customer Support     53       168      47     18.78   63.3  
-474    EMP0955   Female   Quality Assurance    60       160      43     23.44   70.3  
-475    EMP0963   Female   Operations           69       171      39     23.60   51.7  
-476    EMP0964   Male     Customer Support     66       174      28     21.80   57.4  
-477    EMP0965   Male     Operations           62       169      29     21.71   52.3  
-478    EMP0966   Female   Customer Support     59       160      30     23.05   53.4  
-479    EMP0967   Female   Finance              63       169      22     22.06   71.6  
-480    EMP0970   Male     Operations           63       177      33     20.11   64.6  
-481    EMP0971   Male     Customer Support     77       175      35     25.14   64.3  
-482    EMP0972   Male     Human Resources      83       172      29     28.06   40.7  
-483    EMP0973   Female   Engineering          50       156      32     20.55   71.6  
-484    EMP0976   Male     Product & Design     85       177      26     27.13   69.8  
-485    EMP0977   Male     Engineering          69       167      23     24.74   70.5  
-486    EMP0979   Male     Customer Support     73       174      30     24.11   56.4  
-487    EMP0980   Female   IT & Data            60       161      28     23.15   86.0  
-488    EMP0982   Female   Operations           64       172      38     21.63   45.1  
-489    EMP0984   Male     Engineering          93       178      44     29.35   36.9  
-490    EMP0987   Male     Product & Design     59       166      34     21.41   38.2  
-491    EMP0988   Male     Human Resources      56       176      33     18.08   53.4  
-492    EMP0989   Male     Engineering          66       184      40     19.49   64.5  
-493    EMP0990   Male     Operations           68       171      28     23.26   72.1  
-494    EMP0991   Female   Operations           60       162      33     22.86   67.5  
-495    EMP0992   Female   Sales                64       165      34     23.51   45.5  
-496    EMP0993   Female   Engineering          50       163      47     18.82   67.1  
-497    EMP0995   Female   IT & Data            50       159      47     19.78   42.3  
-498    EMP0996   Female   Quality Assurance    67       166      43     24.31   50.3  
-499    EMP0998   Female   Sales                60       158      32     24.03   75.4  
-500    EMP1000   Female   Engineering          52       164      30     19.33   56.2  
+======================================================================================
+No.    EmpID     Gender   Department              Weight   Height   Age    BMI     Skill 
+1      EMP0002   Female   H: Human Resources      85       181      43     25.95   48.2  
+2      EMP0004   Male     B: BI & Analytics       71       171      28     24.28   53.2  
+3      EMP0007   Female   H: Human Resources      48       158      38     19.23   28.0  
+4      EMP0011   Female   N: Network & Sec        66       162      26     25.15   53.8  
+5      EMP0012   Female   M: Marketing            62       166      26     22.50   73.8  
+6      EMP0013   Female   R: R&D Innovation       50       160      30     19.53   59.7  
+7      EMP0017   Male     S: Sales                63       160      36     24.61   50.3  
+8      EMP0018   Female   E: Engineering          58       163      31     21.83   70.0  
+9      EMP0019   Female   H: Human Resources      71       174      43     23.45   63.1  
+10     EMP0020   Male     H: Human Resources      70       170      35     24.22   55.1  
+11     EMP0022   Male     H: Human Resources      71       179      26     22.16   67.7  
+12     EMP0023   Male     A: Accounting           58       168      39     20.55   65.9  
+13     EMP0025   Male     K: Key Accounts         66       174      35     21.80   55.9  
+14     EMP0026   Female   A: Accounting           52       157      23     21.10   81.3  
+15     EMP0028   Male     J: Legal Affairs        65       161      32     25.08   40.1  
+16     EMP0030   Male     A: Accounting           63       174      27     20.81   40.1  
+17     EMP0032   Male     O: Operations           68       167      41     24.38   53.3  
+18     EMP0034   Female   S: Sales                57       158      37     22.83   46.5  
+19     EMP0035   Male     L: Logistics            60       179      39     18.73   61.3  
+20     EMP0039   Female   E: Engineering          61       153      35     26.06   86.6  
+21     EMP0041   Male     K: Key Accounts         61       163      33     22.96   88.5  
+22     EMP0043   Female   P: Product & Design     53       161      37     20.45   56.1  
+23     EMP0044   Female   Q: Quality Assurance    70       161      33     27.01   35.3  
+24     EMP0046   Female   A: Accounting           54       159      24     21.36   51.5  
+25     EMP0050   Male     O: Operations           61       171      35     20.86   61.2  
+26     EMP0051   Female   R: R&D Innovation       51       150      34     22.67   97.3  
+27     EMP0052   Female   L: Logistics            57       161      38     21.99   49.6  
+28     EMP0053   Male     E: Engineering          96       181      30     29.30   50.2  
+29     EMP0055   Male     N: Network & Sec        77       170      29     26.64   86.3  
+30     EMP0056   Male     B: BI & Analytics       65       165      36     23.88   66.0  
+31     EMP0057   Female   K: Key Accounts         60       166      33     21.77   85.8  
+32     EMP0058   Male     F: Finance              70       171      41     23.94   63.2  
+33     EMP0059   Male     P: Product & Design     77       177      33     24.58   48.4  
+34     EMP0060   Female   A: Accounting           52       165      36     19.10   36.5  
+35     EMP0062   Female   S: Sales                44       157      28     17.85   66.6  
+36     EMP0065   Male     D: Data Science         66       169      30     23.11   54.1  
+37     EMP0066   Male     M: Marketing            68       178      38     21.46   73.2  
+38     EMP0068   Female   C: Customer Support     42       154      46     17.71   51.7  
+39     EMP0069   Female   I: IT Infrastructure    57       165      22     20.94   63.1  
+40     EMP0071   Male     M: Marketing            94       182      30     28.38   44.8  
+41     EMP0072   Male     F: Finance              69       172      33     23.32   59.2  
+42     EMP0073   Male     E: Engineering          68       171      32     23.26   61.4  
+43     EMP0077   Male     F: Finance              78       181      32     23.81   56.0  
+44     EMP0078   Male     E: Engineering          68       165      43     24.98   67.4  
+45     EMP0080   Male     F: Finance              68       177      38     21.71   28.0  
+46     EMP0083   Male     O: Operations           70       163      33     26.35   70.7  
+47     EMP0085   Female   F: Finance              61       172      41     20.62   35.7  
+48     EMP0086   Female   F: Finance              59       166      29     21.41   82.6  
+49     EMP0087   Female   P: Product & Design     58       171      39     19.84   51.4  
+50     EMP0089   Female   C: Customer Support     56       158      37     22.43   58.5  
+51     EMP0090   Male     H: Human Resources      61       172      43     20.62   48.8  
+52     EMP0091   Female   L: Logistics            49       157      35     19.88   67.2  
+53     EMP0092   Female   B: BI & Analytics       54       162      22     20.58   77.8  
+54     EMP0095   Female   Q: Quality Assurance    56       158      35     22.43   87.1  
+55     EMP0096   Female   N: Network & Sec        49       153      33     20.93   56.2  
+56     EMP0098   Female   R: R&D Innovation       56       159      24     22.15   67.0  
+57     EMP0099   Male     H: Human Resources      70       176      40     22.60   54.0  
+58     EMP0102   Male     S: Sales                53       163      24     19.95   65.3  
+59     EMP0105   Female   M: Marketing            59       166      38     21.41   49.7  
+60     EMP0106   Male     Q: Quality Assurance    64       162      46     24.39   63.4  
+61     EMP0107   Male     P: Product & Design     79       179      42     24.66   62.7  
+62     EMP0111   Female   P: Product & Design     52       150      35     23.11   45.4  
+63     EMP0113   Male     J: Legal Affairs        75       179      28     23.41   63.1  
+64     EMP0114   Male     A: Accounting           49       161      36     18.90   48.4  
+65     EMP0116   Male     N: Network & Sec        66       171      45     22.57   53.4  
+66     EMP0117   Female   R: R&D Innovation       65       163      30     24.46   57.8  
+67     EMP0119   Female   G: General Admin        65       160      32     25.39   68.5  
+68     EMP0123   Female   S: Sales                66       164      33     24.54   59.3  
+69     EMP0124   Female   S: Sales                68       165      46     24.98   47.8  
+70     EMP0125   Male     M: Marketing            59       169      36     20.66   28.0  
+71     EMP0126   Female   O: Operations           60       159      41     23.73   55.2  
+72     EMP0127   Female   A: Accounting           57       160      45     22.27   35.2  
+73     EMP0129   Female   N: Network & Sec        51       152      33     22.07   48.6  
+74     EMP0131   Male     S: Sales                80       180      35     24.69   52.7  
+75     EMP0132   Female   P: Product & Design     52       156      49     21.37   62.3  
+76     EMP0133   Male     E: Engineering          75       165      29     27.55   74.5  
+77     EMP0135   Male     D: Data Science         86       175      28     28.08   79.6  
+78     EMP0137   Female   F: Finance              57       159      35     22.55   70.4  
+79     EMP0138   Male     R: R&D Innovation       76       177      32     24.26   65.1  
+80     EMP0141   Male     N: Network & Sec        59       170      48     20.42   78.6  
+81     EMP0142   Male     E: Engineering          55       166      31     19.96   78.9  
+82     EMP0143   Female   A: Accounting           69       163      32     25.97   50.7  
+83     EMP0144   Female   B: BI & Analytics       54       158      36     21.63   52.6  
+84     EMP0146   Female   L: Logistics            74       177      48     23.62   53.0  
+85     EMP0149   Female   I: IT Infrastructure    55       161      30     21.22   51.0  
+86     EMP0151   Male     M: Marketing            62       167      38     22.23   55.7  
+87     EMP0152   Female   A: Accounting           51       163      47     19.20   64.4  
+88     EMP0153   Male     E: Engineering          65       172      45     21.97   87.8  
+89     EMP0155   Female   I: IT Infrastructure    68       157      32     27.59   54.4  
+90     EMP0156   Female   I: IT Infrastructure    56       171      42     19.15   63.6  
+91     EMP0160   Male     M: Marketing            62       165      29     22.77   58.6  
+92     EMP0161   Female   D: Data Science         57       159      31     22.55   55.4  
+93     EMP0163   Male     N: Network & Sec        96       182      48     28.98   47.5  
+94     EMP0164   Female   S: Sales                52       163      43     19.57   50.8  
+95     EMP0168   Male     O: Operations           67       170      42     23.18   79.8  
+96     EMP0169   Female   E: Engineering          61       164      35     22.68   98.0  
+97     EMP0171   Male     P: Product & Design     74       184      29     21.86   66.0  
+98     EMP0172   Male     N: Network & Sec        68       172      31     22.99   55.4  
+99     EMP0175   Female   K: Key Accounts         57       170      25     19.72   72.4  
+100    EMP0176   Male     J: Legal Affairs        73       170      36     25.26   42.8  
+101    EMP0177   Male     E: Engineering          59       169      32     20.66   56.3  
+102    EMP0179   Female   L: Logistics            63       164      23     23.42   63.9  
+103    EMP0180   Female   H: Human Resources      58       168      33     20.55   47.5  
+104    EMP0181   Male     H: Human Resources      69       179      22     21.53   52.3  
+105    EMP0183   Male     O: Operations           73       168      33     25.86   85.2  
+106    EMP0184   Male     C: Customer Support     94       174      38     31.05   69.2  
+107    EMP0185   Male     C: Customer Support     88       174      40     29.07   39.8  
+108    EMP0189   Female   G: General Admin        67       164      26     24.91   73.8  
+109    EMP0191   Female   B: BI & Analytics       60       160      28     23.44   77.0  
+110    EMP0192   Female   E: Engineering          65       163      39     24.46   68.4  
+111    EMP0195   Male     L: Logistics            77       177      35     24.58   39.7  
+112    EMP0197   Female   F: Finance              69       168      35     24.45   34.5  
+113    EMP0200   Male     S: Sales                78       183      29     23.29   75.3  
+114    EMP0203   Male     L: Logistics            59       172      24     19.94   68.6  
+115    EMP0204   Male     J: Legal Affairs        80       175      37     26.12   98.0  
+116    EMP0205   Male     P: Product & Design     67       167      36     24.02   43.3  
+117    EMP0206   Female   C: Customer Support     60       162      42     22.86   52.3  
+118    EMP0208   Female   E: Engineering          63       159      46     24.92   54.6  
+119    EMP0209   Female   M: Marketing            52       153      37     22.21   56.5  
+120    EMP0211   Male     J: Legal Affairs        71       174      22     23.45   52.2  
+121    EMP0216   Male     I: IT Infrastructure    75       173      33     25.06   63.4  
+122    EMP0220   Female   O: Operations           55       154      38     23.19   35.2  
+123    EMP0221   Female   P: Product & Design     61       158      23     24.44   72.1  
+124    EMP0223   Female   O: Operations           56       150      39     24.89   52.3  
+125    EMP0225   Female   P: Product & Design     46       161      28     17.75   73.0  
+126    EMP0228   Male     E: Engineering          58       168      45     20.55   28.0  
+127    EMP0232   Male     B: BI & Analytics       75       165      32     27.55   34.4  
+128    EMP0233   Male     M: Marketing            89       172      32     30.08   36.7  
+129    EMP0235   Female   A: Accounting           62       156      40     25.48   34.3  
+130    EMP0236   Female   C: Customer Support     62       160      36     24.22   28.0  
+131    EMP0237   Female   Q: Quality Assurance    60       161      30     23.15   69.5  
+132    EMP0240   Female   C: Customer Support     56       157      34     22.72   61.1  
+133    EMP0241   Female   A: Accounting           49       153      28     20.93   76.2  
+134    EMP0244   Male     E: Engineering          69       166      42     25.04   39.7  
+135    EMP0247   Female   K: Key Accounts         59       155      38     24.56   57.2  
+136    EMP0252   Female   A: Accounting           51       168      36     18.07   59.5  
+137    EMP0254   Male     R: R&D Innovation       69       181      42     21.06   44.3  
+138    EMP0256   Female   Q: Quality Assurance    63       167      50     22.59   72.8  
+139    EMP0262   Male     M: Marketing            87       168      26     30.82   75.7  
+140    EMP0266   Female   G: General Admin        68       162      34     25.91   66.5  
+141    EMP0268   Female   A: Accounting           57       158      37     22.83   85.3  
+142    EMP0269   Male     E: Engineering          79       173      33     26.40   45.1  
+143    EMP0271   Female   S: Sales                51       159      43     20.17   28.0  
+144    EMP0272   Female   B: BI & Analytics       60       155      27     24.97   74.5  
+145    EMP0275   Male     E: Engineering          58       171      31     19.84   45.5  
+146    EMP0276   Male     K: Key Accounts         70       167      34     25.10   51.0  
+147    EMP0278   Female   K: Key Accounts         54       169      35     18.91   34.3  
+148    EMP0281   Male     H: Human Resources      79       184      38     23.33   48.1  
+149    EMP0287   Male     E: Engineering          76       182      36     22.94   65.4  
+150    EMP0290   Female   D: Data Science         70       167      22     25.10   30.3  
+151    EMP0291   Female   G: General Admin        56       162      48     21.34   58.9  
+152    EMP0292   Female   M: Marketing            72       177      35     22.98   56.2  
+153    EMP0294   Male     R: R&D Innovation       65       159      25     25.71   48.5  
+154    EMP0296   Female   M: Marketing            52       157      26     21.10   40.9  
+155    EMP0297   Female   Q: Quality Assurance    63       158      38     25.24   43.7  
+156    EMP0300   Female   I: IT Infrastructure    69       165      32     25.34   82.0  
+157    EMP0304   Male     F: Finance              64       174      29     21.14   96.7  
+158    EMP0305   Female   E: Engineering          53       158      29     21.23   69.2  
+159    EMP0306   Female   P: Product & Design     62       171      40     21.20   70.0  
+160    EMP0308   Male     I: IT Infrastructure    57       172      24     19.27   74.2  
+161    EMP0312   Female   R: R&D Innovation       59       166      36     21.41   81.2  
+162    EMP0313   Female   O: Operations           54       163      37     20.32   47.3  
+163    EMP0314   Male     S: Sales                61       165      43     22.41   46.5  
+164    EMP0315   Male     K: Key Accounts         60       165      30     22.04   60.6  
+165    EMP0318   Male     I: IT Infrastructure    74       171      38     25.31   67.5  
+166    EMP0319   Male     Q: Quality Assurance    73       184      32     21.56   55.3  
+167    EMP0321   Female   M: Marketing            63       166      45     22.86   86.0  
+168    EMP0322   Male     E: Engineering          64       164      34     23.80   49.8  
+169    EMP0324   Male     D: Data Science         79       174      44     26.09   30.9  
+170    EMP0326   Male     J: Legal Affairs        63       170      29     21.80   65.5  
+171    EMP0327   Female   O: Operations           71       171      24     24.28   65.3  
+172    EMP0328   Female   P: Product & Design     68       169      46     23.81   85.0  
+173    EMP0330   Female   G: General Admin        69       158      39     27.64   45.0  
+174    EMP0331   Male     K: Key Accounts         73       177      51     23.30   51.1  
+175    EMP0335   Male     N: Network & Sec        67       171      30     22.91   51.1  
+176    EMP0336   Male     O: Operations           81       178      28     25.56   84.4  
+177    EMP0337   Female   O: Operations           54       162      38     20.58   62.2  
+178    EMP0338   Male     I: IT Infrastructure    59       170      26     20.42   59.2  
+179    EMP0340   Male     E: Engineering          69       174      34     22.79   67.4  
+180    EMP0342   Male     Q: Quality Assurance    63       166      39     22.86   47.1  
+181    EMP0343   Female   D: Data Science         63       164      26     23.42   58.9  
+182    EMP0349   Male     F: Finance              66       167      38     23.67   38.1  
+183    EMP0352   Female   K: Key Accounts         61       160      47     23.83   35.4  
+184    EMP0353   Female   G: General Admin        53       164      45     19.71   84.8  
+185    EMP0357   Male     H: Human Resources      69       171      39     23.60   67.4  
+186    EMP0358   Female   Q: Quality Assurance    66       155      33     27.47   82.5  
+187    EMP0359   Female   I: IT Infrastructure    53       162      30     20.20   39.8  
+188    EMP0361   Female   F: Finance              60       166      29     21.77   51.0  
+189    EMP0363   Male     H: Human Resources      73       171      36     24.96   51.1  
+190    EMP0364   Female   D: Data Science         60       165      34     22.04   62.1  
+191    EMP0372   Female   K: Key Accounts         61       162      26     23.24   82.3  
+192    EMP0373   Male     E: Engineering          70       165      35     25.71   50.3  
+193    EMP0374   Female   N: Network & Sec        68       160      37     26.56   81.8  
+194    EMP0376   Female   F: Finance              60       164      34     22.31   46.3  
+195    EMP0378   Female   E: Engineering          72       167      29     25.82   51.1  
+196    EMP0379   Male     J: Legal Affairs        64       167      34     22.95   49.7  
+197    EMP0381   Male     D: Data Science         53       163      36     19.95   70.5  
+198    EMP0382   Female   F: Finance              54       163      46     20.32   54.6  
+199    EMP0383   Male     A: Accounting           74       172      38     25.01   82.3  
+200    EMP0384   Female   K: Key Accounts         54       154      49     22.77   46.0  
+201    EMP0385   Male     Q: Quality Assurance    63       166      30     22.86   96.2  
+202    EMP0388   Female   C: Customer Support     64       157      35     25.96   66.6  
+203    EMP0391   Male     M: Marketing            74       171      32     25.31   65.1  
+204    EMP0395   Female   E: Engineering          55       158      38     22.03   94.5  
+205    EMP0396   Female   Q: Quality Assurance    61       164      38     22.68   58.9  
+206    EMP0397   Male     A: Accounting           56       170      35     19.38   59.4  
+207    EMP0398   Male     E: Engineering          75       177      27     23.94   53.9  
+208    EMP0399   Male     F: Finance              77       171      26     26.33   63.0  
+209    EMP0400   Female   F: Finance              59       163      42     22.21   72.1  
+210    EMP0401   Female   R: R&D Innovation       59       153      51     25.20   71.5  
+211    EMP0403   Female   A: Accounting           58       162      36     22.10   57.2  
+212    EMP0405   Female   L: Logistics            43       154      27     18.13   77.5  
+213    EMP0406   Female   C: Customer Support     49       154      29     20.66   44.5  
+214    EMP0407   Female   C: Customer Support     55       157      40     22.31   52.1  
+215    EMP0408   Male     H: Human Resources      61       173      28     20.38   28.0  
+216    EMP0410   Female   N: Network & Sec        45       159      41     17.80   39.7  
+217    EMP0414   Male     E: Engineering          80       179      42     24.97   38.3  
+218    EMP0415   Female   B: BI & Analytics       66       162      34     25.15   49.7  
+219    EMP0417   Male     C: Customer Support     50       162      29     19.05   60.8  
+220    EMP0418   Male     A: Accounting           51       161      36     19.68   61.4  
+221    EMP0419   Female   L: Logistics            58       165      39     21.30   57.9  
+222    EMP0425   Female   H: Human Resources      53       157      28     21.50   69.0  
+223    EMP0430   Female   O: Operations           57       162      35     21.72   64.3  
+224    EMP0431   Female   O: Operations           61       164      40     22.68   55.8  
+225    EMP0433   Female   J: Legal Affairs        52       160      29     20.31   56.5  
+226    EMP0437   Female   M: Marketing            62       163      36     23.34   35.9  
+227    EMP0438   Male     G: General Admin        62       165      33     22.77   48.5  
+228    EMP0442   Male     A: Accounting           71       171      28     24.28   77.9  
+229    EMP0445   Male     A: Accounting           78       175      41     25.47   86.7  
+230    EMP0447   Female   C: Customer Support     44       156      33     18.08   60.8  
+231    EMP0449   Female   J: Legal Affairs        66       167      33     23.67   28.0  
+232    EMP0452   Male     S: Sales                66       176      24     21.31   61.2  
+233    EMP0454   Female   R: R&D Innovation       52       170      41     17.99   28.0  
+234    EMP0456   Female   O: Operations           53       159      43     20.96   75.7  
+235    EMP0458   Female   O: Operations           62       170      22     21.45   69.7  
+236    EMP0459   Male     N: Network & Sec        63       175      30     20.57   72.3  
+237    EMP0462   Female   L: Logistics            49       157      28     19.88   48.0  
+238    EMP0463   Male     M: Marketing            64       175      47     20.90   64.3  
+239    EMP0464   Male     I: IT Infrastructure    82       178      25     25.88   50.8  
+240    EMP0466   Male     C: Customer Support     70       170      30     24.22   54.9  
+241    EMP0467   Male     J: Legal Affairs        94       190      22     26.04   66.0  
+242    EMP0468   Male     Q: Quality Assurance    67       169      43     23.46   58.7  
+243    EMP0469   Male     L: Logistics            59       179      40     18.41   40.6  
+244    EMP0472   Male     I: IT Infrastructure    69       172      33     23.32   80.1  
+245    EMP0473   Female   E: Engineering          65       167      34     23.31   55.3  
+246    EMP0478   Male     D: Data Science         90       173      30     30.07   53.6  
+247    EMP0481   Female   F: Finance              60       164      44     22.31   37.4  
+248    EMP0482   Male     S: Sales                68       168      31     24.09   87.9  
+249    EMP0487   Female   S: Sales                67       169      38     23.46   42.8  
+250    EMP0488   Male     C: Customer Support     77       175      35     25.14   40.9  
+251    EMP0492   Female   E: Engineering          54       159      31     21.36   95.1  
+252    EMP0493   Male     E: Engineering          63       167      38     22.59   33.9  
+253    EMP0494   Female   D: Data Science         55       154      35     23.19   70.8  
+254    EMP0498   Female   E: Engineering          44       155      47     18.31   41.9  
+255    EMP0499   Male     N: Network & Sec        77       171      29     26.33   62.7  
+256    EMP0501   Female   I: IT Infrastructure    66       163      36     24.84   60.4  
+257    EMP0502   Male     O: Operations           65       166      36     23.59   28.0  
+258    EMP0504   Female   C: Customer Support     62       168      22     21.97   85.5  
+259    EMP0506   Male     L: Logistics            69       177      33     22.02   36.2  
+260    EMP0507   Male     E: Engineering          77       180      39     23.77   70.3  
+261    EMP0508   Male     K: Key Accounts         72       169      31     25.21   57.3  
+262    EMP0511   Female   R: R&D Innovation       64       160      27     25.00   76.1  
+263    EMP0512   Male     E: Engineering          48       158      31     19.23   71.7  
+264    EMP0514   Male     M: Marketing            67       165      24     24.61   72.0  
+265    EMP0516   Male     S: Sales                73       168      30     25.86   37.9  
+266    EMP0517   Female   R: R&D Innovation       54       160      31     21.09   40.0  
+267    EMP0518   Male     G: General Admin        83       174      30     27.41   90.2  
+268    EMP0520   Male     R: R&D Innovation       70       175      32     22.86   69.7  
+269    EMP0522   Male     D: Data Science         86       183      26     25.68   81.7  
+270    EMP0523   Male     O: Operations           54       173      43     18.04   36.2  
+271    EMP0526   Male     K: Key Accounts         83       175      27     27.10   65.2  
+272    EMP0527   Female   S: Sales                67       172      35     22.65   61.2  
+273    EMP0528   Male     F: Finance              70       179      29     21.85   92.4  
+274    EMP0530   Male     R: R&D Innovation       76       173      22     25.39   61.2  
+275    EMP0531   Female   C: Customer Support     65       168      23     23.03   53.4  
+276    EMP0532   Female   F: Finance              55       170      24     19.03   50.7  
+277    EMP0533   Female   N: Network & Sec        57       167      38     20.44   65.8  
+278    EMP0538   Male     O: Operations           56       171      30     19.15   53.5  
+279    EMP0539   Female   O: Operations           46       148      23     21.00   73.1  
+280    EMP0540   Female   E: Engineering          58       162      30     22.10   82.1  
+281    EMP0541   Female   O: Operations           44       151      37     19.30   53.0  
+282    EMP0542   Male     O: Operations           71       176      42     22.92   68.1  
+283    EMP0543   Male     G: General Admin        62       178      36     19.57   30.0  
+284    EMP0547   Male     P: Product & Design     63       173      32     21.05   80.0  
+285    EMP0548   Female   P: Product & Design     60       160      24     23.44   93.3  
+286    EMP0549   Female   Q: Quality Assurance    66       171      46     22.57   74.2  
+287    EMP0554   Female   L: Logistics            56       156      27     23.01   63.2  
+288    EMP0555   Female   N: Network & Sec        62       162      31     23.62   53.0  
+289    EMP0558   Female   P: Product & Design     48       151      39     21.05   65.8  
+290    EMP0559   Male     C: Customer Support     61       177      36     19.47   76.4  
+291    EMP0563   Male     E: Engineering          68       176      37     21.95   85.6  
+292    EMP0565   Male     H: Human Resources      66       179      35     20.60   60.6  
+293    EMP0566   Female   C: Customer Support     60       162      29     22.86   93.5  
+294    EMP0567   Female   P: Product & Design     66       160      29     25.78   28.0  
+295    EMP0573   Female   H: Human Resources      61       165      37     22.41   55.1  
+296    EMP0577   Male     D: Data Science         88       177      32     28.09   74.7  
+297    EMP0579   Male     M: Marketing            65       178      35     20.52   65.9  
+298    EMP0582   Female   E: Engineering          65       157      49     26.37   55.8  
+299    EMP0586   Female   O: Operations           53       156      22     21.78   67.0  
+300    EMP0587   Male     G: General Admin        55       168      41     19.49   80.4  
+301    EMP0588   Female   M: Marketing            51       161      27     19.68   65.5  
+302    EMP0589   Male     I: IT Infrastructure    74       167      35     26.53   43.5  
+303    EMP0590   Female   B: BI & Analytics       50       166      49     18.14   44.3  
+304    EMP0591   Male     O: Operations           67       170      35     23.18   60.4  
+305    EMP0595   Male     D: Data Science         84       183      29     25.08   52.0  
+306    EMP0597   Male     I: IT Infrastructure    57       162      33     21.72   63.1  
+307    EMP0599   Male     S: Sales                66       168      31     23.38   58.7  
+308    EMP0600   Female   L: Logistics            50       154      31     21.08   65.8  
+309    EMP0604   Female   C: Customer Support     55       157      35     22.31   69.5  
+310    EMP0606   Female   F: Finance              52       161      35     20.06   54.6  
+311    EMP0608   Male     B: BI & Analytics       82       169      34     28.71   65.4  
+312    EMP0609   Female   A: Accounting           60       162      29     22.86   52.0  
+313    EMP0613   Male     R: R&D Innovation       69       173      39     23.05   39.0  
+314    EMP0614   Female   P: Product & Design     49       156      36     20.13   78.8  
+315    EMP0618   Male     Q: Quality Assurance    75       166      22     27.22   90.8  
+316    EMP0619   Female   F: Finance              53       160      31     20.70   44.9  
+317    EMP0622   Female   B: BI & Analytics       56       158      35     22.43   55.5  
+318    EMP0623   Female   I: IT Infrastructure    53       161      48     20.45   30.7  
+319    EMP0627   Male     S: Sales                56       174      36     18.50   42.8  
+320    EMP0630   Male     L: Logistics            71       178      38     22.41   89.3  
+321    EMP0633   Female   D: Data Science         57       160      35     22.27   67.1  
+322    EMP0637   Female   D: Data Science         65       170      22     22.49   64.7  
+323    EMP0638   Female   D: Data Science         53       156      43     21.78   51.1  
+324    EMP0640   Female   C: Customer Support     51       156      32     20.96   67.1  
+325    EMP0641   Female   C: Customer Support     62       170      49     21.45   71.2  
+326    EMP0643   Male     Q: Quality Assurance    84       181      36     25.64   40.7  
+327    EMP0646   Female   D: Data Science         46       154      36     19.40   74.8  
+328    EMP0647   Male     M: Marketing            67       176      22     21.63   46.3  
+329    EMP0653   Male     D: Data Science         68       175      39     22.20   78.6  
+330    EMP0655   Female   R: R&D Innovation       55       155      28     22.89   67.2  
+331    EMP0656   Female   O: Operations           53       163      33     19.95   80.1  
+332    EMP0659   Male     B: BI & Analytics       66       176      35     21.31   93.9  
+333    EMP0661   Male     O: Operations           84       174      23     27.74   60.5  
+334    EMP0664   Female   S: Sales                48       151      28     21.05   78.6  
+335    EMP0665   Male     C: Customer Support     85       177      32     27.13   58.9  
+336    EMP0667   Male     C: Customer Support     75       181      38     22.89   66.7  
+337    EMP0668   Male     R: R&D Innovation       79       174      33     26.09   72.5  
+338    EMP0669   Male     I: IT Infrastructure    64       174      34     21.14   67.4  
+339    EMP0673   Female   S: Sales                46       157      38     18.66   60.0  
+340    EMP0674   Male     S: Sales                75       173      26     25.06   86.5  
+341    EMP0675   Female   R: R&D Innovation       60       165      26     22.04   65.6  
+342    EMP0676   Male     N: Network & Sec        74       175      37     24.16   28.4  
+343    EMP0677   Male     I: IT Infrastructure    73       167      33     26.18   56.5  
+344    EMP0680   Female   P: Product & Design     53       165      25     19.47   49.9  
+345    EMP0683   Female   P: Product & Design     57       156      32     23.42   50.1  
+346    EMP0684   Male     B: BI & Analytics       71       171      39     24.28   56.3  
+347    EMP0685   Female   I: IT Infrastructure    54       169      41     18.91   46.2  
+348    EMP0688   Female   A: Accounting           61       163      33     22.96   75.2  
+349    EMP0689   Male     H: Human Resources      71       179      47     22.16   77.7  
+350    EMP0691   Female   P: Product & Design     54       165      40     19.83   78.8  
+351    EMP0693   Female   L: Logistics            75       168      30     26.57   74.7  
+352    EMP0698   Female   C: Customer Support     58       156      36     23.83   33.4  
+353    EMP0699   Female   D: Data Science         56       162      35     21.34   59.6  
+354    EMP0703   Female   C: Customer Support     61       166      46     22.14   81.2  
+355    EMP0704   Female   F: Finance              60       161      35     23.15   80.1  
+356    EMP0705   Male     F: Finance              66       178      27     20.83   59.1  
+357    EMP0706   Female   P: Product & Design     57       162      37     21.72   41.1  
+358    EMP0708   Male     E: Engineering          69       170      30     23.88   67.3  
+359    EMP0710   Female   E: Engineering          60       156      45     24.65   52.5  
+360    EMP0711   Male     A: Accounting           64       171      30     21.89   92.5  
+361    EMP0712   Male     B: BI & Analytics       75       179      31     23.41   44.9  
+362    EMP0713   Male     L: Logistics            71       168      34     25.16   83.0  
+363    EMP0714   Female   H: Human Resources      52       157      36     21.10   78.2  
+364    EMP0718   Male     N: Network & Sec        79       167      38     28.33   45.8  
+365    EMP0719   Male     K: Key Accounts         78       171      31     26.67   67.5  
+366    EMP0721   Male     R: R&D Innovation       69       168      31     24.45   66.0  
+367    EMP0722   Female   O: Operations           60       163      31     22.58   29.0  
+368    EMP0724   Male     F: Finance              68       186      22     19.66   36.8  
+369    EMP0725   Male     C: Customer Support     67       175      27     21.88   51.2  
+370    EMP0727   Male     G: General Admin        74       185      37     21.62   74.9  
+371    EMP0728   Male     S: Sales                103      182      44     31.10   31.2  
+372    EMP0731   Female   O: Operations           50       163      29     18.82   69.0  
+373    EMP0733   Female   I: IT Infrastructure    58       166      23     21.05   66.7  
+374    EMP0734   Male     M: Marketing            70       177      30     22.34   62.6  
+375    EMP0735   Male     J: Legal Affairs        78       175      29     25.47   72.7  
+376    EMP0736   Female   I: IT Infrastructure    59       155      26     24.56   90.0  
+377    EMP0741   Male     N: Network & Sec        72       168      39     25.51   46.9  
+378    EMP0744   Female   O: Operations           49       154      25     20.66   79.8  
+379    EMP0746   Female   R: R&D Innovation       55       150      36     24.44   56.7  
+380    EMP0747   Female   B: BI & Analytics       48       162      31     18.29   36.0  
+381    EMP0749   Female   L: Logistics            52       164      34     19.33   52.4  
+382    EMP0751   Female   P: Product & Design     62       157      28     25.15   84.3  
+383    EMP0752   Female   P: Product & Design     56       176      34     18.08   74.2  
+384    EMP0753   Female   G: General Admin        50       151      29     21.93   61.3  
+385    EMP0754   Female   D: Data Science         46       160      32     17.97   56.9  
+386    EMP0755   Male     G: General Admin        74       167      24     26.53   50.7  
+387    EMP0757   Female   I: IT Infrastructure    63       162      36     24.01   52.8  
+388    EMP0765   Male     C: Customer Support     72       170      36     24.91   95.1  
+389    EMP0768   Female   O: Operations           48       165      33     17.63   78.2  
+390    EMP0771   Female   D: Data Science         49       154      22     20.66   64.7  
+391    EMP0773   Male     G: General Admin        81       182      32     24.45   72.4  
+392    EMP0774   Male     Q: Quality Assurance    62       168      48     21.97   54.3  
+393    EMP0778   Male     D: Data Science         88       178      36     27.77   71.8  
+394    EMP0780   Female   E: Engineering          62       161      39     23.92   57.5  
+395    EMP0782   Female   M: Marketing            59       160      34     23.05   84.4  
+396    EMP0783   Male     M: Marketing            66       181      30     20.15   73.9  
+397    EMP0785   Female   L: Logistics            62       157      22     25.15   47.7  
+398    EMP0787   Female   N: Network & Sec        60       165      36     22.04   68.2  
+399    EMP0791   Female   L: Logistics            67       168      37     23.74   35.6  
+400    EMP0796   Female   O: Operations           58       158      31     23.23   56.6  
+401    EMP0797   Male     Q: Quality Assurance    67       170      42     23.18   39.8  
+402    EMP0800   Male     G: General Admin        65       169      40     22.76   64.2  
+403    EMP0801   Female   R: R&D Innovation       50       162      36     19.05   62.2  
+404    EMP0805   Male     D: Data Science         60       170      33     20.76   34.1  
+405    EMP0807   Male     K: Key Accounts         73       179      38     22.78   53.2  
+406    EMP0812   Female   L: Logistics            61       162      30     23.24   70.2  
+407    EMP0815   Male     Q: Quality Assurance    54       165      38     19.83   62.4  
+408    EMP0816   Female   I: IT Infrastructure    61       159      34     24.13   34.4  
+409    EMP0819   Female   G: General Admin        59       161      43     22.76   85.9  
+410    EMP0820   Female   H: Human Resources      51       161      37     19.68   63.1  
+411    EMP0821   Male     S: Sales                67       176      50     21.63   45.8  
+412    EMP0822   Male     N: Network & Sec        70       171      22     23.94   46.3  
+413    EMP0826   Female   S: Sales                51       155      43     21.23   55.1  
+414    EMP0827   Female   B: BI & Analytics       53       159      25     20.96   53.1  
+415    EMP0829   Female   S: Sales                57       160      36     22.27   55.9  
+416    EMP0830   Male     G: General Admin        90       179      31     28.09   81.7  
+417    EMP0833   Female   C: Customer Support     73       171      24     24.96   55.4  
+418    EMP0836   Female   B: BI & Analytics       59       160      29     23.05   86.9  
+419    EMP0838   Male     B: BI & Analytics       62       173      42     20.72   64.7  
+420    EMP0839   Female   J: Legal Affairs        58       159      36     22.94   55.4  
+421    EMP0841   Male     D: Data Science         60       170      45     20.76   54.3  
+422    EMP0842   Male     H: Human Resources      65       172      36     21.97   35.3  
+423    EMP0846   Female   I: IT Infrastructure    49       166      35     17.78   67.4  
+424    EMP0847   Female   F: Finance              61       160      35     23.83   75.6  
+425    EMP0849   Female   O: Operations           78       174      26     25.76   70.9  
+426    EMP0851   Female   H: Human Resources      59       166      29     21.41   56.2  
+427    EMP0858   Female   S: Sales                65       166      31     23.59   68.8  
+428    EMP0859   Female   E: Engineering          52       158      52     20.83   70.7  
+429    EMP0862   Male     O: Operations           71       167      33     25.46   53.3  
+430    EMP0863   Female   M: Marketing            57       154      37     24.03   39.6  
+431    EMP0864   Male     M: Marketing            66       171      39     22.57   72.0  
+432    EMP0866   Male     O: Operations           66       169      22     23.11   51.1  
+433    EMP0867   Male     P: Product & Design     65       162      36     24.77   63.7  
+434    EMP0868   Female   S: Sales                66       159      22     26.11   68.1  
+435    EMP0871   Male     K: Key Accounts         82       178      44     25.88   74.7  
+436    EMP0872   Female   I: IT Infrastructure    58       160      44     22.66   62.6  
+437    EMP0873   Female   F: Finance              53       161      34     20.45   49.2  
+438    EMP0874   Male     K: Key Accounts         63       173      32     21.05   94.6  
+439    EMP0875   Male     S: Sales                55       168      41     19.49   54.9  
+440    EMP0878   Male     R: R&D Innovation       72       173      41     24.06   75.1  
+441    EMP0879   Male     K: Key Accounts         63       173      46     21.05   35.0  
+442    EMP0880   Female   L: Logistics            55       156      27     22.60   65.5  
+443    EMP0883   Male     E: Engineering          66       166      46     23.95   44.2  
+444    EMP0885   Male     B: BI & Analytics       81       173      31     27.06   35.2  
+445    EMP0887   Male     M: Marketing            60       161      34     23.15   50.3  
+446    EMP0892   Female   O: Operations           60       164      33     22.31   83.0  
+447    EMP0893   Female   J: Legal Affairs        50       166      39     18.14   43.4  
+448    EMP0894   Female   C: Customer Support     46       161      37     17.75   54.4  
+449    EMP0895   Female   S: Sales                48       165      22     17.63   61.4  
+450    EMP0896   Male     I: IT Infrastructure    78       174      27     25.76   69.0  
+451    EMP0897   Female   H: Human Resources      57       163      26     21.45   79.5  
+452    EMP0898   Male     Q: Quality Assurance    67       171      31     22.91   61.4  
+453    EMP0899   Male     J: Legal Affairs        75       174      34     24.77   69.9  
+454    EMP0900   Male     S: Sales                72       180      49     22.22   38.9  
+455    EMP0902   Male     M: Marketing            84       174      35     27.74   73.1  
+456    EMP0903   Male     I: IT Infrastructure    55       171      30     18.81   46.5  
+457    EMP0905   Male     K: Key Accounts         69       176      39     22.28   50.9  
+458    EMP0906   Male     M: Marketing            68       165      42     24.98   77.8  
+459    EMP0910   Male     A: Accounting           74       181      34     22.59   98.0  
+460    EMP0911   Female   M: Marketing            48       149      35     21.62   47.2  
+461    EMP0912   Male     E: Engineering          59       173      35     19.71   70.6  
+462    EMP0913   Female   J: Legal Affairs        59       160      40     23.05   57.7  
+463    EMP0914   Female   I: IT Infrastructure    54       163      41     20.32   85.7  
+464    EMP0915   Female   C: Customer Support     62       164      25     23.05   49.6  
+465    EMP0916   Female   L: Logistics            59       159      42     23.34   42.1  
+466    EMP0917   Female   K: Key Accounts         48       156      37     19.72   76.0  
+467    EMP0918   Female   G: General Admin        67       159      39     26.50   49.6  
+468    EMP0921   Male     J: Legal Affairs        55       172      42     18.59   75.2  
+469    EMP0923   Male     O: Operations           78       168      32     27.64   43.4  
+470    EMP0925   Female   K: Key Accounts         50       162      34     19.05   48.4  
+471    EMP0926   Male     I: IT Infrastructure    70       179      27     21.85   76.8  
+472    EMP0933   Female   F: Finance              45       151      34     19.74   56.8  
+473    EMP0934   Female   L: Logistics            58       155      40     24.14   82.8  
+474    EMP0936   Female   S: Sales                58       162      31     22.10   65.6  
+475    EMP0937   Female   P: Product & Design     55       171      26     18.81   63.9  
+476    EMP0939   Female   A: Accounting           49       160      31     19.14   40.3  
+477    EMP0940   Male     C: Customer Support     75       170      28     25.95   51.2  
+478    EMP0943   Male     M: Marketing            76       179      36     23.72   60.4  
+479    EMP0944   Male     C: Customer Support     64       166      30     23.23   78.0  
+480    EMP0947   Male     E: Engineering          72       175      46     23.51   58.7  
+481    EMP0948   Female   K: Key Accounts         53       159      40     20.96   62.6  
+482    EMP0951   Male     Q: Quality Assurance    82       175      28     26.78   28.0  
+483    EMP0954   Female   L: Logistics            53       168      47     18.78   64.5  
+484    EMP0958   Female   O: Operations           50       159      33     19.78   69.2  
+485    EMP0961   Female   R: R&D Innovation       44       157      36     17.85   75.4  
+486    EMP0964   Male     L: Logistics            66       174      29     21.80   58.7  
+487    EMP0965   Male     E: Engineering          62       169      29     21.71   54.1  
+488    EMP0966   Female   L: Logistics            60       161      30     23.15   55.0  
+489    EMP0968   Female   Q: Quality Assurance    79       169      38     27.66   48.6  
+490    EMP0969   Male     B: BI & Analytics       85       176      35     27.44   36.5  
+491    EMP0970   Male     E: Engineering          63       176      34     20.34   65.8  
+492    EMP0972   Female   S: Sales                67       160      30     26.17   44.4  
+493    EMP0975   Male     F: Finance              69       172      43     23.32   43.1  
+494    EMP0981   Female   M: Marketing            58       159      31     22.94   70.1  
+495    EMP0986   Female   P: Product & Design     52       170      44     17.99   37.3  
+496    EMP0987   Male     Q: Quality Assurance    59       166      34     21.41   40.3  
+497    EMP0990   Male     D: Data Science         68       171      29     23.26   72.9  
+498    EMP0993   Male     B: BI & Analytics       61       175      47     19.92   69.4  
+499    EMP0994   Male     G: General Admin        81       175      25     26.45   51.1  
+500    EMP0996   Female   R: R&D Innovation       67       166      43     24.31   51.9  
