@@ -70,8 +70,8 @@ python -m pytest tests/test_ga.py -v
   * แผนกที่มีจำนวนคนเป็นเลขคู่ ถูกแบ่งครึ่ง 50:50 ครบทุกแผนก (เช่น แผนก D มี 72 คน แบ่งได้ 36 : 36)
   * แผนกที่มีจำนวนคนเป็นเลขคี่ ต่างกันเพียง 1 คน ซึ่งเป็นจุดสมดุลที่ดีที่สุดตามทฤษฎี
 
-### กราฟการพัฒนาของค่า Fitness:
-![Fitness Evolution](outputs/fitness_evolution.png)
+### กราฟสรุปผลการประเมินทั้ง 3 ด้านในภาพเดียว (3-in-1 Summary Dashboard):
+![Summary Plots](outputs/summary_plots.png)
 
 ---
 

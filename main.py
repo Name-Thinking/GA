@@ -83,7 +83,7 @@ for _ in range(GENS):
         new_pop.append(child)
     pop = new_pop
 
-# 4. แสดงผลลัพธ์
+# 4. แสดงผลลัพธ์ใน Terminal
 score, d_age, d_bmi, d_male, d_dept, r_age, g_age, r_bmi, g_bmi, r_male, g_male = best_stats
 
 print("=" * 60)
@@ -101,17 +101,73 @@ for d in unique_depts:
     print(f"    - แผนก {d:<2}: สีแดง {cr:<2} คน | สีเขียว {cg:<2} คน")
 print("=" * 60)
 
-# 5. บันทึกผลลง CSV และสร้างกราฟ
+# 5. บันทึกผลลง CSV
 df['Team'] = ['สีแดง (Red)' if v == 0 else 'สีเขียว (Green)' for v in best_chrom]
 df.to_csv("outputs/team_assignment.csv", index=False, encoding="utf-8-sig")
 print(">> บันทึกรายชื่อผลลัพธ์ลง: outputs/team_assignment.csv")
 
-plt.figure(figsize=(6.5, 3.8))
-plt.plot(history, color='blue', linewidth=2)
-plt.title("Genetic Algorithm: Fitness Progression (HR Data)")
-plt.xlabel("Generation")
-plt.ylabel("Fitness Score")
+# -------------------------------------------------------------
+# 6. รวมกราฟทั้ง 3 ด้านไว้ในไฟล์เดียว (3-in-1 Combined Dashboard)
+# -------------------------------------------------------------
+plt.rcParams['font.sans-serif'] = ['Leelawadee UI', 'Tahoma', 'Arial', 'DejaVu Sans']
+plt.rcParams['axes.unicode_minus'] = False
+plt.figure(figsize=(15, 8.5))
+
+# กราฟ 1 (บนซ้าย): การพัฒนาของค่า Fitness (Fitness Progression)
+ax1 = plt.subplot(2, 2, 1)
+ax1.plot(history, color='#1976D2', linewidth=2)
+ax1.set_title("1. Genetic Algorithm: Fitness Progression", fontsize=12, fontweight='bold')
+ax1.set_xlabel("Generation")
+ax1.set_ylabel("Fitness Score")
+ax1.grid(True, linestyle='--', alpha=0.6)
+
+# กราฟ 2 (บนขวา): ความสูสีทางกายภาพ/กีฬา (Sports Fairness Comparison)
+ax2 = plt.subplot(2, 2, 2)
+metric_labels = ["Male (Count)", "Mean Age (Yrs)", "Mean BMI"]
+red_metrics = [r_male, r_age, r_bmi]
+grn_metrics = [g_male, g_age, g_bmi]
+x_met = range(len(metric_labels))
+b1 = ax2.bar([i - 0.2 for i in x_met], red_metrics, width=0.4, label="Red", color="#E53935", edgecolor="black", alpha=0.85)
+b2 = ax2.bar([i + 0.2 for i in x_met], grn_metrics, width=0.4, label="Green", color="#43A047", edgecolor="black", alpha=0.85)
+ax2.set_xticks(list(x_met))
+ax2.set_xticklabels(metric_labels, fontsize=10)
+ax2.set_title("2. Sports Fairness Comparison (Physical Metrics)", fontsize=12, fontweight='bold')
+ax2.set_ylabel("Value")
+ax2.legend()
+ax2.grid(True, linestyle='--', alpha=0.6)
+
+# แสดงตัวเลขบนแท่งกราฟด้านกีฬา
+for b in b1 + b2:
+    val = b.get_height()
+    ax2.annotate(f"{val:.1f}" if val < 50 else f"{int(val)}", 
+                 xy=(b.get_x() + b.get_width() / 2, val),
+                 xytext=(0, 2), textcoords="offset points", ha='center', va='bottom', fontsize=9, fontweight='bold')
+
+# กราฟ 3 (ล่างยาว): การกระจายตัวข้ามแผนก (Cross-Department Harmonization)
+ax3 = plt.subplot(2, 1, 2)
+dept_r = [sum(1 for i in range(N) if best_chrom[i] == 0 and depts[i] == d) for d in unique_depts]
+dept_g = [sum(1 for i in range(N) if best_chrom[i] == 1 and depts[i] == d) for d in unique_depts]
+x_dept = range(len(unique_depts))
+bd1 = ax3.bar([i - 0.2 for i in x_dept], dept_r, width=0.4, label="Red", color="#E53935", edgecolor="black", alpha=0.85)
+bd2 = ax3.bar([i + 0.2 for i in x_dept], dept_g, width=0.4, label="Green", color="#43A047", edgecolor="black", alpha=0.85)
+ax3.set_xticks(list(x_dept))
+ax3.set_xticklabels(unique_depts, fontsize=9)
+ax3.set_title("3. Cross-Department Harmonization: Distribution across Teams (19 Departments)", fontsize=12, fontweight='bold')
+ax3.set_xlabel("Department")
+ax3.set_ylabel("Number of Members")
+ax3.legend()
+ax3.grid(True, linestyle='--', alpha=0.6)
+
+# แสดงตัวเลขบนแท่งกราฟแผนก
+for b in bd1 + bd2:
+    val = b.get_height()
+    if val > 0:
+        ax3.annotate(f"{int(val)}", 
+                     xy=(b.get_x() + b.get_width() / 2, val),
+                     xytext=(0, 2), textcoords="offset points", ha='center', va='bottom', fontsize=8, fontweight='bold')
+
 plt.tight_layout()
-plt.savefig("outputs/fitness_evolution.png", dpi=150)
+plt.savefig("outputs/summary_plots.png", dpi=150)
+plt.savefig("outputs/fitness_evolution.png", dpi=150)  # ซิงค์ชื่อนี้ด้วยเพื่อให้ README บน GitHub แสดงรูปภาพรวมทันที
 plt.close()
-print(">> บันทึกกราฟลง: outputs/fitness_evolution.png")
+print(">> รวมกราฟทั้ง 3 รูปไว้ในไฟล์เดียว: outputs/summary_plots.png เรียบร้อยแล้ว!")
