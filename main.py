@@ -124,12 +124,70 @@ for d in unique_depts:
     print(f"    - แผนก {d:<2} (รวม {cr+cg:<2} คน): สีแดง {cr:<2} คน | สีเขียว {cg:<2} คน")
 print("=" * 65)
 
-# 5. บันทึกผลลง CSV
+# 5. บันทึกผลลง CSV และสร้างรายงาน output.txt
 os.makedirs("outputs", exist_ok=True)
 df['bmi'] = df['bmi'].round(2)
 df['Team'] = ['สีแดง (Red)' if v == 0 else 'สีเขียว (Green)' for v in best_chrom]
 df.to_csv("outputs/team_assignment.csv", index=False, encoding="utf-8-sig")
 print(">> บันทึกรายชื่อผลลัพธ์ลง: outputs/team_assignment.csv")
+
+# สร้างรายงานสรุปผล output.txt
+output_lines = [
+    "=" * 75,
+    " รายงานผลการจัดแบ่งทีมกีฬา 2 สีด้วย Genetic Algorithm (GeneTeam)",
+    "=" * 75,
+    f"ชุดข้อมูล : data/HR(in).csv (จำนวนสมาชิกทั้งหมด {N} คน, 19 แผนก)",
+    f"ผลลัพธ์   : แบ่งทีมสีแดง {half} คน และทีมสีเขียว {half} คน (สมดุล 50:50)",
+    f"คะแนนความเหมาะสมสูงสุด (Best Fitness): {score:.2f} / 100",
+    "-" * 75,
+    "1. ความแฟนเนจด้านกีฬา (Sports Fairness Comparison):",
+    f"   - สัดส่วนผู้ชาย (Male)  : สีแดง {r_male} คน | สีเขียว {g_male} คน (ต่าง {d_male} คน)",
+    f"   - สัดส่วนผู้หญิง (Female): สีแดง {r_female} คน | สีเขียว {g_female} คน (ต่าง {abs(r_female-g_female)} คน)",
+    f"   - น้ำหนักเฉลี่ย (Weight) : สีแดง {r_w:.2f} kg | สีเขียว {g_w:.2f} kg (ต่าง {d_w:.2f} kg)",
+    f"   - ส่วนสูงเฉลี่ย (Height) : สีแดง {r_h:.2f} cm | สีเขียว {g_h:.2f} cm (ต่าง {d_h:.2f} cm)",
+    f"   - อายุเฉลี่ย (Age)     : สีแดง {r_age:.2f} ปี | สีเขียว {g_age:.2f} ปี (ต่าง {d_age:.2f} ปี)",
+    f"   - ดัชนีมวลกายเฉลี่ย (BMI): สีแดง {r_bmi:.2f} | สีเขียว {g_bmi:.2f} (ต่าง {d_bmi:.2f})",
+    "-" * 75,
+    "2. การกระจายตัวข้ามแผนก (Harmonization Comparison - ครบทั้ง 19 แผนก):",
+]
+
+for d in unique_depts:
+    cr = sum(1 for i in range(N) if best_chrom[i] == 0 and depts[i] == d)
+    cg = sum(1 for i in range(N) if best_chrom[i] == 1 and depts[i] == d)
+    output_lines.append(f"   - แผนก {d:<2} (รวม {cr+cg:<2} คน): สีแดง {cr:<2} คน | สีเขียว {cg:<2} คน")
+
+output_lines.extend([
+    "=" * 75,
+    f" รายชื่อสมาชิกทีมสีแดง (Team Red: {half} คน)",
+    "=" * 75,
+    f"{'No.':<5} {'Gender':<8} {'Dept':<6} {'Weight':<8} {'Height':<8} {'Age':<6} {'BMI':<6}"
+])
+
+red_count = 1
+for i in range(N):
+    if best_chrom[i] == 0:
+        output_lines.append(f"{red_count:<5} {genders[i]:<8} {depts[i]:<6} {weights[i]:<8} {heights[i]:<8} {ages[i]:<6} {bmis[i]:.2f}")
+        red_count += 1
+
+output_lines.extend([
+    "=" * 75,
+    f" รายชื่อสมาชิกทีมสีเขียว (Team Green: {half} คน)",
+    "=" * 75,
+    f"{'No.':<5} {'Gender':<8} {'Dept':<6} {'Weight':<8} {'Height':<8} {'Age':<6} {'BMI':<6}"
+])
+
+grn_count = 1
+for i in range(N):
+    if best_chrom[i] == 1:
+        output_lines.append(f"{grn_count:<5} {genders[i]:<8} {depts[i]:<6} {weights[i]:<8} {heights[i]:<8} {ages[i]:<6} {bmis[i]:.2f}")
+        grn_count += 1
+
+output_text = "\n".join(output_lines)
+with open("outputs/output.txt", "w", encoding="utf-8") as f:
+    f.write(output_text)
+with open("output.txt", "w", encoding="utf-8") as f:
+    f.write(output_text)
+print(">> บันทึกไฟล์สรุปผลรายงาน: outputs/output.txt และ output.txt")
 
 # 6. สร้างกราฟรวม 3 ด้านในไฟล์เดียว และเปิดแสดงผลกราฟ
 plt.rcParams['font.sans-serif'] = ['Leelawadee UI', 'Tahoma', 'Arial', 'DejaVu Sans']
