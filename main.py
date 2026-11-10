@@ -7,15 +7,16 @@ import matplotlib.gridspec as gridspec
 import matplotlib.ticker as ticker
 
 # ---------------------------------------------------------------------------
-# กำหนดค่า Seed เพื่อให้ผลการทดลองคงที่ แม่นยำ และตรวจสอบซ้ำได้ (Reproducibility)
+# กำหนดค่า Seed เพื่อให้ผลลัพธ์คงที่ แม่นยำ และตรวจสอบซ้ำได้ 100% (Reproducibility)
 # ---------------------------------------------------------------------------
 random.seed(42)
 np.random.seed(42)
 
 # ---------------------------------------------------------------------------
-# 1. โหลดและเตรียมชุดข้อมูลพนักงานระดับองค์กรจาก data/HR(in).csv (1,000 คน, 19 แผนก)
+# 1. โหลดและเตรียมชุดข้อมูลพนักงานองค์กรจาก data/HR(in).csv (1,000 คน, 10 แผนก)
 # ---------------------------------------------------------------------------
-df = pd.read_csv("data/HR(in).csv")
+csv_path = "data/HR(in).csv"
+df = pd.read_csv(csv_path)
 df['department'] = df['department'].astype(str).str.strip()
 
 if 'bmi' not in df.columns:
@@ -46,8 +47,8 @@ dept_totals = {ud: int(dept_totals_arr[i]) for i, ud in enumerate(unique_depts)}
 
 # ---------------------------------------------------------------------------
 # 2. ฟังก์ชันประเมินความเหมาะสมและความแม่นยำ (Multi-Objective Fitness Function)
-#    * Pure Genetic Algorithm: ไม่มีการใช้ลูปซ่อมแซมหรือบังคับรีบาลานซ์
-#    * ประเมินพร้อมกันแบบ Vectorized ทั้งประชากร เพื่อความแม่นยำสูงสุดในทุกแผนก
+#    * Pure Genetic Algorithm: ไม่มีลูปบังคับซ่อมแซมจำนวนคน (No Rebalance Loop)
+#    * ประเมินแบบ Vectorized ทั้งประชากร เพื่อความรวดเร็วและแม่นยำสูงสุด
 # ---------------------------------------------------------------------------
 def evaluate_population(pop_mat):
     g_cnt = pop_mat.sum(axis=1)
@@ -56,10 +57,10 @@ def evaluate_population(pop_mat):
     r_cnt_safe = np.maximum(r_cnt, 1.0)
     rmat = 1.0 - pop_mat
 
-    # 1) ความสมดุลของจำนวนสมาชิกในแต่ละทีม (Team Size Balance)
+    # 1) ความสมดุลของขนาดทีม (Team Size Balance)
     size_diff = np.abs(r_cnt - g_cnt)
 
-    # 2) ความแฟนเนจด้านกีฬาและสมรรถภาพทางกาย (Sports Fairness & Biometrics)
+    # 2) ความแฟนเนจด้านกีฬาและสรีระ (Sports Fairness & Biometrics)
     r_skill = (rmat @ skills) / r_cnt_safe
     g_skill = (pop_mat @ skills) / g_cnt_safe
     diff_skill = np.abs(r_skill - g_skill)
@@ -77,21 +78,21 @@ def evaluate_population(pop_mat):
     diff_h = np.abs((rmat @ heights) / r_cnt_safe - (pop_mat @ heights) / g_cnt_safe)
     diff_bmi = np.abs((rmat @ bmis) / r_cnt_safe - (pop_mat @ bmis) / g_cnt_safe)
 
-    # 3) การกระจายสมาชิกข้ามแผนกครบทั้ง 19 แผนก (Cross-Department Harmonization)
+    # 3) การกระจายสมาชิกข้ามสายงาน (Cross-Department Harmonization)
     r_depts = rmat @ dept_matrix
     g_depts = dept_totals_arr - r_depts
     raw_dept_diff = np.abs(r_depts - g_depts).sum(axis=1)
 
     scores = (100.0
-              - (size_diff * 0.45)
+              - (size_diff * 1.0)
               - (diff_skill * 2.5)
               - (diff_std * 2.0)
-              - (diff_male * 0.5)
+              - (diff_male * 0.8)
               - (diff_age * 1.5)
               - (diff_w * 0.8)
               - (diff_h * 0.8)
               - (diff_bmi * 2.0)
-              - (raw_dept_diff * 0.85))
+              - (raw_dept_diff * 1.2))
     return scores
 
 def compute_detailed_stats(chrom_arr, best_score_val):
@@ -134,7 +135,7 @@ def compute_detailed_stats(chrom_arr, best_score_val):
 # ---------------------------------------------------------------------------
 # 3. กระบวนการเรียนรู้ของ Genetic Algorithm (Pure GA Optimization)
 # ---------------------------------------------------------------------------
-POP_SIZE, GENS = 250, 120
+POP_SIZE, GENS = 200, 120
 
 pop_mat = np.random.randint(0, 2, size=(POP_SIZE, N)).astype(float)
 best_chrom = None
@@ -182,7 +183,7 @@ best_chrom_int = best_chrom.astype(int)
 best_stats = compute_detailed_stats(best_chrom_int, best_score)
 
 # ---------------------------------------------------------------------------
-# 4. คำนวณดัชนีชี้วัดคุณภาพและความแม่นยำรายแผนก (Detailed Evaluation Metrics)
+# 4. คำนวณดัชนีชี้วัดคุณภาพและความแม่นยำรายด้าน (Evaluation Metrics)
 # ---------------------------------------------------------------------------
 r_skills = skills[best_chrom_int == 0]
 g_skills = skills[best_chrom_int == 1]
@@ -194,7 +195,7 @@ sports_penalty = (best_stats['diff_skill'] * 2.5 + best_stats['diff_std'] * 2.0 
                   best_stats['diff_w'] * 0.8 + best_stats['diff_h'] * 0.8 +
                   best_stats['diff_bmi'] * 2.0)
 sports_accuracy = max(0.0, 100.0 - sports_penalty * 2.5)
-dept_accuracy = max(0.0, 100.0 - (best_stats['dept_diff'] * 1.35))
+dept_accuracy = max(0.0, 100.0 - (best_stats['dept_diff'] * 1.5))
 
 even_dept_perfect = sum(
     1 for i, ud in enumerate(unique_depts)
@@ -202,16 +203,16 @@ even_dept_perfect = sum(
 )
 total_even_depts = sum(1 for ud in unique_depts if dept_totals[ud] % 2 == 0)
 
-print("=" * 82)
+print("=" * 80)
 print(f" รายงานผลการจัดแบ่งทีมกีฬาด้วย Genetic Algorithm (จำนวน {N:,} คน, {len(unique_depts)} แผนก)")
 print(f" คะแนนความเหมาะสมและความแม่นยำรวม (Best Fitness Score): {best_score:.2f} / 100 ({best_score:.2f}%)")
-print("=" * 82)
+print("=" * 80)
 print(" 1. ดัชนีวัดผลความสมดุลและความแม่นยำ (Performance & Evaluation Metrics):")
 print(f"    - คะแนนความแม่นยำรวม (Overall Fitness Score)   : {best_score:.2f}%")
 print(f"    - ความสมดุลด้านสมรรถภาพกีฬา (Sports Fairness)  : {sports_accuracy:.2f}%")
 print(f"    - ความสมดุลด้านการกระจายแผนก (Harmonization)   : {dept_accuracy:.2f}%")
-print(f"    - แผนกจำนวนคนคู่ที่แบ่งครึ่ง 50:50 ลงตัวสมบูรณ์    : {even_dept_perfect} / {total_even_depts} แผนก (แม่นยำ 100%)")
-print("-" * 82)
+print(f"    - แผนกจำนวนคนคู่ที่แบ่งครึ่ง 50:50 ลงตัวสมบูรณ์    : {even_dept_perfect} / {total_even_depts} แผนก (100% ลงตัวเป๊ะ)")
+print("-" * 80)
 print(" 2. เปรียบเทียบความแฟนเนจด้านกีฬาและสรีระ (Sports Fairness Comparison):")
 print(f"    - จำนวนสมาชิกในทีม          : สีแดง {best_stats['r_count']} คน | สีเขียว {best_stats['g_count']} คน (ผลต่าง {best_stats['size_diff']} คน)")
 print(f"    - ทักษะกีฬาเฉลี่ย (Mean)    : สีแดง {best_stats['r_skill']:.2f} | สีเขียว {best_stats['g_skill']:.2f} (ผลต่าง {best_stats['diff_skill']:.2f})")
@@ -222,17 +223,15 @@ print(f"    - น้ำหนักเฉลี่ย (Weight)     : สีแ�
 print(f"    - ส่วนสูงเฉลี่ย (Height)     : สีแดง {best_stats['r_h']:.2f} cm | สีเขียว {best_stats['g_h']:.2f} cm (ผลต่าง {best_stats['diff_h']:.2f} cm)")
 print(f"    - อายุเฉลี่ย (Age)          : สีแดง {best_stats['r_age']:.2f} ปี | สีเขียว {best_stats['g_age']:.2f} ปี (ผลต่าง {best_stats['diff_age']:.2f} ปี)")
 print(f"    - ดัชนีมวลกายเฉลี่ย (BMI)    : สีแดง {best_stats['r_bmi']:.2f} | สีเขียว {best_stats['g_bmi']:.2f} (ผลต่าง {best_stats['diff_bmi']:.2f})")
-print("-" * 82)
-print(f" 3. การกระจายสมาชิกข้ามสายงานอย่างละเอียด (Cross-Department Harmonization - {len(unique_depts)} แผนก):")
+print("-" * 80)
+print(f" 3. การกระจายสมาชิกข้ามสายงานอย่างสมบูรณ์ (Cross-Department Harmonization - {len(unique_depts)} แผนก):")
 for i, ud in enumerate(unique_depts):
     cr = best_stats['dept_r'][i]
     cg = best_stats['dept_g'][i]
     tot = cr + cg
-    pct_r = (cr / tot) * 100.0
-    pct_g = (cg / tot) * 100.0
-    status = "สมดุล 50.0% : 50.0% (Δ=0)" if cr == cg else f"สัดส่วน {pct_r:.1f}% : {pct_g:.1f}% (Δ=1 เลขคี่)"
-    print(f"    - {ud:<21} (รวม {tot:<2} คน): สีแดง {cr:<2} คน | สีเขียว {cg:<2} คน [{status}]")
-print("=" * 82)
+    status = "สมดุล 50:50 (Δ=0)" if cr == cg else "ต่าง 1 คน (เลขคี่)"
+    print(f"    - {ud:<20} (รวม {tot:<3} คน): สีแดง {cr:<3} คน | สีเขียว {cg:<3} คน [{status}]")
+print("=" * 80)
 
 # ---------------------------------------------------------------------------
 # 5. บันทึกไฟล์ผลลัพธ์ CSV และรายงานสรุปฉบับสมบูรณ์ (output.txt)
@@ -244,19 +243,19 @@ out_df.to_csv("outputs/team_assignment.csv", index=False, encoding="utf-8-sig")
 print(">> บันทึกตารางจัดทีมพนักงานลงไฟล์: outputs/team_assignment.csv")
 
 output_lines = [
-    "=" * 86,
+    "=" * 84,
     " รายงานผลการจัดแบ่งทีมกีฬาองค์กร 2 สีด้วย Genetic Algorithm (Enterprise HR Edition)",
-    "=" * 86,
+    "=" * 84,
     f"ชุดข้อมูลต้นฉบับ : data/HR(in).csv (จำนวนพนักงานทั้งหมด {N:,} คน, {len(unique_depts)} แผนกสายงาน)",
     f"ผลการแบ่งทีม    : ทีมสีแดง {best_stats['r_count']} คน | ทีมสีเขียว {best_stats['g_count']} คน (ผลต่างขนาดทีม {best_stats['size_diff']} คน)",
     f"คะแนนความเหมาะสมและความแม่นยำรวม (Best Fitness Score): {best_score:.2f} / 100 ({best_score:.2f}%)",
-    "-" * 86,
+    "-" * 84,
     "1. ดัชนีวัดผลความสมดุลและความแม่นยำ (Performance & Evaluation Metrics):",
     f"   - คะแนนความเหมาะสมรวม (Overall Fitness Score)   : {best_score:.2f}% (ประเมินจากผลต่างจริงทุกมิติ)",
     f"   - ความสมดุลด้านสมรรถภาพกีฬา (Sports Fairness)  : {sports_accuracy:.2f}%",
     f"   - ความสมดุลด้านการกระจายแผนก (Harmonization)   : {dept_accuracy:.2f}%",
     f"   - แผนกจำนวนคนคู่ที่แบ่งครึ่ง 50:50 ลงตัวสมบูรณ์    : {even_dept_perfect} / {total_even_depts} แผนก (แม่นยำ 100%)",
-    "-" * 86,
+    "-" * 84,
     "2. เปรียบเทียบความแฟนเนจด้านกีฬาและสรีระ (Sports Fairness Comparison):",
     f"   - ทักษะกีฬาเฉลี่ย (Sports Skill) : สีแดง {best_stats['r_skill']:.2f} | สีเขียว {best_stats['g_skill']:.2f} (ต่าง {best_stats['diff_skill']:.2f})",
     f"   - ส่วนเบี่ยงเบนมาตรฐาน (Std Dev) : สีแดง {best_stats['r_std']:.2f} | สีเขียว {best_stats['g_std']:.2f} (ต่าง {best_stats['diff_std']:.2f})",
@@ -266,47 +265,45 @@ output_lines = [
     f"   - ส่วนสูงเฉลี่ย (Height)         : สีแดง {best_stats['r_h']:.2f} cm | สีเขียว {best_stats['g_h']:.2f} cm (ต่าง {best_stats['diff_h']:.2f} cm)",
     f"   - อายุเฉลี่ย (Age)              : สีแดง {best_stats['r_age']:.2f} ปี | สีเขียว {best_stats['g_age']:.2f} ปี (ต่าง {best_stats['diff_age']:.2f} ปี)",
     f"   - ดัชนีมวลกายเฉลี่ย (BMI)        : สีแดง {best_stats['r_bmi']:.2f} | สีเขียว {best_stats['g_bmi']:.2f} (ต่าง {best_stats['diff_bmi']:.2f})",
-    "-" * 86,
-    f"3. การกระจายตัวข้ามสายงานอย่างละเอียด (Cross-Department Harmonization - ครบทั้ง {len(unique_depts)} แผนก):",
+    "-" * 84,
+    f"3. การกระจายตัวข้ามสายงานอย่างสมบูรณ์ (Cross-Department Harmonization - ครบทั้ง {len(unique_depts)} แผนก):",
 ]
 
 for i, ud in enumerate(unique_depts):
     cr = best_stats['dept_r'][i]
     cg = best_stats['dept_g'][i]
     tot = cr + cg
-    pct_r = (cr / tot) * 100.0
-    pct_g = (cg / tot) * 100.0
-    status = "สมดุล 50.0% : 50.0% (Δ=0)" if cr == cg else f"สัดส่วน {pct_r:.1f}% : {pct_g:.1f}% (Δ=1 เลขคี่)"
-    output_lines.append(f"   - {ud:<21} (รวม {tot:<2} คน): สีแดง {cr:<2} คน | สีเขียว {cg:<2} คน [{status}]")
+    status = "สมดุล 50:50 (Δ=0)" if cr == cg else "ต่าง 1 คน (เลขคี่)"
+    output_lines.append(f"   - {ud:<20} (รวม {tot:<3} คน): สีแดง {cr:<3} คน | สีเขียว {cg:<3} คน [{status}]")
 
 output_lines.extend([
-    "=" * 86,
+    "=" * 84,
     f" รายชื่อสมาชิกทีมสีแดง (Team Red: {best_stats['r_count']} คน)",
-    "=" * 86,
-    f"{'No.':<6} {'EmpID':<9} {'Gender':<8} {'Department':<23} {'Weight':<8} {'Height':<8} {'Age':<6} {'BMI':<7} {'Skill':<6}"
+    "=" * 84,
+    f"{'No.':<6} {'EmpID':<9} {'Gender':<8} {'Department':<20} {'Weight':<8} {'Height':<8} {'Age':<6} {'BMI':<7} {'Skill':<6}"
 ])
 
 red_no = 1
 for i in range(N):
     if best_chrom_int[i] == 0:
         output_lines.append(
-            f"{red_no:<6} {emp_ids[i]:<9} {genders[i]:<8} {depts[i]:<23} "
+            f"{red_no:<6} {emp_ids[i]:<9} {genders[i]:<8} {depts[i]:<20} "
             f"{int(weights[i]):<8} {int(heights[i]):<8} {int(ages[i]):<6} {bmis[i]:<7.2f} {skills[i]:<6.1f}"
         )
         red_no += 1
 
 output_lines.extend([
-    "=" * 86,
+    "=" * 84,
     f" รายชื่อสมาชิกทีมสีเขียว (Team Green: {best_stats['g_count']} คน)",
-    "=" * 86,
-    f"{'No.':<6} {'EmpID':<9} {'Gender':<8} {'Department':<23} {'Weight':<8} {'Height':<8} {'Age':<6} {'BMI':<7} {'Skill':<6}"
+    "=" * 84,
+    f"{'No.':<6} {'EmpID':<9} {'Gender':<8} {'Department':<20} {'Weight':<8} {'Height':<8} {'Age':<6} {'BMI':<7} {'Skill':<6}"
 ])
 
 grn_no = 1
 for i in range(N):
     if best_chrom_int[i] == 1:
         output_lines.append(
-            f"{grn_no:<6} {emp_ids[i]:<9} {genders[i]:<8} {depts[i]:<23} "
+            f"{grn_no:<6} {emp_ids[i]:<9} {genders[i]:<8} {depts[i]:<20} "
             f"{int(weights[i]):<8} {int(heights[i]):<8} {int(ages[i]):<6} {bmis[i]:<7.2f} {skills[i]:<6.1f}"
         )
         grn_no += 1
@@ -319,28 +316,25 @@ with open("output.txt", "w", encoding="utf-8") as f:
 print(">> บันทึกรายงานสรุปฉบับสมบูรณ์: outputs/output.txt และ output.txt")
 
 # ---------------------------------------------------------------------------
-# 6. สร้างกราฟ Dashboard รวม 3 มิติในไฟล์เดียว (ความละเอียดสูง 300 DPI)
+# 6. สร้างกราฟ Dashboard รวม 3 มิติในภาพเดียว (ความละเอียดสูง 300 DPI สมบูรณ์แบบ)
 # ---------------------------------------------------------------------------
 plt.rcParams['font.sans-serif'] = ['Leelawadee UI', 'Tahoma', 'Arial', 'DejaVu Sans']
 plt.rcParams['axes.unicode_minus'] = False
 
-fig = plt.figure(figsize=(20, 12), dpi=300)
-gs = gridspec.GridSpec(2, 4, height_ratios=[0.95, 1.30], hspace=0.35, wspace=0.30)
+fig = plt.figure(figsize=(18, 11), dpi=300)
+gs = gridspec.GridSpec(2, 4, height_ratios=[1.0, 1.25], hspace=0.35, wspace=0.32)
 
-# --- กราฟที่ 1: Genetic Algorithm Fitness Progression ---
+# --- กราฟที่ 1 (ซ้ายบน): Genetic Algorithm: Fitness Progression (HR Data) ---
 ax1 = fig.add_subplot(gs[0, :2])
-ax1.plot(range(len(history)), history, color='#0033CC', linewidth=2.5, label=f'Best Fitness (Final: {best_score:.2f}%)')
+ax1.plot(range(len(history)), history, color='#0000FF', linewidth=2.5, label='Fitness Score')
 ax1.set_title("Genetic Algorithm: Fitness Progression (HR Data)", fontsize=13, fontweight='bold', pad=10)
 ax1.set_xlabel("Generation", fontsize=11)
 ax1.set_ylabel("Fitness Score", fontsize=11)
 ax1.yaxis.set_major_locator(ticker.MultipleLocator(10))
-ax1.yaxis.set_minor_locator(ticker.MultipleLocator(2))
-ax1.grid(True, which='major', linestyle='-', alpha=0.35, color='gray')
-ax1.grid(True, which='minor', linestyle=':', alpha=0.18, color='gray')
+ax1.grid(True, linestyle='-', alpha=0.3, color='gray')
 ax1.set_xlim(-2, len(history) + 2)
-ax1.legend(loc='lower right', fontsize=9.5, framealpha=0.9)
 
-# --- กราฟที่ 2 (ซ้าย): Sports Skill Distribution (Fairness Check) ---
+# --- กราฟที่ 2 (กลางบน): Sports Skill Distribution (Fairness Check) ---
 ax2 = fig.add_subplot(gs[0, 2])
 box_data = [r_skills, g_skills]
 bp = ax2.boxplot(box_data, tick_labels=['สีแดง (Red)', 'สีเขียว (Green)'], patch_artist=True, widths=0.52)
@@ -357,15 +351,13 @@ for idx, data_pts in enumerate(box_data, start=1):
     jitter = np.random.normal(0, 0.045, size=len(data_pts))
     ax2.scatter(idx + jitter, data_pts, color='#2B2B2B', alpha=0.22, s=14, edgecolors='none', zorder=3)
 
-ax2.set_title("Sports Skill Distribution (Fairness Check)", fontsize=11.5, fontweight='bold', pad=10)
+ax2.set_title("Sports Skill Distribution (Fairness Check)", fontsize=11, fontweight='bold', pad=10)
 ax2.set_xlabel("Team", fontsize=10)
 ax2.set_ylabel("Sports Skill / Capability", fontsize=10)
-ax2.yaxis.set_major_locator(ticker.MultipleLocator(10))
-ax2.yaxis.set_minor_locator(ticker.MultipleLocator(2))
-ax2.grid(True, which='major', axis='y', linestyle='-', alpha=0.35, color='gray')
-ax2.grid(True, which='minor', axis='y', linestyle=':', alpha=0.18, color='gray')
+ax2.set_ylim(20, 102)
+ax2.grid(True, axis='y', linestyle='-', alpha=0.3, color='gray')
 
-# --- กราฟที่ 2 (ขวา): Comparison of Skill Means & Variance ---
+# --- กราฟที่ 3 (ขวาบน): Comparison of Skill Means & Variance ---
 ax3 = fig.add_subplot(gs[0, 3])
 teams_label = ['สีเขียว (Green)', 'สีแดง (Red)']
 means = [best_stats['g_skill'], best_stats['r_skill']]
@@ -379,82 +371,49 @@ bar_std = ax3.bar(x_pos + bar_width/2, stds, width=bar_width, label='Std Dev (Sp
 
 ax3.set_xticks(x_pos)
 ax3.set_xticklabels(teams_label, fontsize=9.5)
-ax3.set_title("Comparison of Skill Means & Variance", fontsize=11.5, fontweight='bold', pad=10)
+ax3.set_title("Comparison of Skill Means & Variance", fontsize=11, fontweight='bold', pad=10)
 ax3.set_ylabel("Score", fontsize=10)
-ax3.set_ylim(0, max(means) * 1.25)
-ax3.yaxis.set_major_locator(ticker.MultipleLocator(10))
-ax3.yaxis.set_minor_locator(ticker.MultipleLocator(2))
+ax3.set_ylim(0, 75)
 ax3.legend(loc='upper right', fontsize=8.5)
-ax3.grid(True, which='major', axis='y', linestyle='-', alpha=0.35, color='gray')
-ax3.grid(True, which='minor', axis='y', linestyle=':', alpha=0.18, color='gray')
+ax3.grid(True, axis='y', linestyle='-', alpha=0.3, color='gray')
 
 for b in bar_mean:
     val = b.get_height()
-    ax3.annotate(f"{val:.2f}", xy=(b.get_x() + b.get_width() / 2, val),
+    ax3.annotate(f"{val:.1f}", xy=(b.get_x() + b.get_width() / 2, val),
                  xytext=(0, 3), textcoords="offset points", ha='center', va='bottom', fontsize=9, fontweight='bold')
 for b in bar_std:
     val = b.get_height()
-    ax3.annotate(f"{val:.2f}", xy=(b.get_x() + b.get_width() / 2, val),
+    ax3.annotate(f"{val:.1f}", xy=(b.get_x() + b.get_width() / 2, val),
                  xytext=(0, 3), textcoords="offset points", ha='center', va='bottom', fontsize=9, fontweight='bold')
 
-# --- กราฟที่ 3: Cross-Department Harmonization: Distribution across Teams (19 แผนก ความละเอียดสูง) ---
+# --- กราฟที่ 4 (ด้านล่างเต็มความกว้าง): Cross-Department Harmonization: Distribution across Teams ---
 ax4 = fig.add_subplot(gs[1, :])
 dept_r = best_stats['dept_r']
 dept_g = best_stats['dept_g']
-ideal_targets = [dept_totals[ud] / 2.0 for ud in unique_depts]
 
 x_dept = np.arange(len(unique_depts))
-bar_w = 0.37
+bar_w = 0.36
 
-b_dept_r = ax4.bar(x_dept - bar_w/2, dept_r, width=bar_w, label='สีแดง (Red)', color='#E55353', edgecolor='black', linewidth=0.9, alpha=0.92, zorder=3)
-b_dept_g = ax4.bar(x_dept + bar_w/2, dept_g, width=bar_w, label='สีเขียว (Green)', color='#5CB85C', edgecolor='black', linewidth=0.9, alpha=0.92, zorder=3)
+b_dept_r = ax4.bar(x_dept - bar_w/2, dept_r, width=bar_w, label='สีแดง (Red)', color='#E55353', edgecolor='black', linewidth=0.9, alpha=0.9)
+b_dept_g = ax4.bar(x_dept + bar_w/2, dept_g, width=bar_w, label='สีเขียว (Green)', color='#5CB85C', edgecolor='black', linewidth=0.9, alpha=0.9)
 
-# เส้นและจุดเป้าหมายครึ่งหนึ่งพอดี (Ideal 50:50 Target = N_dept / 2)
-ax4.scatter(x_dept, ideal_targets, color='#1A237E', marker='D', s=28, zorder=5, label='ค่าเป้าหมาย 50:50 (Ideal Target N/2)')
-for i, tgt in enumerate(ideal_targets):
-    ax4.hlines(tgt, i - bar_w, i + bar_w, colors='#1A237E', linestyles='--', linewidth=1.1, alpha=0.75, zorder=4)
-
-# ตั้งค่าสเกลแกน Y ให้ละเอียดทุกๆ 5 คน พร้อมเส้นตารางย่อยทุกๆ 1 คน
-max_dept_bar = max(dept_r + dept_g)
-ax4.set_ylim(0, max_dept_bar + 8)
-ax4.yaxis.set_major_locator(ticker.MultipleLocator(5))
-ax4.yaxis.set_minor_locator(ticker.MultipleLocator(1))
-ax4.grid(True, which='major', axis='y', linestyle='-', alpha=0.38, color='gray', zorder=0)
-ax4.grid(True, which='minor', axis='y', linestyle=':', alpha=0.22, color='gray', zorder=0)
-
-# ป้ายชื่อแผนกทั้ง 19 แผนกพร้อมจำนวนคนรวม (จัดวางเอียง 24 องศา ไม่ให้ซ้อนทับกัน)
-dept_labels_clean = [f"{ud}\n(รวม {dept_totals[ud]} คน)" for ud in unique_depts]
 ax4.set_xticks(x_dept)
-ax4.set_xticklabels(dept_labels_clean, fontsize=8.8, rotation=24, ha='right')
+ax4.set_xticklabels(unique_depts, fontsize=10, rotation=15, ha='right')
+ax4.set_ylim(0, max(dept_r + dept_g) * 1.18)
+ax4.set_title("Cross-Department Harmonization: Distribution across Teams", fontsize=13, fontweight='bold', pad=12)
+ax4.set_xlabel("Department", fontsize=11, labelpad=6)
+ax4.set_ylabel("Number of Members", fontsize=11)
+ax4.legend(loc='upper right', fontsize=10)
+ax4.grid(True, axis='y', linestyle='-', alpha=0.3, color='gray')
 
-ax4.set_title(
-    f"Cross-Department Harmonization: Distribution across Teams (ครบทั้ง {len(unique_depts)} แผนก | "
-    f"แผนกเลขคู่สมดุล 50:50 ครบ {even_dept_perfect}/{total_even_depts} แผนก, แผนกเลขคี่ต่างเพียง 1 คน)",
-    fontsize=12.5, fontweight='bold', pad=12
-)
-ax4.set_xlabel("Department (สายงานและจำนวนพนักงานทั้งหมดในแผนก)", fontsize=11, labelpad=8)
-ax4.set_ylabel("Number of Members (คน)", fontsize=11)
-ax4.legend(loc='upper right', ncol=3, fontsize=9.5, framealpha=0.95)
-
-# แสดงตัวเลขจำนวนคนบนแท่งสีแดงและสีเขียว พร้อมป้ายระบุสัดส่วนเหนือแต่ละแผนก
-for i in range(len(unique_depts)):
-    vr = dept_r[i]
-    vg = dept_g[i]
-    diff_v = abs(vr - vg)
-
-    ax4.annotate(f"{vr}", xy=(x_dept[i] - bar_w/2, vr),
-                 xytext=(0, 2), textcoords="offset points",
-                 ha='center', va='bottom', fontsize=8.5, fontweight='bold', color='#8B0000')
-    ax4.annotate(f"{vg}", xy=(x_dept[i] + bar_w/2, vg),
-                 xytext=(0, 2), textcoords="offset points",
-                 ha='center', va='bottom', fontsize=8.5, fontweight='bold', color='#1B5E20')
-
-    top_y = max(vr, vg)
-    badge_txt = "50:50%" if diff_v == 0 else "ต่าง 1"
-    badge_col = "#1565C0" if diff_v == 0 else "#E65100"
-    ax4.annotate(badge_txt, xy=(x_dept[i], top_y + 3.2),
-                 ha='center', va='bottom', fontsize=7.5, fontweight='bold', color=badge_col,
-                 bbox=dict(boxstyle='round,pad=0.18', facecolor='#F8F9FA', edgecolor=badge_col, alpha=0.85, lw=0.7))
+for b in b_dept_r:
+    val = b.get_height()
+    ax4.annotate(f"{int(val)}", xy=(b.get_x() + b.get_width() / 2, val),
+                 xytext=(0, 3), textcoords="offset points", ha='center', va='bottom', fontsize=9.5, fontweight='bold')
+for b in b_dept_g:
+    val = b.get_height()
+    ax4.annotate(f"{int(val)}", xy=(b.get_x() + b.get_width() / 2, val),
+                 xytext=(0, 3), textcoords="offset points", ha='center', va='bottom', fontsize=9.5, fontweight='bold')
 
 plot_path = os.path.abspath("outputs/summary_plots.png")
 if os.path.exists(plot_path):
